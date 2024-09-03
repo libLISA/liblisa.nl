@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- TODO: Debugging only -->
+    <!-- <meta http-equiv="refresh" content="1"> -->
+
+    <title>libLISA - Instruction Discovery and Analysis on x86-64</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="header">
+        <h1>libLISA - Instruction Discovery and Analysis on x86-64</h1>
+        <div class="authors">Jos Craaijo, Freek Verbeek, Binoy Ravindran</div>
+    </div>
+    <article class="page">
+        <p>
+            libLISA is a tool that can <i>fully automatically</i> scan instruction space, discover instructions and synthesize their semantics.
+            It relies on as little human specification as possible:
+            specifically, it does not rely on a handwritten (dis)assembler to dictate which instructions are executable on a given CPU, or what their operands are.
+        </p>
+        
+        <p>
+            We will present libLISA at <a href="https://2024.splashcon.org/track/splash-2024-oopsla#event-overview" target="_blank">OOPSLA'24</a>.
+        </p>
+
+        <div class="buttonrow">
+            <a class="button green" href="liblisa.pdf">
+                <img src="file-pdf-regular.svg" class="glyph" alt="PDF file" />
+                Read the paper
+            </a>
+            <a class="button yellow" target="_blank" href="https://explore.liblisa.nl/">
+                <img src="map-regular.svg" class="glyph" alt="map icon" />
+                Explore the data
+            </a>
+            <a class="button purple" target="_blank" href="https://github.com/liblisa">
+                <img src="github-brands-solid.svg" class="glyph" alt="GitHub" />
+                View source code
+            </a>
+        </div>
+
+        <h2>Motivation</h2>
+        <p>
+            Even though heavily researched, a full formal model of the x86-64 instruction set is still not available.
+            This is caused by the sheer complexity of the x86-64 architecture:
+            the informal specification found in <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html" target="_blank">Intel manuals is roughly 4700 pages</a>, and even these are known to be <a href="https://stefanheule.com/publications/pldi16-strata/" target="_blank">not trustworthy</a>.
+        </p>
+        <p>
+            Specifications of CPU architectures often rely heavily on manual work, which is error-prone and labor-intensive.
+            The current <a href="https://github.com/kframework/x86-64-semantics" target="_blank">state-of-the-art formal semantics</a> for x86-64 took 8 man-months to write, and even that specification still contains 34 errors (see Section 5.2 of our paper).
+        </p>
+        <p>
+            This situation becomes even more dire when taking into account that different x86-64 machines will behave differently: not only can they have different instruction sets, but behavior is also allowed to be undefined, in which case the same instruction has different behavior on different machines.
+        </p>
+        <p>
+            libLISA aims to solve this problem by using a CPU as the ground truth, and deriving semantics by observing instruction execution.
+        </p>
+
+        <!-- <h2>Approach</h2> -->
+
+        <!-- <h2>Architecture Comparison</h2> -->
+
+        <h2>Instruction Semantics</h2>
+        <p>
+            We analyzed five different architectures: AMD 3900X, AMD 7700X, Intel i9-13900 (p), Intel i9-13900 (e) and Intel Xeon Silver 4110.
+        </p>
+        <p>
+            The semantics can be accessed in the following two ways:
+            
+            <ul>
+                <li>Use <a target="_blank" href="https://explore.liblisa.nl/">explore.liblisa.nl</a> if you want to browse the semantics manually.</li>
+                <li>Use the <a target="_blank" href="https://github.com/libLISA/liblisa/tree/main/cli/liblisa-semantics-tool"><tt>liblisa-semantics-tool</tt></a> or <a target="_blank" href="https://crates.io/crates/liblisa">the <tt>liblisa</tt> Rust crate</a> if you want to use the semantics programmatically.</li>
+            </ul>
+        </p>
+
+        <h2>Acknowledgements</h2>
+        <p>
+            This work is supported by the Defense Advanced Research Projects Agency (DARPA) and Naval Information Warfare Center Pacific (NIWC Pacific) under Contract No. N66001-21-C-4028.
+        </p>
+    </article>
+  </body>
+</html>

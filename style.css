@@ -1,0 +1,139 @@
+:root {
+    --main-col: #1c5dcf;
+    --main-col-highlight: #2e79fb;
+
+    --green: #16bb00;
+    --green-highlight: #4dd60e;
+
+    --yellow: #f3c200;
+    --yellow-highlight: #f8cd23;
+
+    --purple: #991ef7;
+    --purple-highlight: #be38ee;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #2c3e50;
+  font-family: sans-serif;
+  font-size: 14pt;
+  line-height: 1.4em;
+}
+
+tt {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 1px 4px;
+}
+
+a:hover tt {
+    background: #999;
+    color: #fff;
+}
+
+.header {
+    background: var(--main-col);
+    color: #ffffff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em 8px 8px 8px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.authors {
+    margin: 8px;
+}
+
+.page {
+    max-width: 900px;
+    margin: auto;
+}
+
+h2 {
+    position: relative;
+    display: block;
+    background: var(--main-col);
+    color: white;
+    padding: 4px 20px;
+    margin-top: 1em;
+}
+
+h2::before, .button::before {
+    display: block;
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid white; 
+}
+
+h3 {
+    font-weight: 900;
+    display: inline;
+    font-size: inherit;
+}
+
+h3::after {
+    display: inline;
+    content: ".";
+}
+
+.buttonrow {
+    display: flex;
+    padding: 8px 0px;
+}
+
+.button {
+    position: relative;
+
+    flex-grow: 1;
+    flex-basis: 0;
+    display: block;
+    background: var(--main-col);
+    padding: 1em 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18pt;
+    margin: 4px;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    background: var(--main-col-highlight);
+    cursor: pointer;
+}
+
+.button.green { background: var(--green); }
+.button.green:hover { background: var(--green-highlight); }
+
+.button.yellow { background: var(--yellow); }
+.button.yellow:hover { background: var(--yellow-highlight); }
+
+.button.purple { background: var(--purple); }
+.button.purple:hover { background: var(--purple-highlight); }
+
+.glyph {
+    display: inline;
+    height: 1em;
+    margin: 0 8px;
+}
