@@ -3,11 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <link rel="icon" sizes="16x16 32x32 48x48 64x64 256x256" href="/favicon.ico">
+    <link rel="canonical" href="https://liblisa.nl/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- TODO: Debugging only -->
-    <!-- <meta http-equiv="refresh" content="1"> -->
-
+    <meta name="description" content="libLISA derives x86-64 instruction semantics bottom-up from CPU behavior. The semantics are machine-readable and CPU-specific.">
     <title>libLISA - Instruction Discovery and Analysis on x86-64</title>
     <link rel="stylesheet" href="style.css">
   </head>
@@ -19,6 +17,7 @@
     <article class="page">
         <p>
             libLISA is a tool that can <i>fully automatically</i> scan instruction space, discover instructions and synthesize their semantics.
+            It produces machine-readable, CPU-specific x86-64 instruction semantics.
             It relies on as little human specification as possible:
             specifically, it does not rely on a handwritten (dis)assembler to dictate which instructions are executable on a given CPU, or what their operands are.
         </p>
@@ -46,7 +45,7 @@
         <p>
             Even though heavily researched, a full formal model of the x86-64 instruction set is still not available.
             This is caused by the sheer complexity of the x86-64 architecture:
-            the informal specification found in <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html" target="_blank">Intel manuals is roughly 4700 pages</a>, and even these are known to be <a href="https://stefanheule.com/publications/pldi16-strata/" target="_blank">not trustworthy</a>.
+            the informal specification found in <a href="https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html" target="_blank">Intel manuals is roughly 4700 pages</a>, and even these are known to be <a href="https://stefanheule.com/publications/pldi16-strata/" target="_blank">not</a> <a href="https://comsec.ethz.ch/research/hardware-design-security/rememberr/" target="_blank">trustworthy</a>.
         </p>
         <p>
             Specifications of CPU architectures often rely heavily on manual work, which is error-prone and labor-intensive.
@@ -63,17 +62,39 @@
 
         <!-- <h2>Architecture Comparison</h2> -->
 
-        <h2>Instruction Semantics</h2>
+        <h2>x86-64 Instruction Semantics</h2>
         <p>
             We analyzed five different architectures: AMD 3900X, AMD 7700X, Intel i9-13900 (p), Intel i9-13900 (e) and Intel Xeon Silver 4110.
+            For each architecture, we generated around 120k <i>encodings</i>.
         </p>
         <p>
             The semantics can be accessed in the following two ways:
             
             <ul>
-                <li>Use <a target="_blank" href="https://explore.liblisa.nl/">explore.liblisa.nl</a> if you want to browse the semantics manually.</li>
-                <li>Use the <a target="_blank" href="https://github.com/libLISA/liblisa/tree/main/cli/liblisa-semantics-tool"><tt>liblisa-semantics-tool</tt></a> or <a target="_blank" href="https://crates.io/crates/liblisa">the <tt>liblisa</tt> Rust crate</a> if you want to use the semantics programmatically.</li>
+                <li>Use <a target="_blank" href="https://explore.liblisa.nl/">explore.liblisa.nl</a> to browse the semantics manually.</li>
+                <li>Use the <a target="_blank" href="https://github.com/libLISA/liblisa/tree/main/cli/liblisa-semantics-tool"><tt>liblisa-semantics-tool</tt></a> or <a target="_blank" href="https://crates.io/crates/liblisa">the <tt>liblisa</tt> Rust crate</a> to use the semantics programmatically.</li>
             </ul>
+        </p>
+        <p>
+            The generated x86-64 semantics are CPU-specific.
+            Around 90% of all encodings is identical on all 5 CPU architectures that we analyzed.
+            The remaining 10% differs between architectures.
+            We can broadly classify these differences into two categories: instruction set extensions and undefined behavior.
+            Some x86-64 instruction set extensions, such as the <tt>SHA1</tt> instructions, are not implemented on all CPUs.
+            There are also many differences in how undefined behavior is implemented across different x86-64 CPU architectures.
+        </p>
+        <p>
+            An example of undefined behavior is the <a target="_blank" href="https://explore.liblisa.nl/instruction/0FAFC3"><tt>IMUL</tt> instruction</a>.
+            The <a target="_blank" href="https://www.felixcloutier.com/x86/imul#flags-affected">reference manual</a> states: <i>"The SF, ZF, AF, and PF flags are undefined."</i>
+            This means that the values of these flags can differ between CPU architectures, even if the instruction is provided with the same inputs.
+            As can be seen <a target="_blank" href="https://explore.liblisa.nl/instruction/0FAFC3">in libLISA's semantics explorer</a>, The AMD 3900X and AMD 7700X do not modify these flags.
+            The Intel i9-13900 (p) and Intel Xeon Silver 4110 compute the SF and PF correctly, and set the AF and ZF to 0.
+            The Intel i9-13900 (e) additionally also computes the ZF flag correctly, and sets only the AF to 0.
+        </p>
+        <p>
+            The AMD 3900X and AMD 7700X often share the same instruction semantics.
+            This is likely because the AMD 7700X is a successor of the AMD 3900X.
+            Similarly, the Intel i9-13900 (p) and Intel Xeon Silver 4110 often also share semantics, likely because the Intel i9-13900 (p) is also a successor of the Intel Xeon Silver 4110.
         </p>
 
         <h2>Acknowledgements</h2>
