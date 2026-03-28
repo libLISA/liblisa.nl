@@ -34,7 +34,7 @@
         </p>
         
         <p>
-            We will present libLISA at <a href="https://2024.splashcon.org/track/splash-2024-oopsla#event-overview" target="_blank">OOPSLA'24</a>.
+            We presented libLISA at <a href="https://2024.splashcon.org/track/splash-2024-oopsla#event-overview" target="_blank">OOPSLA'24</a>.
         </p>
 
         <div class="buttonrow">
@@ -67,11 +67,16 @@
         </p>
         <p>
             libLISA aims to solve this problem by using a CPU as the ground truth, and deriving semantics by observing instruction execution.
+            It uses fuzzing and program synthesis to derive semantics automatically.
         </p>
-
-        <!-- <h2>Approach</h2> -->
-
-        <!-- <h2>Architecture Comparison</h2> -->
+        <p>
+            One of the use-cases for libLISA's semantics is verification of other binary analysis tools.
+            Errors in instruction semantics often propagate to the final output of a binary analyzer or emulator, making them behave incorrectly.
+            Differences between actual CPU behavior and these tools pose a security risk: malware can abuse such differences to obfuscate its behavior, or evade analysis in controlled environments like emulators. 
+        </p>
+        <p>
+            Our current focus is on using libLISA's automatically inferred semantics to verify the correctness of disassemblers, emulators and other semantics.
+        </p>
 
         <h2>x86-64 Instruction Semantics</h2>
         <p>
