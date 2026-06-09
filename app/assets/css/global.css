@@ -10,6 +10,9 @@
 
     --purple: #991ef7;
     --purple-highlight: #be38ee;
+
+    --gray: #8a8a8a;
+    --gray-highlight: #afafaf;
 }
 
 html,
@@ -34,32 +37,6 @@ tt {
 a:hover tt {
     background: #999;
     color: #fff;
-}
-
-.header {
-    background: var(--main-col);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 1em 1em 8px 1em;
-    text-align: center;
-}
-
-.header h1 {
-    margin: 0;
-}
-
-.authors {
-    margin: 8px;
-}
-
-.page {
-    max-width: 900px;
-    margin: auto;
-    padding: 0 1em;
-    line-height: 1.4;
-    text-align: justify;
 }
 
 h2 {
@@ -113,6 +90,7 @@ h3::after {
     font-weight: 700;
     font-size: 18pt;
     margin: 4px;
+    border: none;
 
     display: flex;
     text-align: center;
@@ -122,6 +100,11 @@ h3::after {
     justify-content: center;
 
     text-wrap: nowrap;
+}
+
+.button.small {
+    padding: .3em 10px;
+    font-size: 14pt;
 }
 
 .button:hover {
@@ -138,6 +121,9 @@ h3::after {
 .button.purple { background: var(--purple); }
 .button.purple:hover { background: var(--purple-highlight); }
 
+.button.gray { background: var(--gray); }
+.button.gray:hover { background: var(--gray-highlight); }
+
 .glyph {
     display: inline;
     height: 1em;
@@ -153,4 +139,45 @@ h3::after {
     .button {
         padding: .5em 10px;
     }
+}
+
+pre {
+    background: #eee;
+    border: 1px solid #bbb;
+    padding: 0.5em;
+}
+
+code {
+  background: #eee;
+  padding: 0 6px;
+  border: 1px solid #ccc;
+}
+
+pre code {
+  border: none;
+  padding: 0;
+}
+
+table {
+  border: 1px solid #999;
+  width: 100%;
+  text-align: left;
+  gap: none;
+  border-spacing: none;
+  border-collapse: collapse;
+  margin: 2em 0;
+}
+
+thead {
+  background: var(--main-col);
+  color: #FFF;
+  font-weight: 600;
+}
+
+td, th {
+  padding: 8px;
+}
+
+.nowrap {
+  white-space: nowrap;
 }
