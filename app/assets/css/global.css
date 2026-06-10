@@ -46,6 +46,7 @@ h2 {
     color: white;
     padding: 4px 20px;
     margin-top: 1em;
+    text-align: left;
 }
 
 h2::before, .button::before {
@@ -58,7 +59,7 @@ h2::before, .button::before {
     width: 0;
     height: 0;
     border-bottom: 10px solid transparent;
-    border-left: 10px solid white; 
+    border-left: 10px solid white;
 }
 
 h3 {

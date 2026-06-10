@@ -93,4 +93,16 @@ useHead({
     line-height: 1.4;
     text-align: justify;
 }
+
+@media (max-width: 600px) {
+  .menu {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .page {
+    padding: 0 0.5em;
+    text-align: left;
+  }
+}
 </style>
