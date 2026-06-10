@@ -31,6 +31,7 @@ useHead({
     align-items: center;
     flex-direction: column;
     text-align: center;
+    margin-bottom: 2em;
 }
 
 .header h1 {

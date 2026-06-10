@@ -78,18 +78,18 @@ useSeoMeta({
       
   <ul>
     <li>Use <a target="_blank" href="https://explore.liblisa.nl/">explore.liblisa.nl</a> to browse the semantics manually.</li>
-    <li>Use the <a target="_blank" href="https://github.com/libLISA/liblisa/tree/main/cli/liblisa-semantics-tool"><tt>liblisa-semantics-tool</tt></a> or <a target="_blank" href="https://crates.io/crates/liblisa">the <tt>liblisa</tt> Rust crate</a> to use the semantics programmatically.</li>
+    <li>Use the <a target="_blank" href="https://github.com/libLISA/liblisa/tree/main/cli/liblisa-semantics-tool"><code>liblisa-semantics-tool</code></a> or <a target="_blank" href="https://crates.io/crates/liblisa">the <code>liblisa</code> Rust crate</a> to use the semantics programmatically.</li>
   </ul>
   <p>
     The generated x86-64 semantics are CPU-specific.
     Around 90% of all encodings is identical on all 5 CPU architectures that we analyzed.
     The remaining 10% differs between architectures.
     We can broadly classify these differences into two categories: instruction set extensions and undefined behavior.
-    Some x86-64 instruction set extensions, such as the <tt>SHA1</tt> instructions, are not implemented on all CPUs.
+    Some x86-64 instruction set extensions, such as the <code>SHA1</code> instructions, are not implemented on all CPUs.
     There are also many differences in how undefined behavior is implemented across different x86-64 CPU architectures.
   </p>
   <p>
-    An example of undefined behavior is the <a target="_blank" href="https://explore.liblisa.nl/instruction/0FAFC3"><tt>IMUL</tt> instruction</a>.
+    An example of undefined behavior is the <a target="_blank" href="https://explore.liblisa.nl/instruction/0FAFC3"><code>IMUL</code> instruction</a>.
     The <a target="_blank" href="https://www.felixcloutier.com/x86/imul#flags-affected">reference manual</a> states: <i>"The SF, ZF, AF, and PF flags are undefined."</i>
     This means that the values of these flags can differ between CPU architectures, even if the instruction is provided with the same inputs.
     As can be seen <a target="_blank" href="https://explore.liblisa.nl/instruction/0FAFC3">in libLISA's semantics explorer</a>, The AMD 3900X and AMD 7700X do not modify these flags.

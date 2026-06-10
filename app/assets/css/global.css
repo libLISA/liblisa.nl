@@ -1,6 +1,7 @@
 :root {
     --main-col: #1c5dcf;
     --main-col-highlight: #2e79fb;
+    --main-col-dark: #0c259d;
 
     --green: #16bb00;
     --green-highlight: #4dd60e;
@@ -28,13 +29,13 @@ body {
   box-sizing: border-box;
 }
 
-tt {
+code {
     background: #eee;
     border: 1px solid #ccc;
     padding: 1px 4px;
 }
 
-a:hover tt {
+a:hover code {
     background: #999;
     color: #fff;
 }
@@ -78,7 +79,7 @@ h3::after {
     padding: 8px 0px;
 }
 
-.button {
+.button, .button:visited, .button:hover {
     position: relative;
 
     flex-grow: 1;
@@ -181,4 +182,18 @@ td, th {
 
 .nowrap {
   white-space: nowrap;
+}
+
+a {
+  color: var(--main-col-dark);
+  text-decoration-style: dotted;
+}
+
+a:hover {
+  color: var(--main-col-highlight);
+  text-decoration-style: solid;
+}
+
+a:visited {
+  color: var(--main-col);
 }
