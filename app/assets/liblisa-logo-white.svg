@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="106.25648mm"
+   height="25.558842mm"
+   viewBox="0 0 106.25648 25.558841"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (unknown)"
+   sodipodi:docname="liblisa-logo-white.svg"
+   inkscape:export-filename="logo.png"
+   inkscape:export-xdpi="552.01355"
+   inkscape:export-ydpi="552.01355"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#dd15c4"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="2.4570175"
+     inkscape:cx="204.31275"
+     inkscape:cy="62.881115"
+     inkscape:window-width="1920"
+     inkscape:window-height="1129"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="text4373"
+     inkscape:pageshadow="2"
+     showgrid="false">
+    <inkscape:page
+       x="1.6809008e-07"
+       y="1.6312514e-08"
+       width="106.25648"
+       height="25.55884"
+       id="page1"
+       margin="1"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-140.92058,-129.44453)">
+    <g
+       id="g2584"
+       inkscape:label="CPU"
+       transform="rotate(-45,176.5133,-29.774515)"
+       style="display:inline;fill:#fefefe;fill-opacity:1">
+      <path
+         id="rect1735"
+         style="opacity:1;fill:#fefefe;fill-opacity:1;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round"
+         inkscape:label="cpu"
+         d="m 30.049225,70.047624 h 18.711352 v 11.335404 h -20 v -9.896612 z"
+         sodipodi:nodetypes="cccccc" />
+      <g
+         id="g3900"
+         inkscape:label="pins"
+         transform="rotate(90,37.900812,78.511026)"
+         style="fill:#fefefe;fill-opacity:1">
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3886"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="69.921509"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3890"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="74.208008"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3894"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="78.494507"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3898"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="82.781013"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+      </g>
+      <g
+         id="g3900-7"
+         inkscape:label="pins"
+         transform="rotate(90,30.112062,86.299776)"
+         style="display:inline;fill:#fefefe;fill-opacity:1">
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3886-0"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="69.921509"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3890-9"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="74.208008"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3894-3"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="78.494507"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3898-6"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="82.781013"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+      </g>
+      <g
+         id="g3900-6"
+         inkscape:label="pins"
+         transform="rotate(180,26.985237,78.826543)"
+         style="display:inline;fill:#fefefe;fill-opacity:1">
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3894-7"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="78.494507"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3898-9"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="82.781013"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+      </g>
+      <g
+         id="g3900-6-3"
+         inkscape:label="pins"
+         transform="rotate(180,39.091702,78.826543)"
+         style="display:inline;fill:#fefefe;fill-opacity:1">
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3894-7-6"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="78.494507"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+        <rect
+           style="fill:#fefefe;fill-opacity:1;stroke-width:0.570984;stroke-linecap:round;stroke-linejoin:round"
+           id="use3898-9-1"
+           width="3"
+           height="2.6000001"
+           x="25.816362"
+           y="82.781013"
+           rx="0.52490377"
+           ry="0.97048855"
+           inkscape:tile-x0="11.296718"
+           inkscape:tile-y0="28.628769" />
+      </g>
+    </g>
+    <g
+       aria-label="x86-64"
+       id="text4373"
+       style="font-size:4.93889px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';letter-spacing:0px;word-spacing:0px;display:inline;opacity:1;fill:#020202;stroke-width:0.264583"
+       transform="translate(-2.3526935e-6,-4.3322964)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:6.35px;line-height:0.85;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.0700042"
+         x="-4.2619457"
+         y="214.58017"
+         id="text1"
+         transform="rotate(-45)"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.35px;line-height:0.85;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:small-caps;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4c8fff;fill-opacity:1;stroke-width:0.0700042"
+           x="-4.2619457"
+           y="214.58017"
+           id="tspan2"><tspan
+             id="tspan3"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:0.85;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:small-caps;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#78a3ed;fill-opacity:1;stroke-width:0.0700042">lib</tspan><tspan
+             style="fill:#1c5dcf;fill-opacity:1"
+             id="tspan1">LISA</tspan></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:26.4004px;line-height:0.85;font-family:sans-serif;-inkscape-font-specification:'Noto Sans';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.291046"
+         x="169.92683"
+         y="155.98344"
+         id="text1-3"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.4004px;line-height:0.85;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:small-caps;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1;stroke-width:0.291046"
+           x="169.92683"
+           y="155.98344"
+           id="tspan2-5"><tspan
+   id="tspan3-6"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.6669px;line-height:0.85;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:small-caps;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1;stroke-width:0.291046">lib</tspan>LISA</tspan></text>
+    </g>
+  </g>
+</svg>
