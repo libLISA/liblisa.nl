@@ -101,7 +101,7 @@ img {
   }
 
   .page {
-    padding: 0 0.5em;
+    padding: 0.5em;
     text-align: left;
   }
 }

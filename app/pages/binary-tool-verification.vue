@@ -29,24 +29,22 @@ console.log(data.value);
     In <NuxtLink to="/publications">our 2024 paper</NuxtLink>, we verified the correctness of Dasgupta et al.'s semantics implemented in the K framework.
     In the table below, you will find an overview of all bugs that we have found.
   </p>
-  <table>
-    <thead>
-      <tr>
-        <td></td>
-        <td>Tool</td>
-        <td>Bug description</td>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="bug in data" :class="['status-' + bug.status]">
-        <td>
-          <FontAwesomeIcon :icon="faCheck" v-if="bug.status == 'fixed'" />
-        </td>
-        <td class="nowrap">
+  <div class="buglist">
+    <div class="head">
+      <div></div>
+      <div>Tool</div>
+      <div>Bug description</div>
+      <div></div>
+    </div>
+    <div v-for="bug in data" :class="['bug', 'status-' + bug.status]">
+      <div class="status-icon">
+        <FontAwesomeIcon :icon="faCheck" v-if="bug.status == 'fixed'" />
+      </div>
+      <div class="info">
+        <div class="nowrap tool">
           {{ bug.tool }}
-        </td>
-        <td>
+        </div>
+        <div class="title">
           {{ bug.title }}
           <button class="nobutton" :popovertarget="'popover-' + bug.stem">
             <FontAwesomeIcon :icon="faInfoCircle" />
@@ -61,19 +59,100 @@ console.log(data.value);
               </button>
             </div>
           </div>
-        </td>
-        <td>
-          <a :href="bug.tracker" v-if="bug.tracker" rel="noopener" target="_blank">
-            <FontAwesomeIcon :icon="faGithub" v-if="bug.tracker?.startsWith('https://github.com/')" />
-            <FontAwesomeIcon :icon="faBug" v-else />
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </div>
+      </div>
+      <a class="bugtracker-link" :href="bug.tracker" v-if="bug.tracker" rel="noopener" target="_blank">
+        <FontAwesomeIcon :icon="faGithub" v-if="bug.tracker?.startsWith('https://github.com/')" />
+        <FontAwesomeIcon :icon="faBug" v-else />
+      </a>
+    </div>
+  </div>
 </template>
 
 <style scoped>
+.buglist {
+  border: 1px solid #999;
+  width: 100%;
+  text-align: left;
+  margin: 2em 0;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+}
+
+.buglist .head {
+  background: var(--main-col);
+  color: #FFF;
+  font-weight: 600;
+  display: grid;
+  grid-column: 1 / span 4;
+  grid-template-columns: subgrid;
+}
+
+.buglist .bug {
+  display: grid;
+  grid-column: 1 / span 4;
+  grid-template-columns: subgrid;
+}
+
+.buglist .bug .info {
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: subgrid;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.status-icon, .bugtracker-link {
+  align-self: center;
+  justify-self: center;
+}
+
+.buglist .head > *, .buglist .bug > * {
+  padding: 8px;
+}
+
+.buglist .bug .info > * {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+@media only screen and (max-width: 840px) {
+  .buglist {
+    row-gap: 16px;
+  }
+  
+  .buglist .head {
+    display: none;
+  }
+
+  .buglist .bug .info {
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+  }
+
+  .buglist .bug .info > * {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .tool {
+    font-size: 10pt;
+    font-weight: 600;
+  }
+
+  .title {
+    overflow-wrap: anywhere;
+  }
+
+  .status-icon, .bugtracker-link {
+    grid-row: span 2;
+  }
+
+  .buglist .bug .info > * {
+    grid-column: span 2;
+  }
+}
+
 * {
   --col-reported: #e9f0ff;
   --col-fixed: #eeffe9;
