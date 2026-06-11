@@ -16,9 +16,27 @@ useSeoMeta({
   twitterCard: 'summary',
 });
 
-const { data } = await useAsyncData('pages', () =>
+const { data } = await useAsyncData('pages', () => 
   queryCollection('binaryToolBugs').all()
 )
+
+const sortedData = computed(() => {
+  if (!data) {
+    return data
+  }
+  
+  const key = (bug) => {
+    return {
+      'fixed-by-us': 0,
+      'fixed': 1,
+      'patch-provided': 2,
+      'working-on-patch': 3,
+      'reported': 4,
+    }[bug.status] ?? 99
+  }
+
+  return data.value.sort((a, b) => key(a) - key(b))
+});
 
 console.log(data.value);
 </script>
@@ -36,9 +54,11 @@ console.log(data.value);
       <div>Bug description</div>
       <div></div>
     </div>
-    <div v-for="bug in data" :class="['bug', 'status-' + bug.status]">
+    <div v-for="bug in sortedData" :class="['bug', 'status-' + bug.status]">
       <div class="status-icon">
         <FontAwesomeIcon :icon="faCheck" v-if="bug.status == 'fixed' || bug.status == 'fixed-by-us'" />
+        <FontAwesomeIcon :icon="faHourglassHalf" v-else-if="bug.status == 'patch-provided'" />
+        <FontAwesomeIcon :icon="faPersonDigging" v-else-if="bug.status == 'working-on-patch'" />
       </div>
       <div class="info">
         <div class="nowrap tool">
@@ -70,7 +90,7 @@ console.log(data.value);
   <div class="legend">
     <div class="item">
       <div class="box status-reported"></div>
-      <div>Bug reported</div>
+      <div>Bug reported, awaiting reply</div>
     </div>
     <div class="item">
       <div class="box status-working-on-patch">
@@ -221,7 +241,7 @@ console.log(data.value);
   background: var(--col-working-on-patch);
 }
 
-.status-working-on-patch svg, .status-patch-provided svg {
+.status-working-on-patch .status-icon svg, .status-patch-provided .status-icon svg {
   opacity: 0.6;
 }
 

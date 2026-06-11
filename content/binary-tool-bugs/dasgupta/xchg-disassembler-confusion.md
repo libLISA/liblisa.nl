@@ -1,6 +1,7 @@
 ---
 tool: "Dasgupta et al."
 status: "fixed"
+tracker: "https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=2f399d995b59a522c2739c0ab163c501c082cafb"
 ---
 
 # `XCHGL` is disassembled incorrectly
