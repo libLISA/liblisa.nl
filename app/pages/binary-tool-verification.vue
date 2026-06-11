@@ -37,14 +37,12 @@ const sortedData = computed(() => {
 
   return data.value.sort((a, b) => key(a) - key(b))
 });
-
-console.log(data.value);
 </script>
 
 <template>
   <p>
     libLISA's automatically-inferred semantics can be used to verify the correctness of other implementations.
-    In <NuxtLink to="/publications">our 2024 paper</NuxtLink>, we verified the correctness of Dasgupta et al.'s semantics implemented in the K framework.
+    In <NuxtLink to="/publications#oopsla24">our 2024 paper</NuxtLink>, we verified the correctness of Dasgupta et al.'s semantics implemented in the K framework.
     In the table below, you will find an overview of all bugs that we have found.
   </p>
   <div class="buglist">
