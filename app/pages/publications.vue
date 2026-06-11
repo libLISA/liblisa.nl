@@ -28,40 +28,42 @@ async function copyBibtex(bibtex) {
 </script>
 
 <template>
-  <div class="publication" v-for="publication in data">
-    <a :id="publication.slug" />
-    <h3>
-      <i>"{{ publication.title }}"</i> 
-      at 
-      <a :href="publication.link" target="_blank">{{ publication.venue }}</a>
-    </h3>
-    <p class="authors">
-      {{ publication.authors }}
-    </p>
+  <div class="publications">
+    <div class="publication" v-for="publication in data">
+      <a :id="publication.slug" />
+      <h3>
+        <i>"{{ publication.title }}"</i> 
+        at 
+        <a :href="publication.link" target="_blank">{{ publication.venue }}</a>
+      </h3>
+      <p class="authors">
+        {{ publication.authors }}
+      </p>
 
-    <ContentRenderer :value="publication" />
-
-    <div class="buttonrow">
-      <a class="button small green" :href="publication.pdf">
-        <FontAwesomeIcon :icon="faFilePdf" class="glyph" />
-        Read the paper
-      </a>
-      <button class="button small yellow" :popovertarget="'cite-popover-' + publication.slug">
-        <FontAwesomeIcon :icon="faQuoteLeft" class="glyph" />
-        Cite
-      </button>
-    </div>
-
-    <div :id="'cite-popover-' + publication.slug" popover>
-      <pre>{{ publication.bibtex }}</pre>
+      <ContentRenderer :value="publication" />
 
       <div class="buttonrow">
-        <button class="button small" @click="copyBibtex(publication.bibtex)">
-          Copy BibTeX
+        <a class="button small green" :href="publication.pdf">
+          <FontAwesomeIcon :icon="faFilePdf" class="glyph" />
+          Read the paper
+        </a>
+        <button class="button small yellow" :popovertarget="'cite-popover-' + publication.slug">
+          <FontAwesomeIcon :icon="faQuoteLeft" class="glyph" />
+          Cite
         </button>
-        <button class="button small gray" :popovertarget="'cite-popover-' + publication.slug" popovertargetaction="hide">
-          Close
-        </button>
+      </div>
+
+      <div :id="'cite-popover-' + publication.slug" popover>
+        <pre>{{ publication.bibtex }}</pre>
+
+        <div class="buttonrow">
+          <button class="button small" @click="copyBibtex(publication.bibtex)">
+            Copy BibTeX
+          </button>
+          <button class="button small gray" :popovertarget="'cite-popover-' + publication.slug" popovertargetaction="hide">
+            Close
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -82,7 +84,9 @@ async function copyBibtex(bibtex) {
   margin-top: 0;
 }
 
-.publication {
+.publications {
+  display: grid;
   margin-top: 1em;
+  gap: 4em;
 }
 </style>
