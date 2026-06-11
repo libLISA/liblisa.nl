@@ -1,6 +1,6 @@
 <script setup>
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faBug, faCheck, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBug, faCheck, faHourglassHalf, faInfoCircle, faPersonDigging } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 useHead({
@@ -38,7 +38,7 @@ console.log(data.value);
     </div>
     <div v-for="bug in data" :class="['bug', 'status-' + bug.status]">
       <div class="status-icon">
-        <FontAwesomeIcon :icon="faCheck" v-if="bug.status == 'fixed'" />
+        <FontAwesomeIcon :icon="faCheck" v-if="bug.status == 'fixed' || bug.status == 'fixed-by-us'" />
       </div>
       <div class="info">
         <div class="nowrap tool">
@@ -65,6 +65,30 @@ console.log(data.value);
         <FontAwesomeIcon :icon="faGithub" v-if="bug.tracker?.startsWith('https://github.com/')" />
         <FontAwesomeIcon :icon="faBug" v-else />
       </a>
+    </div>
+  </div>
+  <div class="legend">
+    <div class="item">
+      <div class="box status-reported"></div>
+      <div>Bug reported</div>
+    </div>
+    <div class="item">
+      <div class="box status-working-on-patch">
+        <FontAwesomeIcon :icon="faPersonDigging" />
+      </div>
+      <div>We intend to submit a patch for this bug</div>
+    </div>
+    <div class="item">
+      <div class="box status-patch-provided">
+        <FontAwesomeIcon :icon="faHourglassHalf" />
+      </div>
+      <div>Patch awaiting review</div>
+    </div>
+    <div class="item">
+      <div class="box status-fixed">
+        <FontAwesomeIcon :icon="faCheck" />
+      </div>
+      <div>Fixed</div>
     </div>
   </div>
 </template>
@@ -154,8 +178,10 @@ console.log(data.value);
 }
 
 * {
-  --col-reported: #e9f0ff;
-  --col-fixed: #eeffe9;
+  --col-reported: #eff4ff;
+  --col-working-on-patch: #e1eaff;
+  --col-fixed: #bbe9a9;
+  --col-patch-provided: #eeffe7;
 }
 
 [popover] {
@@ -187,7 +213,44 @@ console.log(data.value);
   background: var(--col-reported);
 }
 
-.status-fixed {
+.status-fixed, .status-fixed-by-us {
   background: var(--col-fixed);
+}
+
+.status-working-on-patch {
+  background: var(--col-working-on-patch);
+}
+
+.status-working-on-patch svg, .status-patch-provided svg {
+  opacity: 0.6;
+}
+
+.status-patch-provided {
+  background: var(--col-patch-provided);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  font-size: 60%;
+}
+
+.legend .item {
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 0.5em;
+  white-space: nowrap;
+}
+
+.box {
+  border: 1px solid #333;
+  aspect-ratio: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
