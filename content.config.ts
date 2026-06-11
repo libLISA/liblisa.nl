@@ -11,6 +11,19 @@ export default defineContentConfig({
         tracker: z.string(),
         status: z.string()
       })
+    }),
+    publications: defineCollection({
+      type: 'page',
+      source: 'publications/**/*.md',
+      schema: z.object({
+        authors: z.string(),
+        link: z.string(),
+        pdf: z.string(),
+        venue: z.string(),
+        bibtex: z.string(),
+        date: z.date(),
+        slug: z.string()
+      })
     })
   }
 })

@@ -16,7 +16,7 @@ useSeoMeta({
   twitterCard: 'summary',
 });
 
-const { data } = await useAsyncData('pages', () => 
+const { data } = await useAsyncData('binaryTools', () => 
   queryCollection('binaryToolBugs').all()
 )
 

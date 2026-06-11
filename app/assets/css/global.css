@@ -35,7 +35,7 @@ code {
     padding: 1px 4px;
 }
 
-a:hover code {
+a[href]:hover code {
     background: #999;
     color: #fff;
 }
@@ -87,7 +87,7 @@ h3::after {
     display: block;
     background: var(--main-col);
     padding: 1em 10px;
-    color: white;
+    color: white !important;
     text-decoration: none;
     font-weight: 700;
     font-size: 18pt;
@@ -184,16 +184,16 @@ td, th {
   white-space: nowrap;
 }
 
-a {
+a[href] {
   color: var(--main-col-dark);
   text-decoration-style: dotted;
 }
 
-a:hover {
+a[href]:hover {
   color: var(--main-col-highlight);
   text-decoration-style: solid;
 }
 
-a:visited {
+a[href]:visited {
   color: var(--main-col);
 }

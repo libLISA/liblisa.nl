@@ -16,68 +16,53 @@ useSeoMeta({
   twitterCard: 'summary',
 });
 
+const { data } = await useAsyncData('publications', () => 
+  queryCollection('publications')
+    .order('date', 'DESC')
+    .all()
+)
+
 async function copyBibtex(bibtex) {
-  const pre = event.currentTarget
-  .closest('[popover]')
-  ?.querySelector('pre')
-
-  if (!pre) return
-
-  const range = document.createRange()
-  range.selectNodeContents(pre)
-
-  const selection = window.getSelection()
-  selection.removeAllRanges()
-  selection.addRange(range)
-
-  await navigator.clipboard.writeText(pre.textContent)
+  await navigator.clipboard.writeText(bibtex)
 }
 </script>
 
 <template>
-  <p>
-      
-  </p>
-  <h3><i>"libLISA: Instruction Discovery and Analysis on x86-64"</i> at <a href="https://2024.splashcon.org/track/splash-2024-oopsla#event-overview" target="_blank">OOPSLA'24</a></h3>
-  <p class="authors">
-    Jos Craaijo, Freek Verbeek, Binoy Ravindran
-  </p>
+  <div class="publication" v-for="publication in data">
+    <a :id="publication.slug" />
+    <h3>
+      <i>"{{ publication.title }}"</i> 
+      at 
+      <a :href="publication.link" target="_blank">{{ publication.venue }}</a>
+    </h3>
+    <p class="authors">
+      {{ publication.authors }}
+    </p>
 
-  <p>
-Even though heavily researched, a full formal model of the x86-64 instruction set is still not available. We present libLISA, a tool for automated discovery and analysis of the ISA of a CPU. This produces the most extensive formal x86-64 model to date, with over 118000 different instruction groups. The process requires as little human specification as possible: specifically, we do not rely on a human-written (dis)assembler to dictate which instructions are executable on a given CPU, or what their in- and outputs are. The generated model is CPU-specific: behavior that is “undefined” is synthesized for the current machine. Producing models for five different x86-64 machines, we mutually compare them, discover undocumented instructions, and generate instruction sequences that are CPU-specific. Experimental evaluation shows that we enumerate virtually all instructions within scope, that the instructions’ semantics are correct w.r.t. existing work, and that we improve existing work by exposing bugs in their handwritten models.
-  </p>
-
-  <div class="buttonrow">
-    <a class="button small green" href="files/liblisa2024.pdf">
-      <FontAwesomeIcon :icon="faFilePdf" class="glyph" />
-      Read the paper
-    </a>
-    <button class="button small yellow" popovertarget="cite-liblisa2024-popover">
-      <FontAwesomeIcon :icon="faQuoteLeft" class="glyph" />
-      Cite
-    </button>
-  </div>
-
-  <div id="cite-liblisa2024-popover" popover>
-      <pre>
-@article{craaijo2024liblisa,
-  title={liblisa: Instruction discovery and analysis on x86-64},
-  author={Craaijo, Jos and Verbeek, Freek and Ravindran, Binoy},
-  journal={Proceedings of the ACM on Programming Languages},
-  volume={8},
-  number={OOPSLA2},
-  pages={333--361},
-  year={2024},
-  publisher={ACM New York, NY, USA}
-}</pre>
+    <ContentRenderer :value="publication" />
 
     <div class="buttonrow">
-      <button class="button small" @click="copyBibtex">
-        Copy BibTeX
+      <a class="button small green" :href="publication.pdf">
+        <FontAwesomeIcon :icon="faFilePdf" class="glyph" />
+        Read the paper
+      </a>
+      <button class="button small yellow" :popovertarget="'cite-popover-' + publication.slug">
+        <FontAwesomeIcon :icon="faQuoteLeft" class="glyph" />
+        Cite
       </button>
-      <button class="button small gray" popovertarget="cite-liblisa2024-popover" popovertargetaction="hide">
-        Close
-      </button>
+    </div>
+
+    <div :id="'cite-popover-' + publication.slug" popover>
+      <pre>{{ publication.bibtex }}</pre>
+
+      <div class="buttonrow">
+        <button class="button small" @click="copyBibtex(publication.bibtex)">
+          Copy BibTeX
+        </button>
+        <button class="button small gray" :popovertarget="'cite-popover-' + publication.slug" popovertargetaction="hide">
+          Close
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -95,5 +80,9 @@ Even though heavily researched, a full formal model of the x86-64 instruction se
 .authors {
   font-size: 80%;
   margin-top: 0;
+}
+
+.publication {
+  margin-top: 1em;
 }
 </style>
