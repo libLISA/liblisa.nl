@@ -11,4 +11,9 @@ export default defineNuxtConfig({
       }
     }
   },
+  icon: {
+    serverBundle: {
+      collections: ['fa7-solid', 'fa7-regular', 'fa7-brands']
+    }
+  }
 })
