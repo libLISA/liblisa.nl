@@ -1,8 +1,4 @@
 <script setup>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faFilePdf } from '@fortawesome/free-regular-svg-icons';
-import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
-
 useHead({
   title: 'Publications - libLISA'
 });
@@ -51,11 +47,11 @@ const isActive = (id) => route.hash === `#${id}`
 
       <div class="buttonrow">
         <a class="button small green" :href="publication.pdf">
-          <FontAwesomeIcon :icon="faFilePdf" class="glyph" />
+          <Icon name="fa7-regular:file-pdf" class="glyph" />
           Read the paper
         </a>
         <button class="button small yellow" :popovertarget="'cite-popover-' + publication.slug">
-          <FontAwesomeIcon :icon="faQuoteLeft" class="glyph" />
+          <Icon name="fa7-solid:quote-left" class="glyph" />
           Cite
         </button>
       </div>

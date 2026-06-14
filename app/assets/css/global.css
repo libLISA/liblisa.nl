@@ -126,13 +126,6 @@ h3::after {
 .button.gray { background: var(--gray); }
 .button.gray:hover { background: var(--gray-highlight); }
 
-.glyph {
-    display: inline;
-    height: 1em;
-    margin: 0 8px;
-}
-
-
 @media only screen and (max-width: 840px) {
     .buttonrow {
         flex-direction: column;
@@ -196,4 +189,11 @@ a[href]:hover {
 
 a[href]:visited {
   color: var(--main-col);
+}
+
+.glyph {
+  width: 1.25em;
+  height: 1.25em;
+  display: inline;
+  margin: 0 8px;
 }

@@ -1,9 +1,4 @@
 <script setup>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faFilePdf } from '@fortawesome/free-regular-svg-icons';
-import { faMap } from '@fortawesome/free-regular-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-
 useHead({
   title: 'libLISA - Automated CPU Instruction Discovery and Analysis'
 });
@@ -28,15 +23,15 @@ useSeoMeta({
 
   <div class="buttonrow">
     <a class="button green" href="files/liblisa2024.pdf">
-      <FontAwesomeIcon :icon="faFilePdf" class="glyph" />
+      <Icon name="fa7-regular:file-pdf" class="glyph" />
       Read the paper
     </a>
     <a class="button yellow" target="_blank" href="https://explore.liblisa.nl/">
-      <FontAwesomeIcon :icon="faMap" class="glyph" />
+      <Icon name="fa7-regular:map" class="glyph" />
       Explore the data
     </a>
     <a class="button purple" target="_blank" href="https://github.com/liblisa">
-      <FontAwesomeIcon :icon="faGithub" class="glyph" />
+      <Icon name="fa7-brands:github" class="glyph" />
       View source code
     </a>
   </div>

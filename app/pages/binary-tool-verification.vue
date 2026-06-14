@@ -1,8 +1,4 @@
 <script setup>
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faBug, faCheck, faHourglassHalf, faInfoCircle, faPersonDigging } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-
 useHead({
   title: 'Verifying Binary Analysis Tools with libLISA'
 });
@@ -54,9 +50,9 @@ const sortedData = computed(() => {
     </div>
     <div v-for="bug in sortedData" :class="['bug', 'status-' + bug.status]">
       <div class="status-icon">
-        <FontAwesomeIcon :icon="faCheck" v-if="bug.status == 'fixed' || bug.status == 'fixed-by-us'" />
-        <FontAwesomeIcon :icon="faHourglassHalf" v-else-if="bug.status == 'patch-provided'" />
-        <FontAwesomeIcon :icon="faPersonDigging" v-else-if="bug.status == 'working-on-patch'" />
+        <Icon name="fa7-solid:check" v-if="bug.status == 'fixed' || bug.status == 'fixed-by-us'" />
+        <Icon name="fa7-solid:hourglass-half" v-else-if="bug.status == 'patch-provided'" />
+        <Icon name="fa7-solid:person-digging" v-else-if="bug.status == 'working-on-patch'" />
       </div>
       <div class="info">
         <div class="nowrap tool">
@@ -65,7 +61,7 @@ const sortedData = computed(() => {
         <div class="title">
           {{ bug.title }}
           <button class="nobutton" :popovertarget="'popover-' + bug.stem">
-            <FontAwesomeIcon :icon="faInfoCircle" />
+            <Icon name="fa7-solid:info-circle" />
           </button>
 
           <div :id="'popover-' + bug.stem" popover>
@@ -80,8 +76,8 @@ const sortedData = computed(() => {
         </div>
       </div>
       <a class="bugtracker-link" :href="bug.tracker" v-if="bug.tracker" rel="noopener" target="_blank">
-        <FontAwesomeIcon :icon="faGithub" v-if="bug.tracker?.startsWith('https://github.com/')" />
-        <FontAwesomeIcon :icon="faBug" v-else />
+        <Icon name="fa7-brands:github" v-if="bug.tracker?.startsWith('https://github.com/')" />
+        <Icon name="fa7-solid:bug" v-else />
       </a>
     </div>
   </div>
@@ -92,19 +88,19 @@ const sortedData = computed(() => {
     </div>
     <div class="item">
       <div class="box status-working-on-patch">
-        <FontAwesomeIcon :icon="faPersonDigging" />
+        <Icon name="fa7-solid:person-digging" />
       </div>
       <div>We intend to submit a patch for this bug</div>
     </div>
     <div class="item">
       <div class="box status-patch-provided">
-        <FontAwesomeIcon :icon="faHourglassHalf" />
+        <Icon name="fa7-solid:hourglass-half" />
       </div>
       <div>Patch awaiting review</div>
     </div>
     <div class="item">
       <div class="box status-fixed">
-        <FontAwesomeIcon :icon="faCheck" />
+        <Icon name="fa7-solid:check" />
       </div>
       <div>Fixed</div>
     </div>
@@ -147,6 +143,7 @@ const sortedData = computed(() => {
 .status-icon, .bugtracker-link {
   align-self: center;
   justify-self: center;
+  display: flex;
 }
 
 .buglist .head > *, .buglist .bug > * {
@@ -225,6 +222,8 @@ const sortedData = computed(() => {
   font: inherit;
   text-align: left;
   color: var(--main-col);
+  display: inline-flex;
+  vertical-align: center;
 }
 
 .status-reported {
@@ -270,5 +269,10 @@ const sortedData = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.iconify {
+  width: 1.25em;
+  height: 1.25em;
 }
 </style>
