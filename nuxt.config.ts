@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  css: ['~/assets/css/global.css'],
   modules: ['@nuxt/content', '@nuxt/icon', 'nuxt-svgo'],
   app: {
     head: {
