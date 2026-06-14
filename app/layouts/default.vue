@@ -1,4 +1,6 @@
 <script setup>
+import Logo from "~/assets/liblisa-logo-white.svg";
+
 useHead({
   titleTemplate: (title) => {
     return title ?? 'libLISA'
@@ -8,7 +10,7 @@ useHead({
 
 <template>
   <div class="header">
-    <img alt="libLISA logo" src="~/assets/liblisa-logo-white.svg" />
+    <Logo class="logo" />
     <span class="subtext">
       Automated CPU Instruction Discovery and Analysis
     </span>
@@ -34,8 +36,9 @@ useHead({
   text-align: center;
 }
 
-img {
+.logo {
   padding: 8px;
+  height: 96.6px;
 }
 
 .subtext {

@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/css/global.css'],
-  modules: ['@nuxt/content', '@nuxt/icon'],
+  modules: ['@nuxt/content', '@nuxt/icon', 'nuxt-svgo'],
   app: {
     head: {
       htmlAttrs: {
@@ -15,5 +15,8 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
     }
-  }
+  },
+  svgo: {
+    defaultImport: 'component',
+  },
 })
