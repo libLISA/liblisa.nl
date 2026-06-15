@@ -46,11 +46,11 @@ const isActive = (id) => route.hash === `#${id}`
       <ContentRenderer :value="publication" />
 
       <div class="buttonrow">
-        <a class="button small green" :href="publication.pdf">
+        <a v-if="publication.pdf" class="button small green" :href="publication.pdf">
           <Icon name="fa7-regular:file-pdf" class="glyph" />
           Read the paper
         </a>
-        <button class="button small yellow" :popovertarget="'cite-popover-' + publication.slug">
+        <button v-if="publication.bibtex"  class="button small yellow" :popovertarget="'cite-popover-' + publication.slug">
           <Icon name="fa7-solid:quote-left" class="glyph" />
           Cite
         </button>

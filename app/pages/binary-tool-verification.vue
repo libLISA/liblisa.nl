@@ -37,9 +37,9 @@ const sortedData = computed(() => {
 
 <template>
   <p>
-    libLISA's automatically-inferred semantics can be used to verify the correctness of other implementations.
-    In <NuxtLink to="/publications#oopsla24">our 2024 paper</NuxtLink>, we verified the correctness of Dasgupta et al.'s semantics implemented in the K framework.
-    In the table below, you will find an overview of all bugs that we have found.
+    The table below shows an overview of all bugs we have found in other tools and semantics, during our work on libLISA.
+    It includes 6 distinct bugs first listed in <NuxtLink to="/publications#oopsla24">our 2024 paper</NuxtLink>, where we verified the correctness of Dasgupta et al.'s semantics implemented in the K framework.
+    It also includes one bug in Bochs we found during development of <NuxtLink to="/sem86">Sem86</NuxtLink>.
   </p>
   <div class="buglist">
     <div class="head">

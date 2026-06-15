@@ -15,10 +15,10 @@ useHead({
       Automated CPU Instruction Discovery and Analysis
     </span>
     <ul class="menu">
-        <li><NuxtLink active-class="active" to="/">libLISA</NuxtLink></li>
-        <li><NuxtLink active-class="active" to="/binary-tool-verification">Verification</NuxtLink></li>
-        <li><NuxtLink active-class="active" to="/publications">Publications</NuxtLink></li>
-        <!-- <li><NuxtLink active-class="active" to="/sem86">Sem86</NuxtLink></li> -->
+      <li><NuxtLink active-class="active" to="/">libLISA</NuxtLink></li>
+      <li><NuxtLink active-class="active" to="/binary-tool-verification">Verification</NuxtLink></li>
+      <li><NuxtLink active-class="active" to="/sem86">Sem86</NuxtLink></li>
+      <li><NuxtLink active-class="active" to="/publications">Publications</NuxtLink></li>
     </ul>
   </div>
   <article class="page">
