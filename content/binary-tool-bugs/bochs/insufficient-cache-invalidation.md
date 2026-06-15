@@ -4,7 +4,7 @@ status: "fixed"
 tracker: "https://github.com/bochs-emu/Bochs/issues/567"
 ---
 
-# Insufficient cache validation causes incorrect page faults
+# Insufficient cache invalidation causes incorrect page faults
 Bochs uses an instruction cache to speed up instruction execution.
 This instruction cache needs to be cleared whenever the contents in memory change, or if the page table is updated.
 
