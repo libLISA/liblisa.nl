@@ -119,6 +119,7 @@ useSeoMeta({
 .twocolumn img {
   width: 300px;
   flex-shrink: 0;
+  align-self: center;
 }
 
 .twocolumn {
