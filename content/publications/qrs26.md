@@ -4,7 +4,7 @@ title: "Sem86: A Full-System Emulator Without Hard-Coded Semantics"
 venue: "QRS'26"
 link: "https://qrs26.techconf.org/"
 authors: "Jos Craaijo, Freek Verbeek, Binoy Ravindran"
-# pdf: "files/sem86.pdf"
+pdf: "files/sem86.pdf"
 date: 2026-07-22
 bibtex: ""
 ---
