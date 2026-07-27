@@ -31,14 +31,14 @@ useSeoMeta({
   </p>
 
   <p>
-    Sem86 will be presented at <a href="https://qrs26.techconf.org/">QRS'26</a>.
+    Sem86 was presented at <a href="https://qrs26.techconf.org/">QRS'26</a>.
   </p>
 
   <div class="buttonrow">
-    <!-- <a class="button green" href="files/sem86.pdf">
+    <a class="button green" href="files/sem86.pdf">
       <Icon name="fa7-regular:file-pdf" class="glyph" />
       Read the paper
-    </a> -->
+    </a>
     <a class="button purple" target="_blank" href="https://github.com/liblisa/sem86">
       <Icon name="fa7-brands:github" class="glyph" />
       View source code
