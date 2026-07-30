@@ -22,7 +22,7 @@ useSeoMeta({
   </p>
 
   <div class="buttonrow">
-    <a class="button green" href="files/liblisa2024.pdf">
+    <a class="button green" href="/files/liblisa2024.pdf">
       <Icon name="fa7-regular:file-pdf" class="glyph" />
       Read the paper
     </a>

@@ -35,7 +35,7 @@ useSeoMeta({
   </p>
 
   <div class="buttonrow">
-    <a class="button green" href="files/sem86.pdf">
+    <a class="button green" href="/files/sem86.pdf">
       <Icon name="fa7-regular:file-pdf" class="glyph" />
       Read the paper
     </a>

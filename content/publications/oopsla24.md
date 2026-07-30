@@ -4,7 +4,7 @@ title: "libLISA: Instruction Discovery and Analysis on x86-64"
 venue: "OOPSLA'24"
 link: "https://2024.splashcon.org/track/splash-2024-oopsla#event-overview"
 authors: "Jos Craaijo, Freek Verbeek, Binoy Ravindran"
-pdf: "files/liblisa2024.pdf"
+pdf: "/files/liblisa2024.pdf"
 date: 2024-10-20
 bibtex: |
   @article{craaijo2024liblisa,
