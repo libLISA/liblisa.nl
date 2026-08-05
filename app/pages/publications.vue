@@ -43,6 +43,12 @@ const isActive = (id) => route.hash === `#${id}`
         {{ publication.authors }}
       </p>
 
+      <div class="awards" v-if="publication.awards">
+        <a class="award" :href="award.url" target="_blank" v-for="award in publication.awards">
+          <Icon name="fa7-solid:trophy" style="vertical-align: center;" /> {{ award.name }}
+        </a>
+      </div>
+
       <ContentRenderer :value="publication" />
 
       <div class="buttonrow">
@@ -82,6 +88,10 @@ const isActive = (id) => route.hash === `#${id}`
   background: rgb(0 0 0 / 50%);
 }
 
+h3 {
+  font-size: 17pt;
+}
+
 .authors {
   font-size: 80%;
   margin-top: 0;
@@ -114,5 +124,28 @@ const isActive = (id) => route.hash === `#${id}`
   to {
     background-color: rgb(255, 255, 235);
   }
+}
+
+.awards {
+  display: flex;
+}
+
+.award {
+  padding: 6px 20px;
+  background: var(--main-col);
+  font-weight: 600;
+  border-radius: 1em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.award:visited {
+  background: var(--main-col);
+  color: #fff;
+}
+
+.award:hover {
+  background: var(--main-col-highlight);
+  color: #fff;
 }
 </style>

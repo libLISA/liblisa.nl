@@ -7,6 +7,9 @@ authors: "Jos Craaijo, Freek Verbeek, Binoy Ravindran"
 pdf: "/files/sem86.pdf"
 date: 2026-07-22
 bibtex: ""
+awards:
+  - name: Best Presentation Award
+    url: "https://qrs26.techconf.org/track/award_presentation"
 ---
 
 Emulation can be used to run legacy software, analyze malware in a sandboxed environment, or run software compiled for different architectures.

@@ -22,7 +22,11 @@ export default defineContentConfig({
         venue: z.string(),
         bibtex: z.string(),
         date: z.date(),
-        slug: z.string()
+        slug: z.string(),
+        awards: z.array(z.object({
+          name: z.string(),
+          url: z.string(),
+        })),
       })
     })
   }
