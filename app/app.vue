@@ -59,7 +59,17 @@ h2 {
   text-align: left;
 }
 
-h2::before, .button::before {
+h2, .button {
+  clip-path: polygon(
+    0 10px,
+    10px 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  )
+}
+
+/* h2::before, .button::before {
   display: block;
   content: " ";
   position: absolute;
@@ -70,7 +80,7 @@ h2::before, .button::before {
   height: 0;
   border-bottom: 10px solid transparent;
   border-left: 10px solid white;
-}
+} */
 
 h3 {
   font-weight: 900;
@@ -111,6 +121,10 @@ h3::after {
   justify-content: center;
 
   text-wrap: nowrap;
+}
+
+.button:active {
+  transform: translateY(2px);
 }
 
 .button.small {

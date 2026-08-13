@@ -1,0 +1,659 @@
+@inproceedings{stoke,
+author = {Schkufza, Eric and Sharma, Rahul and Aiken, Alex},
+title = {Stochastic superoptimization},
+year = {2013},
+isbn = {9781450318709},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2451116.2451150},
+doi = {10.1145/2451116.2451150},
+abstract = {We formulate the loop-free binary superoptimization task as a stochastic search problem. The competing constraints of transformation correctness and performance improvement are encoded as terms in a cost function, and a Markov Chain Monte Carlo sampler is used to rapidly explore the space of all possible programs to find one that is an optimization of a given target program. Although our method sacrifices completeness, the scope of programs we are able to consider, and the resulting quality of the programs that we produce, far exceed those of existing superoptimizers. Beginning from binaries compiled by llvm -O0 for 64-bit x86, our prototype implementation, STOKE, is able to produce programs which either match or outperform the code produced by gcc -O3, icc -O3, and in some cases, expert handwritten assembly.},
+booktitle = {Proceedings of the Eighteenth International Conference on Architectural Support for Programming Languages and Operating Systems},
+pages = {305–316},
+numpages = {12},
+keywords = {x86-64, x86, superoptimization, stochastic search, smt, mcmc, markov chain monte carlo, binary, 64-bit},
+location = {Houston, Texas, USA},
+series = {ASPLOS '13}
+}
+
+@inproceedings{strata,
+author = {Heule, Stefan and Schkufza, Eric and Sharma, Rahul and Aiken, Alex},
+title = {Stratified synthesis: automatically learning the x86-64 instruction set},
+year = {2016},
+isbn = {9781450342612},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2908080.2908121},
+doi = {10.1145/2908080.2908121},
+abstract = {The x86-64 ISA sits at the bottom of the software stack of most desktop and server software. Because of its importance, many software analysis and verification tools depend, either explicitly or implicitly, on correct modeling of the semantics of x86-64 instructions. However, formal semantics for the x86-64 ISA are difficult to obtain and often written manually through great effort. We describe an automatically synthesized formal semantics of the input/output behavior for a large fraction of the x86-64 Haswell ISA’s many thousands of instruction variants. The key to our results is stratified synthesis, where we use a set of instructions whose semantics are known to synthesize the semantics of additional instructions whose semantics are unknown. As the set of formally described instructions increases, the synthesis vocabulary expands, making it possible to synthesize the semantics of increasingly complex instructions. Using this technique we automatically synthesized formal semantics for 1,795 instruction variants of the x86-64 Haswell ISA. We evaluate the learned semantics against manually written semantics (where available) and find that they are formally equivalent with the exception of 50 instructions, where the manually written semantics contain an error. We further find the learned formulas to be largely as precise as manually written ones and of similar size.},
+booktitle = {Proceedings of the 37th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+pages = {237–250},
+numpages = {14},
+keywords = {x86-64, program synthesis, ISA specification},
+location = {Santa Barbara, CA, USA},
+series = {PLDI '16}
+}
+
+  
+
+@inproceedings{dasgupta2019,
+author = {Dasgupta, Sandeep and Park, Daejun and Kasampalis, Theodoros and Adve, Vikram S. and Ro\c{s}u, Grigore},
+title = {A Complete Formal Semantics of X86-64 User-Level Instruction Set Architecture},
+year = {2019},
+isbn = {9781450367127},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3314221.3314601},
+doi = {10.1145/3314221.3314601},
+abstract = {We present the most complete and thoroughly tested formal semantics of x86-64 to date. Our semantics faithfully formalizes all the non-deprecated, sequential user-level instructions of the x86-64 Haswell instruction set architecture. This totals 3155 instruction variants, corresponding to 774 mnemonics. The semantics is fully executable and has been tested against more than 7,000 instruction-level test cases and the GCC torture test suite. This extensive testing paid off, revealing bugs in both the x86-64 reference manual and other existing semantics. We also illustrate potential applications of our semantics in different formal analyses, and discuss how it can be useful for processor verification.},
+booktitle = {Proceedings of the 40th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+pages = {1133–1148},
+numpages = {16},
+keywords = {ISA specification, x86-64, Formal Semantics},
+location = {Phoenix, AZ, USA},
+series = {PLDI '19}
+}
+
+@misc{sandsifter,
+  title={Breaking the x86 ISA},
+  author={Domas, Christopher},
+  journal={Black Hat},
+  url={https://github.com/xoreaxeaxeax/sandsifter},
+  year={2017},
+  urldate = {02/05/2024},
+  note = {Accessed on 02/05/2024}
+}
+
+@INPROCEEDINGS{iscanu,
+  author={Dofferhoff, Rens and Göebel, Michael and Rietveld, Kristian and van der Kouwe, Erik},
+  booktitle={2020 50th Annual IEEE/IFIP International Conference on Dependable Systems and Networks}, 
+  title={iScanU: A Portable Scanner for Undocumented Instructions on RISC Processors}, 
+  year={2020},
+  series = {DSN 2020},
+  volume={},
+  number={},
+  pages={306-317},
+  keywords={Reduced instruction set computing;Hardware;Computer architecture;Security;Computer crashes;Instruction Scanning;Hardware security;Undocumented Instructions},
+  doi={10.1109/DSN48063.2020.00047}
+}
+
+@ARTICLE{uisfuzz,
+  author={Li, Xixing and Wu, Zehui and Wei, Qiang and Wu, Haolan},
+  journal={IEEE Access}, 
+  title={UISFuzz: An Efficient Fuzzing Method for CPU Undocumented Instruction Searching}, 
+  year={2019},
+  volume={7},
+  number={},
+  pages={149224-149236},
+  keywords={Fuzzing;Computer security;Instruction sets;Undocumented instructions;fuzz;CPU;instruction analysis},
+  doi={10.1109/ACCESS.2019.2946444}
+}
+
+
+@InProceedings{alur2017scaling,
+author="Alur, Rajeev
+and Radhakrishna, Arjun
+and Udupa, Abhishek",
+editor="Legay, Axel
+and Margaria, Tiziana",
+title="Scaling Enumerative Program Synthesis via Divide and Conquer",
+booktitle="Tools and Algorithms for the Construction and Analysis of Systems",
+year="2017",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="319--336",
+abstract="Given a semantic constraint specified by a logical formula, and a syntactic constraint specified by a context-free grammar, the Syntax-Guided Synthesis (SyGuS) problem is to find an expression that satisfies both the syntactic and semantic constraints. An enumerative approach to solve this problem is to systematically generate all expressions from the syntactic space with some pruning, and has proved to be surprisingly competitive in the newly started competition of SyGuS solvers. It performs well on small to medium sized benchmarks, produces succinct expressions, and has the ability to generalize from input-output examples. However, its performance degrades drastically with the size of the smallest solution. To overcome this limitation, in this paper we propose an alternative approach to solve SyGuS instances.",
+isbn="978-3-662-54577-5",
+series = {TACAS 2017},
+doi = {10.1007/978-3-662-54577-5_18}
+}
+
+
+
+@article{alur2018,
+author = {Alur, Rajeev and Singh, Rishabh and Fisman, Dana and Solar-Lezama, Armando},
+title = {Search-Based Program Synthesis},
+year = {2018},
+issue_date = {December 2018},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {61},
+number = {12},
+issn = {0001-0782},
+url = {https://doi.org/10.1145/3208071},
+doi = {10.1145/3208071},
+abstract = {A promising, useful tool for future programming development environments.},
+journal = {Commun. ACM},
+month = nov,
+pages = {84–93},
+numpages = {10}
+}
+
+@inproceedings{smtlib2,
+  title={The SMT-LIB Standard: Version 2.0},
+  author={Barrett, Clark and Stump, Aaron and Tinelli, Cesare and others},
+  booktitle={Proceedings of the 8th international workshop on satisfiability modulo theories (Edinburgh, UK)},
+  volume={13},
+  pages={14},
+  year={2010}
+}
+
+@InProceedings{z3,
+author="de Moura, Leonardo
+and Bj{\o}rner, Nikolaj",
+editor="Ramakrishnan, C. R.
+and Rehof, Jakob",
+title="Z3: An Efficient SMT Solver",
+booktitle="Tools and Algorithms for the Construction and Analysis of Systems",
+series = {TACAS 2008},
+year="2008",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="337--340",
+abstract="Satisfiability Modulo Theories (SMT) problem is a decision problem for logical first order formulas with respect to combinations of background theories such as: arithmetic, bit-vectors, arrays, and uninterpreted functions. Z3 is a new and efficient SMT Solver freely available from Microsoft Research. It is used in various software verification and analysis applications.",
+isbn="978-3-540-78800-3",
+doi={10.1007/978-3-540-78800-3_24}
+}
+
+@article{kframework,
+title = {An overview of the K semantic framework},
+journal = {The Journal of Logic and Algebraic Programming},
+volume = {79},
+number = {6},
+pages = {397-434},
+year = {2010},
+note = {Membrane computing and programming},
+issn = {1567-8326},
+doi = {https://doi.org/10.1016/j.jlap.2010.03.012},
+url = {https://www.sciencedirect.com/science/article/pii/S1567832610000160},
+author = {Grigore Roșu and Traian Florin Șerbănută},
+abstract = {K is an executable semantic framework in which programming languages, calculi, as well as type systems or formal analysis tools can be defined, making use of configurations, computations and rules. Configurations organize the system/program state in units called cells, which are labeled and can be nested. Computations carry “computational meaning” as special nested list structures sequentializing computational tasks, such as fragments of program; in particular, computations extend the original language or calculus syntax. K (rewrite) rules generalize conventional rewrite rules by making explicit which parts of the term they read, write, or do not care about. This distinction makes K a suitable framework for defining truly concurrent languages or calculi, even in the presence of sharing. Since computations can be handled like any other terms in a rewriting environment, that is, they can be matched, moved from one place to another in the original term, modified, or even deleted, K is particularly suitable for defining control-intensive language features such as abrupt termination, exceptions, or call/cc. This paper gives an overview of the K framework: what it is, how it can be used, and where it has been used so far. It also proposes and discusses the K definition of Challenge, a programming language that aims to challenge and expose the limitations of existing semantic frameworks.}
+}
+
+@inproceedings{cegis,
+author = {Solar-Lezama, Armando and Tancau, Liviu and Bodik, Rastislav and Seshia, Sanjit and Saraswat, Vijay},
+title = {Combinatorial sketching for finite programs},
+year = {2006},
+isbn = {1595934510},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1168857.1168907},
+doi = {10.1145/1168857.1168907},
+abstract = {Sketching is a software synthesis approach where the programmer develops a partial implementation - a sketch - and a separate specification of the desired functionality. The synthesizer then completes the sketch to behave like the specification. The correctness of the synthesized implementation is guaranteed by the compiler, which allows, among other benefits, rapid development of highly tuned implementations without the fear of introducing bugs.We develop SKETCH, a language for finite programs with linguistic support for sketching. Finite programs include many highperformance kernels, including cryptocodes. In contrast to prior synthesizers, which had to be equipped with domain-specific rules, SKETCH completes sketches by means of a combinatorial search based on generalized boolean satisfiability. Consequently, our combinatorial synthesizer is complete for the class of finite programs: it is guaranteed to complete any sketch in theory, and in practice has scaled to realistic programming problems.Freed from domain rules, we can now write sketches as simpleto-understand partial programs, which are regular programs in which difficult code fragments are replaced with holes to be filled by the synthesizer. Holes may stand for index expressions, lookup tables, or bitmasks, but the programmer can easily define new kinds of holes using a single versatile synthesis operator.We have used SKETCH to synthesize an efficient implementation of the AES cipher standard. The synthesizer produces the most complex part of the implementation and runs in about an hour.},
+booktitle = {Proceedings of the 12th International Conference on Architectural Support for Programming Languages and Operating Systems},
+pages = {404–415},
+numpages = {12},
+keywords = {sketching, SAT},
+location = {San Jose, California, USA},
+series = {ASPLOS XII}
+}
+
+@inproceedings{godefroid2012,
+author = {Godefroid, Patrice and Taly, Ankur},
+title = {Automated synthesis of symbolic instruction encodings from I/O samples},
+year = {2012},
+isbn = {9781450312059},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2254064.2254116},
+doi = {10.1145/2254064.2254116},
+abstract = {Symbolic execution is a key component of precise binary program analysis tools. We discuss how to automatically boot-strap the construction of a symbolic execution engine for a processor instruction set such as x86, x64 or ARM. We show how to automatically synthesize symbolic representations of individual processor instructions from input/output examples and express them as bit-vector constraints. We present and compare various synthesis algorithms and instruction sampling strategies. We introduce a new synthesis algorithm based on smart sampling which we show is one to two orders of magnitude faster than previous synthesis algorithms in our context. With this new algorithm, we can automatically synthesize bit-vector circuits for over 500 x86 instructions (8/16/32-bits, outputs, EFLAGS) using only 6 synthesis templates and in less than two hours using the Z3 SMT solver on a regular machine. During this work, we also discovered several inconsistencies across x86 processors, errors in the x86 Intel spec, and several bugs in previous manually-written x86 instruction handlers.},
+booktitle = {Proceedings of the 33rd ACM SIGPLAN Conference on Programming Language Design and Implementation},
+pages = {441–452},
+numpages = {12},
+keywords = {program synthesis, symbolic execution, x86},
+location = {Beijing, China},
+series = {PLDI '12}
+}
+
+@article{serebryany2021silifuzz,
+  title={SiliFuzz: fuzzing CPUs by proxy},
+  author={Kwan, Doug and Shtoyk, Kostik and Serebryany, Kostya and Lifantsev, Maxim L and Hochschild, Peter},
+  journal={Google Research},
+  year={2021},
+  doi={10.48550/arXiv.2110.11519}
+}
+
+@inproceedings{goel2014simulation,
+author = {Goel, Shilpi and Hunt, Warren A. and Kaufmann, Matt and Ghosh, Soumava},
+title = {Simulation and Formal Verification of x86 Machine-Code Programs that make System Calls},
+year = {2014},
+isbn = {9780983567844},
+publisher = {FMCAD Inc},
+address = {Austin, Texas},
+abstract = {We present an approach to modeling and verifying machine-code programs that exhibit non-determinism. Specifically, we add support for system calls to our formal, executable model of the user-level x86 instruction-set architecture (ISA). The resulting model, implemented in the ACL2 theorem-proving system, allows both formal analysis and efficient simulation of x86 machine-code programs; the logical mode characterizes an external environment to support reasoning about programs that interact with an operating system, and the execution mode directly queries the underlying operating system to support simulation. The execution mode of our x86 model is validated against both its logical mode and the real machine, providing test-based assurance that our model faithfully represents the semantics of an actual x86 processor. Our framework is the first that enables mechanical proofs of functional correctness of user-level x86 machine-code programs that make system calls. We demonstrate the capabilities of our model with the mechanical verification of a machine-code program, produced by the GCC compiler, that computes the number of characters, lines, and words in an input stream. Such reasoning is facilitated by our libraries of ACL2 lemmas that allow automated proofs of a program's memory-related properties.},
+booktitle = {Proceedings of the 14th Conference on Formal Methods in Computer-Aided Design},
+pages = {91–98},
+numpages = {8},
+location = {Lausanne, Switzerland},
+series = {FMCAD '14},
+doi = {10.1109/FMCAD.2014.6987600}
+}
+
+@article{compcert,
+author = {Leroy, Xavier},
+title = {Formal verification of a realistic compiler},
+year = {2009},
+issue_date = {July 2009},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {52},
+number = {7},
+issn = {0001-0782},
+url = {https://doi.org/10.1145/1538788.1538814},
+doi = {10.1145/1538788.1538814},
+abstract = {This paper reports on the development and formal verification (proof of semantic preservation) of CompCert, a compiler from Clight (a large subset of the C programming language) to PowerPC assembly code, using the Coq proof assistant both for programming the compiler and for proving its correctness. Such a verified compiler is useful in the context of critical software and its formal verification: the verification of the compiler guarantees that the safety properties proved on the source code hold for the executable compiled code as well.},
+journal = {Commun. ACM},
+month = {jul},
+pages = {107–115},
+numpages = {9}
+}
+
+@inproceedings{morrisett2012rocksalt,
+author = {Morrisett, Greg and Tan, Gang and Tassarotti, Joseph and Tristan, Jean-Baptiste and Gan, Edward},
+title = {RockSalt: better, faster, stronger SFI for the x86},
+year = {2012},
+isbn = {9781450312059},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2254064.2254111},
+doi = {10.1145/2254064.2254111},
+abstract = {Software-based fault isolation (SFI), as used in Google's Native Client (NaCl), relies upon a conceptually simple machine-code analysis to enforce a security policy. But for complicated architectures such as the x86, it is all too easy to get the details of the analysis wrong. We have built a new checker that is smaller, faster, and has a much reduced trusted computing base when compared to Google's original analysis. The key to our approach is automatically generating the bulk of the analysis from a declarative description which we relate to a formal model of a subset of the x86 instruction set architecture. The x86 model, developed in Coq, is of independent interest and should be usable for a wide range of machine-level verification tasks.},
+booktitle = {Proceedings of the 33rd ACM SIGPLAN Conference on Programming Language Design and Implementation},
+pages = {395–404},
+numpages = {10},
+keywords = {domain-specific languages, software fault isolation},
+location = {Beijing, China},
+series = {PLDI '12}
+}
+
+@inproceedings{hasabnis2016,
+author = {Hasabnis, Niranjan and Sekar, R.},
+title = {Extracting instruction semantics via symbolic execution of code generators},
+year = {2016},
+isbn = {9781450342186},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2950290.2950335},
+doi = {10.1145/2950290.2950335},
+abstract = {Binary analysis and instrumentation form the basis of many tools and frameworks for software debugging, security hardening, and monitoring. Accurate modeling of instruction semantics is paramount in this regard, as errors can lead to program crashes, or worse, bypassing of security checks. Semantic modeling is a daunting task for modern processors such as x86 and ARM that support over a thousand instructions, many of them with complex semantics. This paper describes a new approach to automate this semantic modeling task. Our approach leverages instruction semantics knowledge that is already encoded into today's production compilers such as GCC and LLVM. Such an approach can greatly reduce manual effort, and more importantly, avoid errors introduced by manual modeling. Furthermore, it is applicable to any of the numerous architectures already supported by the compiler. In this paper, we develop a new symbolic execution technique to extract instruction semantics from a compiler's source code. Unlike previous applications of symbolic execution that were focused on identifying a single program path that violates a property, our approach addresses the all paths problem, extracting the entire input/output behavior of the code generator. We have applied it successfully to the 120K lines of C-code used in GCC's code generator to extract x86 instruction semantics. To demonstrate architecture-neutrality, we have also applied it to AVR, a processor used in the popular Arduino platform.},
+booktitle = {Proceedings of the 2016 24th ACM SIGSOFT International Symposium on Foundations of Software Engineering},
+pages = {301–313},
+numpages = {13},
+keywords = {Symbolic execution, Instruction-set semantics extraction, Code generators},
+location = {Seattle, WA, USA},
+series = {FSE 2016}
+}
+
+@article{tsl,
+author = {Lim, Junghee and Reps, Thomas},
+title = {TSL: A System for Generating Abstract Interpreters and its Application to Machine-Code Analysis},
+year = {2013},
+issue_date = {April 2013},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {35},
+number = {1},
+issn = {0164-0925},
+url = {https://doi.org/10.1145/2450136.2450139},
+doi = {10.1145/2450136.2450139},
+abstract = {This article describes the design and implementation of a system, called TSL (for Transformer Specification Language), that provides a systematic solution to the problem of creating retargetable tools for analyzing machine code. TSL is a tool generator---that is, a metatool---that automatically creates different abstract interpreters for machine-code instruction sets.The most challenging technical issue that we faced in designing TSL was how to automate the generation of the set of abstract transformers for a given abstract interpretation of a given instruction set. From a description of the concrete operational semantics of an instruction set, together with the datatypes and operations that define an abstract domain, TSL automatically creates the set of abstract transformers for the instructions of the instruction set. TSL advances the state-of-the-art in program analysis because it provides two dimensions of parameterizability: (i) a given analysis component can be retargeted to different instruction sets; (ii) multiple analysis components can be created automatically from a single specification of the concrete operational semantics of the language to be analyzed.TSL is an abstract-transformer-generator generator. The article describes the principles behind TSL, and discusses how one uses TSL to develop different abstract interpreters.},
+journal = {ACM Trans. Program. Lang. Syst.},
+month = {apr},
+articleno = {4},
+numpages = {59},
+keywords = {Abstract interpretation, dataflow analysis, dynamic analysis, machine-code analysis, static analysis, symbolic analysis}
+}
+
+@inproceedings{ringbuffer,
+author = {Barrington, Andrew and Feldman, Steven and Dechev, Damian},
+title = {A scalable multi-producer multi-consumer wait-free ring buffer},
+year = {2015},
+isbn = {9781450331968},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2695664.2695924},
+doi = {10.1145/2695664.2695924},
+abstract = {A ring buffer or cyclical queue is a First In, First Out (FIFO) queue that stores elements on a fixed-length array. This allows for efficient O(1) operations, cache-aware optimizations, and low memory overhead. Because ring buffers are limited to only the array and two counters they are desirable for systems with limited memory. Many applications (e.g. cloud-based services) depend on ring buffers to pass work from one thread to another. The rise in many-core architecture has resulted in increased performance from shared data structures such as ring buffers. Existing research has forgone the use of locks and permitted greater scalability and core utilization for such designs. Such non-blocking designs are categorized by the level of progress they guarantee with wait-freedom being the most desirable categorization. Such a guarantee provides freedom from deadlock, livelock, and thread starvation. Lock-free and obstruction-free designs are not safe from all of these pitfalls [5].},
+booktitle = {Proceedings of the 30th Annual ACM Symposium on Applied Computing},
+pages = {1321–1328},
+numpages = {8},
+keywords = {concurrent, non-blocking, parallel, queue, ring buffer, wait-free},
+location = {Salamanca, Spain},
+series = {SAC '15}
+}
+
+@INPROCEEDINGS{disasmfuzzing,
+  author={Jay, Nathan and Miller, Barton P.},
+  booktitle={2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)}, 
+  title={Structured random differential testing of instruction decoders}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={84-94},
+  keywords={Decoding;Testing;Tools;Instruction sets;Encoding;Complexity theory;Registers},
+  doi={10.1109/SANER.2018.8330199}
+}
+
+@article{sewell2010x86,
+author = {Sewell, Peter and Sarkar, Susmit and Owens, Scott and Nardelli, Francesco Zappa and Myreen, Magnus O.},
+title = {x86-TSO: a rigorous and usable programmer's model for x86 multiprocessors},
+year = {2010},
+issue_date = {July 2010},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {53},
+number = {7},
+issn = {0001-0782},
+url = {https://doi.org/10.1145/1785414.1785443},
+doi = {10.1145/1785414.1785443},
+abstract = {Exploiting the multiprocessors that have recently become ubiquitous requires high-performance and reliable concurrent systems code, for concurrent data structures, operating system kernels, synchronization libraries, compilers, and so on. However, concurrent programming, which is always challenging, is made much more so by two problems. First, real multiprocessors typically do not provide the sequentially consistent memory that is assumed by most work on semantics and verification. Instead, they have relaxed memory models, varying in subtle ways between processor families, in which different hardware threads may have only loosely consistent views of a shared memory. Second, the public vendor architectures, supposedly specifying what programmers can rely on, are often in ambiguous informal prose (a particularly poor medium for loose specifications), leading to widespread confusion.In this paper we focus on x86 processors. We review several recent Intel and AMD specifications, showing that all contain serious ambiguities, some are arguably too weak to program above, and some are simply unsound with respect to actual hardware. We present a new x86-TSO programmer's model that, to the best of our knowledge, suffers from none of these problems. It is mathematically precise (rigorously defined in HOL4) but can be presented as an intuitive abstract machine which should be widely accessible to working programmers. We illustrate how this can be used to reason about the correctness of a Linux spinlock implementation and describe a general theory of data-race freedom for x86-TSO. This should put x86 multiprocessor system building on a more solid foundation; it should also provide a basis for future work on verification of such systems.},
+journal = {Commun. ACM},
+month = {jul},
+pages = {89–97},
+numpages = {9}
+}
+
+@inproceedings {solt2024cascade,
+author = {Flavien Solt and Katharina Ceesay-Seitz and Kaveh Razavi},
+title = {Cascade: {CPU} Fuzzing via Intricate Program Generation},
+booktitle = {33rd USENIX Security Symposium (USENIX Security 24)},
+year = {2024},
+isbn = {978-1-939133-44-1},
+address = {Philadelphia, PA},
+pages = {5341--5358},
+publisher = {USENIX Association},
+month = aug
+}
+
+@inproceedings{martignoni2009testing,
+author = {Martignoni, Lorenzo and Paleari, Roberto and Roglia, Giampaolo Fresi and Bruschi, Danilo},
+title = {Testing CPU emulators},
+year = {2009},
+isbn = {9781605583389},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1572272.1572303},
+doi = {10.1145/1572272.1572303},
+abstract = {A CPU emulator is a software that simulates a hardware CPU. Emulators are widely used by computer scientists for various kind of activities (e.g., debugging, profiling, and malware analysis). Although no theoretical limitation prevents to develop an emulator that faithfully emulates a physical CPU, writing a fully featured emulator is a very challenging and error-prone task. Modern CISC architectures have a very rich instruction set, some instructions lack proper specifications, and others may have undefined effects in corner-cases. This paper presents a testing methodology specific for CPU emulators, based on fuzzing. The emulator is "stressed" with specially crafted test-cases, to verify whether the CPU is properly emulated or not. Improper behaviours of the emulator are detected by running the same test-case concurrently on the emulated and on the physical CPUs and by comparing the state of the two after the execution. Differences in the final state testify defects in the code of the emulator. We implemented this methodology in a prototype (codenamed EmuFuzzer), analysed four state-of-the-art IA-32 emulators (QEMU, Valgrind, Pin and BOCHS), and found several defects in each of them, some of which can prevent the proper execution of programs.},
+booktitle = {Proceedings of the Eighteenth International Symposium on Software Testing and Analysis},
+pages = {261–272},
+numpages = {12},
+keywords = {automatic test generation, emulation, fuzzing, software testing},
+location = {Chicago, IL, USA},
+series = {ISSTA '09}
+}
+
+@article{vsevvcik2013compcerttso,
+author = {\v{S}ev\v{c}\'{\i}k, Jaroslav and Vafeiadis, Viktor and Zappa Nardelli, Francesco and Jagannathan, Suresh and Sewell, Peter},
+title = {CompCertTSO: A Verified Compiler for Relaxed-Memory Concurrency},
+year = {2013},
+issue_date = {June 2013},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {60},
+number = {3},
+issn = {0004-5411},
+url = {https://doi.org/10.1145/2487241.2487248},
+doi = {10.1145/2487241.2487248},
+abstract = {In this article, we consider the semantic design and verified compilation of a C-like programming language for concurrent shared-memory computation on x86 multiprocessors. The design of such a language is made surprisingly subtle by several factors: the relaxed-memory behavior of the hardware, the effects of compiler optimization on concurrent code, the need to support high-performance concurrent algorithms, and the desire for a reasonably simple programming model. In turn, this complexity makes verified compilation both essential and challenging.We describe ClightTSO, a concurrent extension of CompCert’s Clight in which the TSO-based memory model of x86 multiprocessors is exposed for high-performance code, and CompCertTSO, a formally verified compiler from ClightTSO to x86 assembly language, building on CompCert. CompCertTSO is verified in Coq: for any well-behaved and successfully compiled ClightTSO source program, any permitted observable behavior of the generated assembly code (if it does not run out of memory) is also possible in the source semantics. We also describe some verified fence-elimination optimizations, integrated into CompCertTSO.},
+journal = {J. ACM},
+month = {jun},
+articleno = {22},
+numpages = {50},
+keywords = {Relaxed memory models, semantics, verified compilation}
+}
+
+@InProceedings{bap,
+author="Brumley, David
+and Jager, Ivan
+and Avgerinos, Thanassis
+and Schwartz, Edward J.",
+editor="Gopalakrishnan, Ganesh
+and Qadeer, Shaz",
+title="BAP: A Binary Analysis Platform",
+booktitle="Computer Aided Verification",
+year="2011",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="463--469",
+abstract="BAP is a publicly available infrastructure for performing program verification and analysis tasks on binary (i.e., executable) code. In this paper, we describe BAP as well as lessons learned from previous incarnations of binary analysis platforms. BAP explicitly represents all side effects of instructions in an intermediate language (IL), making syntaxdirected analysis possible. We have used BAP to routinely generate and solve verification conditions that are hundreds of megabytes in size and encompass 100,000's of assembly instructions.",
+isbn="978-3-642-22110-1",
+doi={10.1007/978-3-642-22110-1_37}
+}
+
+@article{sail,
+author = {Armstrong, Alasdair and Bauereiss, Thomas and Campbell, Brian and Reid, Alastair and Gray, Kathryn E. and Norton, Robert M. and Mundkur, Prashanth and Wassell, Mark and French, Jon and Pulte, Christopher and Flur, Shaked and Stark, Ian and Krishnaswami, Neel and Sewell, Peter},
+title = {ISA semantics for ARMv8-a, RISC-v, and CHERI-MIPS},
+year = {2019},
+issue_date = {January 2019},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {3},
+number = {POPL},
+url = {https://doi.org/10.1145/3290384},
+doi = {10.1145/3290384},
+abstract = {Architecture specifications notionally define the fundamental interface between hardware and software: the envelope of allowed behaviour for processor implementations, and the basic assumptions for software development and verification. But in practice, they are typically prose and pseudocode documents, not rigorous or executable artifacts, leaving software and verification on shaky ground.  In this paper, we present rigorous semantic models for the sequential behaviour of large parts of the mainstream ARMv8-A, RISC-V, and MIPS architectures, and the research CHERI-MIPS architecture, that are complete enough to boot operating systems, variously Linux, FreeBSD, or seL4. Our ARMv8-A models are automatically translated from authoritative ARM-internal definitions, and (in one variant) tested against the ARM Architecture Validation Suite.  We do this using a custom language for ISA semantics, Sail, with a lightweight dependent type system, that supports automatic generation of emulator code in C and OCaml, and automatic generation of proof-assistant definitions for Isabelle, HOL4, and (currently only for MIPS) Coq. We use the former for validation, and to assess specification coverage. To demonstrate the usability of the latter, we prove (in Isabelle) correctness of a purely functional characterisation of ARMv8-A address translation. We moreover integrate the RISC-V model into the RMEM tool for (user-mode) relaxed-memory concurrency exploration. We prove (on paper) the soundness of the core Sail type system.  We thereby take a big step towards making the architectural abstraction actually well-defined, establishing foundations for verification and reasoning.},
+journal = {Proc. ACM Program. Lang.},
+month = {jan},
+articleno = {71},
+numpages = {31},
+keywords = {Theorem Proving, Semantics, Instruction Set Architectures}
+}
+
+@inproceedings{asl,
+author = {Reid, Alastair},
+title = {Trustworthy specifications of ARM® v8-A and v8-M system level architecture},
+year = {2016},
+isbn = {9780983567868},
+publisher = {FMCAD Inc},
+address = {Austin, Texas},
+abstract = {Processor specifications are of critical importance for verifying programs, compilers, operating systems/hypervisors, and, of course, for verifying microprocessors themselves. But to be useful, the scope of these specifications must be sufficient for the task, the specification must be applicable to processors of interest and the specification must be trustworthy.This paper describes a 5 year project to change ARM's existing architecture specification process so that machine-readable, executable specifications can be automatically generated from the same materials used to generate ARM's conventional architecture documentation. We have developed executable specifications of both ARM's A-class and M-class processor architectures that are complete enough and trustworthy enough that we have used them to formally verify ARM processors using bounded model checking. In particular, our specifications include the semantics of the most security sensitive parts of the processor: the memory and register protection mechanisms and the exception mechanisms that trigger transitions between different modes. Most importantly, we have applied a diverse set of methods including ARM's internal processor test suites to improve our trust in the specification using many other expressions of the architectural specification such as ARM's simulators, testsuites and processors to defend against common-mode failure. In the process, we have also found bugs in all those artifacts: testing specifications is very much a two-way street.While there have been previous specifications of ARM processors, their scope has excluded the system architecture, their applicability has excluded newer processors and M-class, and their trustworthiness has not been established as thoroughly.Our focus has been on enabling the formal verification of ARM processors but, recognising the value of this specification for verifying software, we are currently preparing a public release of the machine-readable specification.},
+booktitle = {Proceedings of the 16th Conference on Formal Methods in Computer-Aided Design},
+pages = {161–168},
+numpages = {8},
+location = {Mountain View, California},
+series = {FMCAD '16},
+doi = {10.1109/FMCAD.2016.7886675}
+}
+
+
+@inproceedings{zenodo,
+  title={Reproduction package (Docker container) for the OOPSLA 2024 Article ``libLISA: Instruction Discovery and Analysis on x86-64''},
+  author={Craaijo, Jos and Verbeek, Freek and Ravindran, Binoy},
+  year={2024},
+  doi={10.5281/zenodo.13380062},
+  organization={Zenodo},
+}
+
+@article{bochs,
+  title={Bochs: A portable pc emulator for unix/x},
+  author={Lawton, Kevin P},
+  journal={Linux Journal},
+  volume={1996},
+  number={29es},
+  pages={7--es},
+  year={1996},
+  publisher={Belltown Media Houston, TX}
+}
+
+@inproceedings{qemu,
+  title={QEMU, a fast and portable dynamic translator.},
+  author={Bellard, Fabrice},
+  booktitle={USENIX annual technical conference, FREENIX Track},
+  volume={41},
+  number={46},
+  pages={10--55},
+  year={2005},
+  organization={California, USA}
+}
+
+@phdthesis{x86isa-goel,
+  title={Formal verification of application and system programs based on a validated x86 ISA model},
+  author={Goel, Shilpi},
+  year={2016}
+}
+
+@article{liblisa,
+  title={libLISA: instruction discovery and analysis on x86-64},
+  author={Craaijo, Jos and Verbeek, Freek and Ravindran, Binoy},
+  journal={Proceedings of the ACM on Programming Languages},
+  volume={8},
+  number={OOPSLA2},
+  pages={333--361},
+  year={2024},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{dasgupta,
+  title={A complete formal semantics of x86-64 user-level instruction set architecture},
+  author={Dasgupta, Sandeep and Park, Daejun and Kasampalis, Theodoros and Adve, Vikram S and Ro{\c{s}}u, Grigore},
+  booktitle={Proceedings of the 40th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+  pages={1133--1148},
+  year={2019}
+}
+
+@inproceedings{raffetseder2007detecting,
+  title={Detecting system emulators},
+  author={Raffetseder, Thomas and Kruegel, Christopher and Kirda, Engin},
+  booktitle={International Conference on Information Security},
+  pages={1--18},
+  year={2007},
+  organization={Springer}
+}
+
+@unpublished{imulvmdetection,
+  author = {SonicWall},
+  title  = {New Anti-VM technique observed in the wild},
+  year   = {2017},
+  url = {http://web.archive.org/web/20201026062235/https://www.mysonicwall.com/sonicalert/searchresults.aspx?ev=article&id=1085},
+  note = {Accessed on 16/01/2026}
+}
+
+@article{x86isa,
+  title={Adding 32-bit Mode to the ACL2 Model of the x86 ISA},
+  author={Coglio, Alessandro and Goel, Shilpi},
+  journal={arXiv preprint arXiv:1810.04313},
+  year={2018}
+}
+
+@InProceedings{bolz2025pydrofoil,
+  author =  {Bolz-Tereick, CF and Panayi, Luke and McKeogh, Ferdia and Spink, Tom and Berger, Martin},
+  title =   {{Pydrofoil: Accelerating Sail-Based Instruction Set Simulators}},
+  booktitle =       {39th European Conference on Object-Oriented Programming (ECOOP 2025)},
+  pages =   {3:1--3:31},
+  series =  {Leibniz International Proceedings in Informatics (LIPIcs)},
+  ISBN =    {978-3-95977-373-7},
+  ISSN =    {1868-8969},
+  year =    {2025},
+  volume =  {333},
+  editor =  {Aldrich, Jonathan and Silva, Alexandra},
+  publisher =       {Schloss Dagstuhl -- Leibniz-Zentrum f{\"u}r Informatik},
+  address = {Dagstuhl, Germany},
+  URL =             {https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ECOOP.2025.3},
+  URN =             {urn:nbn:de:0030-drops-232962},
+  doi =             {10.4230/LIPIcs.ECOOP.2025.3},
+  annote =  {Keywords: Instruction set architecture, processor, domain-specific language, just-in-time compilation, meta-tracing}
+}
+
+@article{spink2020gensim,
+  title={A retargetable system-level DBT hypervisor},
+  author={Spink, Tom and Wagstaff, Harry and Franke, Bj{\"o}rn},
+  journal={ACM Transactions on Computer Systems (TOCS)},
+  volume={36},
+  number={4},
+  pages={1--24},
+  year={2020},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{sahin2018proteus,
+  title={Proteus: Detecting android emulators from instruction-level profiles},
+  author={Sahin, Onur and Coskun, Ayse K and Egele, Manuel},
+  booktitle={International Symposium on Research in Attacks, Intrusions, and Defenses},
+  pages={3--24},
+  year={2018},
+  organization={Springer}
+}
+
+@article{choi2022emuid,
+  title={EmuID: Detecting presence of emulation through microarchitectural characteristic on ARM},
+  author={Choi, Yeseul and Jeong, Yunjong and Jang, Daehee and Kang, Brent Byunghoon and Lee, Hojoon},
+  journal={Computers \& Security},
+  volume={113},
+  pages={102569},
+  year={2022},
+  publisher={Elsevier}
+}
+
+@article{ma2009design,
+  title={Design and Testing of a CPU Emulator},
+  author={Ma, Weiqin and Liu, Jyh-Charn and Forin, Alessandro},
+  journal={Texas A\&M University, Microsoft Research Technical Report, United States of America},
+  volume={1},
+  pages={12},
+  year={2009}
+}
+
+@article{gem5,
+  title={The gem5 simulator},
+  author={Binkert, Nathan and Beckmann, Bradford and Black, Gabriel and Reinhardt, Steven K and Saidi, Ali and Basu, Arkaprava and Hestness, Joel and Hower, Derek R and Krishna, Tushar and Sardashti, Somayeh and others},
+  journal={ACM SIGARCH computer architecture news},
+  volume={39},
+  number={2},
+  pages={1--7},
+  year={2011},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{martignoni2009emufuzzer,
+  title={Testing CPU emulators},
+  author={Martignoni, Lorenzo and Paleari, Roberto and Roglia, Giampaolo Fresi and Bruschi, Danilo},
+  booktitle={Proceedings of the eighteenth international symposium on Software testing and analysis},
+  pages={261--272},
+  year={2009}
+}
+
+@unpublished{martypc,
+  author = {Balsom, Daniel},
+  url = {https://github.com/dbalsom/martypc},
+  title  = {MartyPC},
+  year   = {2023}
+}
+
+@INPROCEEDINGS{bisect,
+  author={Ness, B. and Ngo, V.},
+  booktitle={Proceedings Twenty-First Annual International Computer Software and Applications Conference (COMPSAC'97)}, 
+  title={Regression containment through source change isolation}, 
+  year={1997},
+  volume={},
+  number={},
+  pages={616-621},
+  keywords={Software testing;Software systems;Automatic control;Control systems;Cost benefit analysis},
+  doi={10.1109/CMPSAC.1997.625082}}
+
+@inproceedings{schrittwieser2013covert,
+  title={Covert computation: Hiding code in code for obfuscation purposes},
+  author={Schrittwieser, Sebastian and Katzenbeisser, Stefan and Kieseberg, Peter and Huber, Markus and Leithner, Manuel and Mulazzani, Martin and Weippl, Edgar},
+  booktitle={Proceedings of the 8th ACM SIGSAC symposium on Information, computer and communications security},
+  pages={529--534},
+  year={2013}
+}
+
+@inproceedings{chen2008towards,
+  title={Towards an understanding of anti-virtualization and anti-debugging behavior in modern malware},
+  author={Chen, Xu and Andersen, Jon and Mao, Z Morley and Bailey, Michael and Nazario, Jose},
+  booktitle={2008 IEEE international conference on dependable systems and networks with FTCS and DCC (DSN)},
+  pages={177--186},
+  year={2008},
+  organization={IEEE}
+}
+
+@misc{reptar,
+  title={Reptar},
+  author={Ormandy, Tavis},
+  url={https://lock.cmpxchg8b.com/reptar.html},
+  year={2023},
+  urldate = {06/02/2026},
+  note = {Accessed on 06/02/2026}
+}

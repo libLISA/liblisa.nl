@@ -17,6 +17,13 @@ export default defineNuxtConfig({
       ]
     }
   },
+  content: {
+    build: {
+      transformers: [
+        '~~/transformers/html',
+      ]
+    },
+  },
   icon: {
     clientBundle: {
       scan: true,

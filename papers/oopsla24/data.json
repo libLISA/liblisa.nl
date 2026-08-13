@@ -1,0 +1,114 @@
+{
+  "encodings": {
+    "generated_on": "2024-01-31T15:25:09+01:00",
+    "generated_by": "compute-encoding-counts.sh",
+    "processors": {
+      "amd-3900x": {
+        "num_encodings": 118025,
+        "num_encodings_synthesized": 106002,
+        "num_encodings_undocumented": 2569,
+        "runtime_weeks": 7
+      },
+      "amd-7700x": {
+        "num_encodings": 118019,
+        "num_encodings_synthesized": 105205,
+        "num_encodings_undocumented": 2570,
+        "runtime_weeks": 14
+      },
+      "i9-13900-e": {
+        "num_encodings": 118135,
+        "num_encodings_synthesized": 105666,
+        "num_encodings_undocumented": 0,
+        "runtime_weeks": 21
+      },
+      "i9-13900-p": {
+        "num_encodings": 117605,
+        "num_encodings_synthesized": 105445,
+        "num_encodings_undocumented": 0,
+        "runtime_weeks": 13
+      },
+      "intel-xeon-silver-4110": {
+        "num_encodings": 117229,
+        "num_encodings_synthesized": 104499,
+        "num_encodings_undocumented": 0,
+        "runtime_weeks": 14
+      }
+    }
+  },
+  "coverage": {
+    "generated_on": "2024-02-06T00:03:17+01:00",
+    "generated_by": "compute-coverage.sh",
+    "processors": {
+      "amd-3900x": {
+        "binaries": {
+          "in": 99.99,
+          "out": 97.36,
+          "num_instructions": 3190703,
+          "encodings_covered": 4981
+        },
+        "random": {
+          "in": 99.99,
+          "out": 98.80,
+          "num_instructions": 4314770,
+          "encodings_covered": 17122
+        }
+      },
+      "amd-7700x": {
+        "binaries": {
+          "in": 99.99,
+          "out": 97.36,
+          "num_instructions": 3190703,
+          "encodings_covered": 4992
+        },
+        "random": {
+          "in": 99.99,
+          "out": 97.17,
+          "num_instructions": 9791595,
+          "encodings_covered": 5796
+        }
+      },
+      "i9-13900-e": {
+        "binaries": {
+          "in": 99.99,
+          "out": 97.36,
+          "num_instructions": 3190703,
+          "encodings_covered": 4987
+        },
+        "random": {
+          "in": 100.00,
+          "out": 97.68,
+          "num_instructions": 5464656,
+          "encodings_covered": 5793
+        }
+      },
+      "i9-13900-p": {
+        "binaries": {
+          "in": 99.99,
+          "out": 97.36,
+          "num_instructions": 3190703,
+          "encodings_covered": 4965
+        },
+        "random": {
+          "in": 99.99,
+          "out": 97.44,
+          "num_instructions": 7806757,
+          "encodings_covered": 5865
+        }
+      },
+      "intel-xeon-silver-4110": {
+        "binaries": {
+          "in": 99.99,
+          "out": 97.36,
+          "num_instructions": 3190703,
+          "encodings_covered": 4952
+        },
+        "random": {
+          "in": 100.00,
+          "out": 96.90,
+          "num_instructions": 11219081,
+          "encodings_covered": 5687
+        }
+      }
+    }
+  }
+}

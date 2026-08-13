@@ -28,6 +28,24 @@ export default defineContentConfig({
           url: z.string(),
         })),
       })
+    }),
+    papers: defineCollection({
+      type: 'page',
+      source: 'papers/**/*.html',
+      schema: z.object({
+        html: z.string(),
+        path: z.string(),
+        date: z.date(),
+        slug: z.string(),
+        previous: z.object({
+          title: z.string(),
+          url: z.string(),
+        }),
+        next: z.object({
+          title: z.string(),
+          url: z.string(),
+        })
+      })
     })
   }
 })
