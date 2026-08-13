@@ -24,14 +24,14 @@ if (!data.value) {
 <template>
   <nav>
     <NuxtLink v-if="data.previous" :to="`/papers/${route.params.paper}/${data.previous.url}`" class="navbutton prev">Previous Section: {{ data.previous.title }}</NuxtLink>
-    <a v-if="data.next" :href="`/papers/${route.params.paper}/${data.next.url}`" class="navbutton next">Next Section: {{ data.next.title }}</a>
+    <NuxtLink v-if="data.next" :to="`/papers/${route.params.paper}/${data.next.url}`" class="navbutton next">Next Section: {{ data.next.title }}</NuxtLink>
   </nav>
 
   <div v-html="data.html" />
 
   <nav>
     <NuxtLink v-if="data.previous" :to="`/papers/${route.params.paper}/${data.previous.url}`" class="navbutton prev">Previous Section: {{ data.previous.title }}</NuxtLink>
-    <a v-if="data.next" :href="`/papers/${route.params.paper}/${data.next.url}`" class="navbutton next">Next Section: {{ data.next.title }}</a>
+    <NuxtLink v-if="data.next" :to="`/papers/${route.params.paper}/${data.next.url}`" class="navbutton next">Next Section: {{ data.next.title }}</NuxtLink>
   </nav>
 </template>
 
