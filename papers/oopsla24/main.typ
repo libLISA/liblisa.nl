@@ -143,7 +143,6 @@
 ]
 
 #document("index.html", title: "libLISA: Instruction Discovery and Analysis on x86-64", [
-  #insert-metadata
   #include "abstract.typ"
 ])
 

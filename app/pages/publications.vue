@@ -12,6 +12,12 @@ useSeoMeta({
   twitterCard: 'summary',
 });
 
+const { data: paperData } = await useAsyncData(`all-papers`, () => 
+  queryCollection('papers').all()
+)
+
+prerenderRoutes(paperData.value.map(page => page.path));
+
 const { data } = await useAsyncData('publications', () => 
   queryCollection('publications')
     .order('date', 'DESC')
