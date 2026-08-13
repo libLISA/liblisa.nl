@@ -71,17 +71,14 @@ useHead({
   min-width: 100px;
 }
 
-.menu li a.active::before {
-  display: block;
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: 0;
-
-  width: 0;
-  height: 0;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid var(--main-col); 
+.menu li a.active {
+  clip-path: polygon(
+    0 10px,
+    10px 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  )
 }
 
 .menu li a.active {
