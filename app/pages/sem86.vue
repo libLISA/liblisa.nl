@@ -36,7 +36,7 @@ useSeoMeta({
 
   <div class="buttonrow">
     <NuxtLink class="button green" to="/publications/sem86-qrs26/">
-      <Icon name="fa7-regular:file-pdf" class="glyph" />
+      <Icon name="fa7-solid:file-lines" class="glyph" />
       Read the paper
     </NuxtLink>
     <a class="button purple" target="_blank" href="https://github.com/liblisa/sem86">

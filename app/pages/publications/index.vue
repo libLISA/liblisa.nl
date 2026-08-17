@@ -53,7 +53,7 @@ const isActive = (id) => route.hash === `#${id}`
 
       <div class="buttonrow">
         <NuxtLink v-if="publication.pdf" class="button small green" :to="`/publications/${publication.slug}/`">
-          <Icon name="fa7-soliid:file-lines" class="glyph" />
+          <Icon name="fa7-solid:file-lines" class="glyph" />
           Read the paper
         </NuxtLink>
         <button v-if="publication.bibtex"  class="button small yellow" :popovertarget="'cite-popover-' + publication.slug">

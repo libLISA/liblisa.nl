@@ -23,7 +23,7 @@ useSeoMeta({
 
   <div class="buttonrow">
     <NuxtLink class="button green" to="/publications/liblisa-oopsla24/">
-      <Icon name="fa7-regular:file-pdf" class="glyph" />
+      <Icon name="fa7-solid:file-lines" class="glyph" />
       Read the paper
     </NuxtLink>
     <a class="button yellow" target="_blank" href="https://explore.liblisa.nl/">

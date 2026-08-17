@@ -9,6 +9,11 @@ const route = useRoute();
 
 <template>
   <nav v-if="isIndex">
+    <NuxtLink :to="`/publications/`" class="navbutton home prev">
+      <Icon name="fa7-solid:caret-left" />
+      Back to all publications
+
+    </NuxtLink>
     <NuxtLink :to="data.path" class="navbutton next">{{ data.title }}</NuxtLink>
   </nav>
   <nav v-else>
