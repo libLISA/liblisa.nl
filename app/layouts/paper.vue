@@ -6,7 +6,7 @@ const { data: publication } = await useAsyncData(`publications-${route.params.pa
 
 useHead({
   titleTemplate: (title) => {
-    return `${title} - ${publication.value.title} - published at ${publication.value.authors}`
+    return `${title} - ${publication.value.title} - ${publication.value.authors} - published at ${publication.value.venue}`
   }
 })
 </script>
@@ -15,7 +15,11 @@ useHead({
   <div class="header">
     <p>
       <strong>
-        This is a web version of the paper <NuxtLink :to="`/publications#${route.params.paper}`">'{{ publication.title }}' by {{ publication.authors }}, first published at {{ publication.venue }}</NuxtLink>.
+        This is a web version of the paper
+        <br />
+        <NuxtLink :to="`/publications#${route.params.paper}`">'{{ publication.title }}'
+        <br />
+        by {{ publication.authors }}, first published at {{ publication.venue }}</NuxtLink>.
       </strong>
     </p>
     <div class="buttonrow">
@@ -37,6 +41,10 @@ useHead({
 <style scoped>
 a {
   color: #fff !important;
+}
+
+strong {
+  padding: 0 1.5em 0 1.5em;
 }
 
 .header {

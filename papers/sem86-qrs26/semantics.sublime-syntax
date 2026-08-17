@@ -1,0 +1,44 @@
+%YAML 1.2
+---
+name: Sem86 IR
+file_extensions:
+  - sem86
+scope: source.sem86
+
+variables:
+  ident: '[A-Za-z_][A-Za-z0-9_]*'
+  tmp: '\btmp[0-9]+\b'
+  flag: '\b(?:CF|OF|AF|SF|PF|ZF)\b'
+  part: '<[A-Za-z]+>'
+  number: '\b(?:0x[0-9A-Fa-f]+|[0-9]+)\b'
+
+contexts:
+  main:
+    - match: '//.*$'
+      scope: comment.line.sem86
+    - match: '{{tmp}}'
+      scope: variable.other.readwrite.sem86
+    - match: '{{flag}}'
+      scope: variable.language.flag.sem86
+    - match: '{{part}}'
+      scope: variable.language.part.sem86
+    - match: '<[A-Za-z_][A-Za-z0-9_]*>'
+      scope: variable.parameter.sem86
+    - match: '\b(?:Mul|And|Or|Xor|Add|Sub|Neg|Not|Shl|Shr|Sar|Rol|Ror|SignExt|ZeroExt|Trunc|SelectBit|Parity|IsZero|ite|Flag)\b'
+      scope: support.function.sem86
+    - match: '\b0x[0-9A-Fa-f]+\b'
+      scope: constant.numeric.hex.sem86
+    - match: '\b[0-9]+\b'
+      scope: constant.numeric.decimal.sem86
+    - match: ':='
+      scope: keyword.operator.assignment.sem86
+    - match: '[(),]'
+      scope: punctuation.separator.sem86
+    - match: '\['
+      scope: punctuation.section.brackets.begin.sem86
+    - match: '\]'
+      scope: punctuation.section.brackets.end.sem86
+    - match: '\('
+      scope: punctuation.section.parens.begin.sem86
+    - match: '\)'
+      scope: punctuation.section.parens.end.sem86

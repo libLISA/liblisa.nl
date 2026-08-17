@@ -1,5 +1,6 @@
 #import "@preview/thmbox:0.3.0": *
 #import "@preview/algorithmic:1.0.7": style-algorithm, algorithm as algorithmic_internal
+#import "@preview/subpar:0.2.2"
 #show: style-algorithm
 
 #let default-font = "Linux Libertine O";
@@ -27,6 +28,39 @@
     html.frame(body),
     ..rest
   )
+}
+
+#let html-compatible-multifigure(
+  ..figures,
+  columns: (auto),
+  caption: [],
+  label: none,
+  supplement: "Figure",
+) = {
+  set align(top)
+  let inner = subpar.grid(
+    grid-styles: it => {
+      set std.grid(gutter: 1em, align: top)
+      it
+    },
+    ..figures.pos().map(((body, label)) => {
+      (body, label)
+    }).flatten(),
+    columns: columns,
+    caption: caption,
+    label: label,
+    supplement: supplement,
+  )
+
+  context {
+    if target() == "html" {
+      html.frame(
+        block(width: 16cm, inner)
+      )
+    } else {
+      inner
+    }
+  }
 }
 
 #let algorithmic(..args) = {

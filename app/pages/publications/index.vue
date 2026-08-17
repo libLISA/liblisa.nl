@@ -12,12 +12,6 @@ useSeoMeta({
   twitterCard: 'summary',
 });
 
-const { data: paperData } = await useAsyncData(`all-papers`, () => 
-  queryCollection('papers').all()
-)
-
-prerenderRoutes(paperData.value.map(page => page.path));
-
 const { data } = await useAsyncData('publications', () => 
   queryCollection('publications')
     .order('date', 'DESC')
@@ -58,10 +52,10 @@ const isActive = (id) => route.hash === `#${id}`
       <ContentRenderer :value="publication" />
 
       <div class="buttonrow">
-        <a v-if="publication.pdf" class="button small green" :href="publication.pdf">
-          <Icon name="fa7-regular:file-pdf" class="glyph" />
+        <NuxtLink v-if="publication.pdf" class="button small green" :to="`/publications/${publication.slug}/`">
+          <Icon name="fa7-soliid:file-lines" class="glyph" />
           Read the paper
-        </a>
+        </NuxtLink>
         <button v-if="publication.bibtex"  class="button small yellow" :popovertarget="'cite-popover-' + publication.slug">
           <Icon name="fa7-solid:quote-left" class="glyph" />
           Cite

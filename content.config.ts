@@ -31,7 +31,7 @@ export default defineContentConfig({
     }),
     papers: defineCollection({
       type: 'page',
-      source: 'papers/**/*.html',
+      source: 'publications/**/*.html',
       schema: z.object({
         html: z.string(),
         path: z.string(),
