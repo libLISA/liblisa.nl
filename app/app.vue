@@ -164,6 +164,7 @@ h1.styled, h2.styled, h3.styled, h4.styled, h5.styled, .button {
   justify-content: center;
 
   text-wrap: nowrap;
+  text-shadow: 0px 0px 4px rgba(0 0 0 / 30%);
 }
 
 .button:active {
