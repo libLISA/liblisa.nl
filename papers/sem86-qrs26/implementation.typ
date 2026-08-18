@@ -143,7 +143,10 @@ This is sufficient to model all possible memory accesses on x86.
     )
 
     ```sem86
-    tmp0 := Mul(SignExt[32](<a>), SignExt[32](<b>))
+    tmp0 := Mul(
+      SignExt[32](<a>),
+      SignExt[32](<b>)
+    )
     <a> := tmp0
     tmp1 := And(tmp0, 0xFFFFFFFF80000000)
     tmp2 := Xor(tmp1, 0xFFFFFFFF80000000)

@@ -65,6 +65,15 @@ figure {
   overflow: auto;
 }
 
+figure > * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+figure pre {
+  align-self: start;
+}
+
 figure img {
   width: 100% !important;
   height: auto !important;
