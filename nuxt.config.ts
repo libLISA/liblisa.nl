@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/content', '@nuxt/icon', 'nuxt-svgo'],
+  modules: ['@nuxt/content', '@nuxt/icon', 'nuxt-svgo', '@nuxtjs/sitemap'],
   app: {
     head: {
       htmlAttrs: {
@@ -16,6 +16,9 @@ export default defineNuxtConfig({
         { rel: 'icon', href: '/favicon.ico' }
       ]
     }
+  },
+  site: {
+    url: 'liblisa.nl',
   },
   content: {
     build: {
