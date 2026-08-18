@@ -54,7 +54,7 @@ thead {
 }
 
 td, th {
-  padding: 8px;
+  padding: 6px 8px;
 }
 
 code {

@@ -159,7 +159,7 @@ Normally, instructions increment #tt[RIP] by the instruction length to advance t
 Branch instructions are considered as normal instructions that update #tt[RIP] by (conditionally) incrementing #tt[RIP] with the jump offset.
 Repeating instructions, such as #tt[REPNZ STOSB], perform one iteration of the repetition at a time, but do not increment #tt[RIP] as long as the repeat condition holds.
 
-=== Scope <encoding-analysis:subsec:scope>
+== Scope <encoding-analysis:subsec:scope>
 We restrict the enumeration scope to keep the runtime feasible.
 We exclude instructions with the following prefixes from being analyzed: 
     #tt[REPNZ] (#tt[F2]), 

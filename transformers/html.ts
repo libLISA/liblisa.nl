@@ -15,7 +15,8 @@ export default defineTransformer({
     const body = findElement(tree, 'body');
 
     if (body) {
-      rewriteLinks(body);
+      const id = file.id.replace(/^papers\//, '');
+      rewriteLinks(body, id);
     }
 
     const previous = extractNavigation(tree, 'previous-page');
@@ -170,7 +171,7 @@ function getTextContent(node: Element): string {
     .trim()
 }
 
-function rewriteLinks(node: Element) {
+function rewriteLinks(node: Element, basePath: string) {
   for (const child of node.children) {
     if (
       child.type === 'element' &&
@@ -179,17 +180,17 @@ function rewriteLinks(node: Element) {
       const href = child.properties.href
 
       if (typeof href === 'string') {
-        child.properties.href = rewriteHref(href)
+        child.properties.href = rewriteHref(href, basePath)
       }
     }
 
     if (child.type === 'element') {
-      rewriteLinks(child)
+      rewriteLinks(child, basePath)
     }
   }
 }
 
-function rewriteHref(href: string): string {
+function rewriteHref(href: string, basePath: string): string {
   if (
     href.startsWith('#') ||
     href.startsWith('mailto:') ||
@@ -201,5 +202,12 @@ function rewriteHref(href: string): string {
     return href
   }
 
-  return href.replace(/\.html(?=([?#]|$))/i, '')
+  const url = new URL(href, `https://example.com/${basePath}`)
+
+  // Only rewrite relative/local URLs.
+  if (url.origin !== 'https://example.com') {
+    return href
+  }
+
+  return url.pathname.replace(/\.html$/i, '') + url.search + url.hash
 }

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const route = useRoute();
 
 const { data } = await useAsyncData(`papers-${route.params.paper}-${route.params.section}`, () => 
@@ -11,7 +11,7 @@ definePageMeta({
 })
 
 useHead({
-  title: data.value.title,
+  title: data.value!.title,
 });
 
 if (!data.value) {
@@ -19,14 +19,29 @@ if (!data.value) {
     status: 404
   })
 }
+
+const router = useRouter()
+
+// This enables faster client-side navigation for the links in the content
+function handleContentClick(event: MouseEvent) {
+  const target = (event.target as HTMLElement).closest('a')
+  if (!target) return
+
+  const href = target.getAttribute('href')
+  if (!href || !href.startsWith('/')) return
+
+  event.preventDefault()
+  router.push(href)
+}
+
 </script>
 
 <template>
-  <PublicationNavbar :data="data" />
+  <PublicationNavbar :data="data!" />
 
-  <div class="page-content" v-html="data.html" />
+  <div class="page-content" v-html="data!.html" @click="handleContentClick" />
 
-  <PublicationNavbar :data="data" />
+  <PublicationNavbar :data="data!" />
 </template>
 
 <style scoped>
@@ -55,7 +70,7 @@ figure img {
   max-height: 400px;
 }
 
-li:target, figure:target, h1:target, h2:target, h3:target {
+li:target, figure:target, h1:target, h2:target, h3:target, h4:target, h5:target {
   animation: highlight 1s ease-in-out;
   background-color: rgb(255, 255, 235);
   border: 1px solid #ccc;

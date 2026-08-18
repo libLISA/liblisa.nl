@@ -17,9 +17,9 @@ const route = useRoute();
     <NuxtLink :to="data.path" class="navbutton next">{{ data.title }}</NuxtLink>
   </nav>
   <nav v-else>
-    <NuxtLink v-if="data.previous" :to="`/publications/${route.params.paper}/${data.previous.url}`" class="navbutton prev">{{ data.previous.title }}</NuxtLink>
+    <NuxtLink v-if="data.previous" :to="data.previous.url" class="navbutton prev">{{ data.previous.title }}</NuxtLink>
     <NuxtLink v-else :to="`/publications/${route.params.paper}/`" class="navbutton prev">Abstract &amp; Table of Contents</NuxtLink>
-    <NuxtLink v-if="data.next" :to="`/publications/${route.params.paper}/${data.next.url}`" class="navbutton next">{{ data.next.title }}</NuxtLink>
+    <NuxtLink v-if="data.next" :to="data.next.url" class="navbutton next">{{ data.next.title }}</NuxtLink>
     <NuxtLink v-else :to="`/publications/`" class="navbutton home next">
       <Icon name="fa7-solid:home" />
       Other publications

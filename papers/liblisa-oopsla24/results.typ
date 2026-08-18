@@ -3,7 +3,7 @@
 #let data = json("data.json")
 = Results <encoding-analysis:sec:results>
 
-We analyzed the x86-64 CPUs listed in Table @encoding-analysis:cpulist.
+We analyzed the x86-64 CPUs listed in @encoding-analysis:cpulist.
 The AMD 3900X and AMD 7700X use the Zen 2 and Zen 4 microarchitecture respectively.
 The Intel i9-13900 has two different kinds of cores.
 Performance cores ($A_2$) use Raptor Cove, while efficiency cores ($A_3$) use the Gracemont microarchitecture.
