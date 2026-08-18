@@ -16,7 +16,7 @@ Instead, we evaluate #sem86's ability to use different semantics
 by constructing a toy malware sample that relies on CPU-specific behavior.
 Our toy malware sample determines whether it is running inside an emulator by executing the #tt[IMUL] instruction,
 and checking the value that is stored in the zero flag (ZF) afterwards.
-The source code of our toy malware sample is shown in Figure~@sem86:fig:toy-malware.
+The source code of our toy malware sample is shown in @sem86:fig:toy-malware.
 
 #html-compatible-figure([
   ```c
@@ -25,7 +25,7 @@ The source code of our toy malware sample is shown in Figure~@sem86:fig:toy-malw
       int a = 15;
       int b = 0;
 
-      __asm 
+      __asm {
           xor result, 1
           mov eax, a
           mov ecx, b
@@ -33,29 +33,20 @@ The source code of our toy malware sample is shown in Figure~@sem86:fig:toy-malw
           jnz done
           mov result, 0
   done:
-      ;
+      };
 
-      if (result) 
-          MessageBox(
-              NULL,
-              "Deleting C drive",
-              "",
-              0
-          );
-      else 
-          MessageBox(
-              NULL, 
-              "Analysis attempt detected.", 
-              "",
-              0
-          );
+      if (result) {
+          MessageBox(NULL, "Deleting C drive", "", 0);
+      } else {
+          MessageBox(NULL, "Analysis attempt detected.", "", 0);
+      }
       
-
       return 0;
+  }
   ```
 ], caption: [
     Our toy malware sample. It forces ZF=0 by performing an #tt[XOR] that produces a non-zero result, and then executes an #tt[IMUL] that will produce a zero result. Finally, it checks whether the #tt[IMUL] instruction has modified the ZF. This is then used to show one of two message boxes: one message box represents malicious behavior, while the other message box represents silently exiting. The sample was compiled under Windows 98 using Visual Studio 6.0.
-], supplement: "Figure") <sem86:fig:toy-malware>
+], label: <sem86:fig:toy-malware>)
 
 The ZF is undefined for the #tt[IMUL] instruction, and is often implemented differently both in actual CPUs as well as emulators.
 Bochs currently implements the ZF by setting it to 1 if the result was zero, and setting it to 0 otherwise.
@@ -72,7 +63,7 @@ The bisection was able to automatically identify the #tt[IMUL] instruction as be
 #sem86 implements all hardware required to boot x86 operating systems.
 We evaluated this by booting Windows 98, Windows XP and Windows 7.
 We were able to boot all of these operating systems,
-as depicted in Figure~@sem86:fig:screenshots.
+as depicted in @sem86:fig:screenshots.
 
 #html-compatible-multifigure(
   columns: (1fr, 1fr, 1fr),
@@ -87,7 +78,7 @@ as depicted in Figure~@sem86:fig:screenshots.
   ], caption: [ Windows 7. ]), none),
   caption: [
     Various operating systems running in #sem86.
-], supplement: "Figure", label: <sem86:fig:screenshots>)
+], label: <sem86:fig:screenshots>)
 
 The ES1370 sound card and the NE2000 networking card cannot be used under Windows 7.
 While these work on Windows 98 and XP, no drivers are available for Windows 7.
@@ -110,14 +101,16 @@ We also list how many million instructions were executed per second (MIPS) durin
   #table(
     columns: (auto, auto, auto),
     align: (x, y) => if x == 0 { left } else { center },
-    [Emulator], [Score], [MIPS], 
+    table.header(
+      [Emulator], [Score], [MIPS],
+    ),
     [QEMU (10.1.0)], [$89.8$], [-], 
     [Bochs (3.0)], [$19.9$], [$74.31$],
     [#sem86], [$38.1$], [$192.7$],
   )
 ], caption: [
      The CPUMark'99 score of various emulators, as measured on an AMD 3900X host CPU. The score is the best of 5 runs. MIPS listed is the highest reached during all runs. Since QEMU does not report MIPS, this column is left blank.
-], kind: "table", supplement: "Table") <sem86:tbl:benchmark>
+], label: <sem86:tbl:benchmark>)
 
 We compare against QEMU and Bochs, because they are at opposite ends of the optimization spectrum:
 Bochs is purely an interpreter, and does not use any JIT optimization techniques for portability reasons.

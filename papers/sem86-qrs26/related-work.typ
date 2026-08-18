@@ -14,7 +14,9 @@ meaning the semantics cannot be easily changed, or extracted and translated to d
   #table(
       columns: (auto, auto, auto, auto, auto, auto, auto, auto),
       align: (x, y) => if x == 0 { left } else { center },
-      [], [QEMU], [Bochs], [x86isa &\ SAIL], [Gem5], [Dasgupta], [#libLISA], [#sem86],
+      table.header(
+        [], [QEMU], [Bochs], [x86isa &\ SAIL], [Gem5], [Dasgupta], [#libLISA], [#sem86],
+      ),
       [Semantics implementation], [Code], [Code], [Data], [Data], [Data], [Data], [Data],
       [x86 hardware implemented], [#y], [#y], [#n], [$tilde$], [#n], [#n], [#y],
       [System-level emulation], [#y], [#y], [#y], [#y], [#n], [#n], [#y],
@@ -23,7 +25,7 @@ meaning the semantics cannot be easily changed, or extracted and translated to d
   )
 ], caption: [
      Comparison of related work.
-], kind: "table", supplement: "Table") <sem86:tbl:related-work-comparison>
+], label: <sem86:tbl:related-work-comparison>)
 
 
 == x86 Semantics

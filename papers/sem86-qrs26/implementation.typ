@@ -71,7 +71,7 @@ The downside of this approach is that it is not as compact as hand-crafted solut
 In practice this is not a problem, as caching and JIT compilation mean that instruction decoding plays no role in emulator performance.
 
 === Intermediate Language
-We encode instruction semantics in a simple intermediate language, of which the grammar is shown in Figure~@sem86:fig:semantics-grammar.
+We encode instruction semantics in a simple intermediate language, of which the grammar is shown in @sem86:fig:semantics-grammar.
 The grammar consists of assignments, if-statements, memory- and port I/O accesses, segment descriptors loads, and various exceptional early returns.
 All values are 128-bit integers, which means the semantics do not require typing.
 Operators consist of typical integer arithmetic, bitwise operations and floating point arithmetic.
@@ -81,7 +81,6 @@ Absence of these constructs makes it trivial to translate this intermediate lang
 
 Expressions to compute memory addresses are restricted to a sum of terms, where each term consists of a single register, shifted right by a constant, and then multiplied by a constant.
 This is sufficient to model all possible memory accesses on x86.
-
 
 #html-compatible-figure([
   #let ref(name) = [ $⟨italic(name)⟩$ ]
@@ -128,16 +127,15 @@ This is sufficient to model all possible memory accesses on x86.
       $"ReadDescriptor"(dots)$,
     )
   ]
-], caption: [
+], framed: true, caption: [
   The grammar of #sem86's semantics.
   By keeping the grammar simple, it is easier to implement translation to other languages such as LLVM IR or SMT-LIB.
-], supplement: "Figure") <sem86:fig:semantics-grammar>
+], label: <sem86:fig:semantics-grammar>)
 
 #example([
-  We show the semantics for the #tt[IMUL] instruction in Figure~@sem86:fig:imul-semantics.
+  We show the semantics for the #tt[IMUL] instruction in @sem86:fig:imul-semantics.
   There are two placeholders that depend on the output of instruction decoding: "#tt[\<a\>]" and "#tt[\<b\>]".
   These will be substituted with the register corresponding to the value of the respective parts.
-
 
   #html-compatible-figure([
     #set raw(
@@ -164,7 +162,7 @@ This is sufficient to model all possible memory accesses on x86.
     Next, all flags are updated.
     Updates to the AF, SF, PF and ZF are undefined.
     In this example, the flags are updated to reflect the result of the multiplication.
-  ], supplement: "Figure") <sem86:fig:imul-semantics>
+  ], label: <sem86:fig:imul-semantics>)
 ])
 
 The semantics for each instruction also store control-flow behavior.

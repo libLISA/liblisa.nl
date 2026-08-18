@@ -40,6 +40,21 @@ svg {
   margin: auto;
 }
 
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em 0;
+  padding: 0.5em;
+  padding-top: 1.5em;
+}
+
+figure img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 400px;
+}
+
 li:target, figure:target, h1:target, h2:target, h3:target {
   animation: highlight 1s ease-in-out;
   background-color: rgb(255, 255, 235);

@@ -8,7 +8,7 @@ The input-output relations of #libLISA are depicted in @encoding-analysis:fig:io
   #image("../imgs/overview.pdf")
 ], caption: [
   The input-output relations of #libLISA.
-]) <encoding-analysis:fig:io-relations>
+], label: <encoding-analysis:fig:io-relations>)
 
 == CPU Observers <encoding-analysis:cpu-observers-desc>
 A CPU executes _instructions_: bitstrings of $8n$ bits.
@@ -103,7 +103,7 @@ A _memory access_ of type $M$ is a tuple with an address computation and a size.
   )
 ], caption: [
   The components of #libLISA's instruction semantics
-], kind: "table", supplement: "Table") <encoding-analysis:tab:summary>
+], label: <encoding-analysis:tab:summary>) 
 
 #paragraph[Bitpatterns]
 The bitpattern identifies _parts_ of the bitstring, as well as the constituents these parts are mapped to, given concrete instantiations.

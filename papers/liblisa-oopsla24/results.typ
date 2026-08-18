@@ -10,70 +10,73 @@ Performance cores ($A_2$) use Raptor Cove, while efficiency cores ($A_3$) use th
 The Intel Xeon 4110 Silver uses the Skylake microarchitecture, a predecessor of Raptor Lake.
 
 #html-compatible-figure([
-    #set align(center)
-    #table(
-        columns: (auto, auto, auto),
-        align: left,
-        [], [Name], [Microarchitecture],
-        [$A_0$], [Ryzen R9 3900X], [AMD - Zen 2],
-        [$A_1$], [Ryzen R7 7700X], [AMD - Zen 4],
-        [$A_2$], [Core i9-13900 (p)], [Intel - Raptor Cove],
-        [$A_3$], [Core i9-13900 (e)], [Intel - Gracemont],
-        [$A_4$], [Xeon Silver 4110], [Intel - Skylake],
-    )
+  #table(
+    columns: (auto, auto, auto),
+    align: left,
+    table.header(
+      [], [Name], [Microarchitecture],
+    ),
+    [$A_0$], [Ryzen R9 3900X], [AMD - Zen 2],
+    [$A_1$], [Ryzen R7 7700X], [AMD - Zen 4],
+    [$A_2$], [Core i9-13900 (p)], [Intel - Raptor Cove],
+    [$A_3$], [Core i9-13900 (e)], [Intel - Gracemont],
+    [$A_4$], [Xeon Silver 4110], [Intel - Skylake],
+  )
 ], caption: [
-    Overview of the CPUs we analyzed.
-], kind: "table", supplement: "Table") <encoding-analysis:cpulist>
+  Overview of the CPUs we analyzed.
+], label: <encoding-analysis:cpulist>)
 
 @encoding-analysis:raw-counts provides an overview of the results.
 Per architecture, it provides the number of generated encodings and the total time it took to run #libLISA.
 
 #html-compatible-figure([
-    #set align(center)
-    
-    //  A1:  928 + 249 = 1177h = 7w
-    //  A2: 1640 + 356 = 2352h = 14w
-    //  I1: 2761 + 385 = 3531h = 21w
-    //  I2: 2198 + 312 = 2510h = 13w
-    //  I3: 2367 + 280 = 2647h = 14w
-    
-    #let encodings = data.encodings.processors
-    #let coverage = data.coverage.processors
+  #set align(center)
+  
+  //  A1:  928 + 249 = 1177h = 7w
+  //  A2: 1640 + 356 = 2352h = 14w
+  //  I1: 2761 + 385 = 3531h = 21w
+  //  I2: 2198 + 312 = 2510h = 13w
+  //  I3: 2367 + 280 = 2647h = 14w
+  
+  #let encodings = data.encodings.processors
+  #let coverage = data.coverage.processors
 
-    #let encoding(cpu) = encodings.at(cpu)
-    #let cov(cpu) = coverage.at(cpu)
+  #let encoding(cpu) = encodings.at(cpu)
+  #let cov(cpu) = coverage.at(cpu)
 
-    #let dataFor(name) = (
-      [#num(encoding(name).at("num_encodings"))],
-      [#num(encoding(name).at("num_encodings_synthesized"))],
-      [#num(encoding(name).at("num_encodings_undocumented"))],
-      [#encoding(name).at("runtime_weeks") weeks],
-      [#cov(name).at("binaries").at("in")],
-      [#cov(name).at("binaries").at("out")],
-      [#cov(name).at("random").at("in")]
-    )
+  #let dataFor(name) = (
+    [#num(encoding(name).at("num_encodings"))],
+    [#num(encoding(name).at("num_encodings_synthesized"))],
+    [#num(encoding(name).at("num_encodings_undocumented"))],
+    [#encoding(name).at("runtime_weeks") weeks],
+    [#cov(name).at("binaries").at("in")],
+    [#cov(name).at("binaries").at("out")],
+    [#cov(name).at("random").at("in")]
+  )
 
-    #table(
-        columns: (auto, auto, auto, auto, auto, auto, auto, auto),
-        align: (x, y) => left,
-        [],
-        [Encodings],
-        [Synthesized],
-        [Undocumented],
-        [Runtime],
-        [$C_"in"$ (%)],
-        [$C_"out"$ (%)],
-        [$C_("random","in")$ (%)],
+  #table(
+    columns: (auto, auto, auto, auto, auto, auto, auto, auto),
+    align: (x, y) => left,
+    table.header(
+      [],
+      [Encodings],
+      [Synthesized],
+      [Undocumented],
+      [Runtime],
+      [$C_"in"$ (%)],
+      [$C_"out"$ (%)],
+      [$C_("random","in")$ (%)],
+    ),
 
-        [$A_0$], ..dataFor("amd-3900x"),
-        [$A_1$], ..dataFor("amd-7700x"),
-        [$A_2$], ..dataFor("i9-13900-e"),
-        [$A_3$], ..dataFor("i9-13900-p"),
-        [$A_4$], ..dataFor("intel-xeon-silver-4110"),
-    )
+    [$A_0$], ..dataFor("amd-3900x"),
+    [$A_1$], ..dataFor("amd-7700x"),
+    [$A_2$], ..dataFor("i9-13900-e"),
+    [$A_3$], ..dataFor("i9-13900-p"),
+    [$A_4$], ..dataFor("intel-xeon-silver-4110"),
+  )
 ], caption: [
     Overview of the results.
-], kind: "table", supplement: "Table") <encoding-analysis:raw-counts>
+], label: <encoding-analysis:raw-counts>)
 
 
 == Validation
@@ -168,26 +171,23 @@ If the oracle determines that at least one of the sampled instructions exhibits 
 The results are shown in @encoding-analysis:tbl:undefined.
 On average, 90% of the encodings marked as having undefined behavior by the oracle were synthesized.
 
-
 #html-compatible-figure([
-    #set align(center)
-    #table(
-      columns: (auto, auto, auto, auto),
-      align: left,
+  #set align(center)
+  #table(
+    columns: (auto, auto, auto, auto),
+    align: left,
+    table.header(
       [], [Synthesized], [Encodings], [Percentage],
-      [$A_0$], [#num(18548)], [#num(20316)], [$91.2%$],
-      [$A_1$], [#num(18087)], [#num(20204)], [$89.5%$], 
-      [$A_2$], [#num(17805)], [#num(19578)], [$90.9%$], 
-      [$A_3$], [#num(18123)], [#num(20105)], [$90.1%$], 
-      [$A_4$], [#num(17699)], [#num(19767)], [$89.5%$],
+    ),
+    [$A_0$], [#num(18548)], [#num(20316)], [$91.2%$],
+    [$A_1$], [#num(18087)], [#num(20204)], [$89.5%$], 
+    [$A_2$], [#num(17805)], [#num(19578)], [$90.9%$], 
+    [$A_3$], [#num(18123)], [#num(20105)], [$90.1%$], 
+    [$A_4$], [#num(17699)], [#num(19767)], [$89.5%$],
   )
-
-
 ], caption: [
     The number of encodings with undefined behavior that #libLISA was able to synthesize.
-], kind: "table", supplement: "Table") <encoding-analysis:tbl:undefined>
-
-
+], label: <encoding-analysis:tbl:undefined>)
 
 == Comparisons with Existing Work<encoding-analysis:results-existing-work-comparisons>
 In this section we aim to answer two questions:
@@ -237,78 +237,80 @@ We copy the comparison results from the variant returned by the disassembler to 
 #html-compatible-figure([
   #set align(center)
   #table(
-      columns: (75mm, auto, auto, auto, auto, auto),
-      align: (x, y) => left,
+    columns: (75mm, auto, auto, auto, auto, auto),
+    align: (x, y) => left,
+    table.header(
       [], [$A_0$], [$A_1$], [$A_2$], [$A_3$], [$A_4$],
-      table.cell(colspan: 6, box[Variants from Dasgupta et al. that#sym.dots]),
-      [#h(1em) #sym.dots agree with #libLISA],
-          num(dasguptaComparison.amd-3900x.VAgree),
-          num(dasguptaComparison.amd-7700x.VAgree),
-          num(dasguptaComparison.i9-13900-p.VAgree),
-          num(dasguptaComparison.i9-13900-e.VAgree),
-          num(dasguptaComparison.intel-xeon-silver-4110.VAgree),
+    ),
+    table.cell(colspan: 6, box[Variants from Dasgupta et al. that#sym.dots]),
+    [#h(1em) #sym.dots agree with #libLISA],
+      num(dasguptaComparison.amd-3900x.VAgree),
+      num(dasguptaComparison.amd-7700x.VAgree),
+      num(dasguptaComparison.i9-13900-p.VAgree),
+      num(dasguptaComparison.i9-13900-e.VAgree),
+      num(dasguptaComparison.intel-xeon-silver-4110.VAgree),
 
-      box[#h(1em) #sym.dots disagree with #libLISA],
-          num(dasguptaComparison.amd-3900x.VDisagree),
-          num(dasguptaComparison.amd-7700x.VDisagree),
-          num(dasguptaComparison.i9-13900-p.VDisagree),
-          num(dasguptaComparison.i9-13900-e.VDisagree),
-          num(dasguptaComparison.intel-xeon-silver-4110.VDisagree),
+    box[#h(1em) #sym.dots disagree with #libLISA],
+      num(dasguptaComparison.amd-3900x.VDisagree),
+      num(dasguptaComparison.amd-7700x.VDisagree),
+      num(dasguptaComparison.i9-13900-p.VDisagree),
+      num(dasguptaComparison.i9-13900-e.VDisagree),
+      num(dasguptaComparison.intel-xeon-silver-4110.VDisagree),
 
-      box[#h(3em) Dasgupta et al. incorrect],
-          num(dasguptaComparison.amd-3900x.VDisagreeDasguptaError),
-          num(dasguptaComparison.amd-7700x.VDisagreeDasguptaError),
-          num(dasguptaComparison.i9-13900-p.VDisagreeDasguptaError),
-          num(dasguptaComparison.i9-13900-e.VDisagreeDasguptaError),
-          num(dasguptaComparison.intel-xeon-silver-4110.VDisagreeDasguptaError),
+    box[#h(3em) Dasgupta et al. incorrect],
+      num(dasguptaComparison.amd-3900x.VDisagreeDasguptaError),
+      num(dasguptaComparison.amd-7700x.VDisagreeDasguptaError),
+      num(dasguptaComparison.i9-13900-p.VDisagreeDasguptaError),
+      num(dasguptaComparison.i9-13900-e.VDisagreeDasguptaError),
+      num(dasguptaComparison.intel-xeon-silver-4110.VDisagreeDasguptaError),
 
-      box[#h(3em) #libLISA incorrect],
-          num(dasguptaComparison.amd-3900x.VDisagreeLibLisaError),
-          num(dasguptaComparison.amd-7700x.VDisagreeLibLisaError),
-          num(dasguptaComparison.i9-13900-p.VDisagreeLibLisaError),
-          num(dasguptaComparison.i9-13900-e.VDisagreeLibLisaError),
-          num(dasguptaComparison.intel-xeon-silver-4110.VDisagreeLibLisaError),
+    box[#h(3em) #libLISA incorrect],
+      num(dasguptaComparison.amd-3900x.VDisagreeLibLisaError),
+      num(dasguptaComparison.amd-7700x.VDisagreeLibLisaError),
+      num(dasguptaComparison.i9-13900-p.VDisagreeLibLisaError),
+      num(dasguptaComparison.i9-13900-e.VDisagreeLibLisaError),
+      num(dasguptaComparison.intel-xeon-silver-4110.VDisagreeLibLisaError),
 
-      box[#h(1em) #sym.dots are incorrectly specified],
-          num(dasguptaComparison.amd-3900x.VMissingDasguptaError),
-          num(dasguptaComparison.amd-7700x.VMissingDasguptaError),
-          num(dasguptaComparison.i9-13900-p.VMissingDasguptaError),
-          num(dasguptaComparison.i9-13900-e.VMissingDasguptaError),
-          num(dasguptaComparison.intel-xeon-silver-4110.VMissingDasguptaError),
+    box[#h(1em) #sym.dots are incorrectly specified],
+      num(dasguptaComparison.amd-3900x.VMissingDasguptaError),
+      num(dasguptaComparison.amd-7700x.VMissingDasguptaError),
+      num(dasguptaComparison.i9-13900-p.VMissingDasguptaError),
+      num(dasguptaComparison.i9-13900-e.VMissingDasguptaError),
+      num(dasguptaComparison.intel-xeon-silver-4110.VMissingDasguptaError),
 
-      box[#h(1em) #sym.dots are out of enumeration scope for #libLISA],
-          num(dasguptaComparison.amd-3900x.VMissingOutOfScope),
-          num(dasguptaComparison.amd-7700x.VMissingOutOfScope),
-          num(dasguptaComparison.i9-13900-p.VMissingOutOfScope),
-          num(dasguptaComparison.i9-13900-e.VMissingOutOfScope),
-          num(dasguptaComparison.intel-xeon-silver-4110.VMissingOutOfScope),
+    box[#h(1em) #sym.dots are out of enumeration scope for #libLISA],
+      num(dasguptaComparison.amd-3900x.VMissingOutOfScope),
+      num(dasguptaComparison.amd-7700x.VMissingOutOfScope),
+      num(dasguptaComparison.i9-13900-p.VMissingOutOfScope),
+      num(dasguptaComparison.i9-13900-e.VMissingOutOfScope),
+      num(dasguptaComparison.intel-xeon-silver-4110.VMissingOutOfScope),
 
-      box[#h(1em) #sym.dots are enumerated but not synthesized by #libLISA],
-          num(dasguptaComparison.amd-3900x.VMissingSynthesis),
-          num(dasguptaComparison.amd-7700x.VMissingSynthesis),
-          num(dasguptaComparison.i9-13900-p.VMissingSynthesis),
-          num(dasguptaComparison.i9-13900-e.VMissingSynthesis),
-          num(dasguptaComparison.intel-xeon-silver-4110.VMissingSynthesis),
+    box[#h(1em) #sym.dots are enumerated but not synthesized by #libLISA],
+      num(dasguptaComparison.amd-3900x.VMissingSynthesis),
+      num(dasguptaComparison.amd-7700x.VMissingSynthesis),
+      num(dasguptaComparison.i9-13900-p.VMissingSynthesis),
+      num(dasguptaComparison.i9-13900-e.VMissingSynthesis),
+      num(dasguptaComparison.intel-xeon-silver-4110.VMissingSynthesis),
 
-      box[#h(1em) #sym.dots are not discovered by #libLISA's enumeration],
-          num(dasguptaComparison.amd-3900x.VMissingEnumeration),
-          num(dasguptaComparison.amd-7700x.VMissingEnumeration),
-          num(dasguptaComparison.i9-13900-p.VMissingEnumeration),
-          // '0' here because of bug that has since been fixed
-          [#num(0)],
-          num(dasguptaComparison.intel-xeon-silver-4110.VMissingEnumeration),
+    box[#h(1em) #sym.dots are not discovered by #libLISA's enumeration],
+      num(dasguptaComparison.amd-3900x.VMissingEnumeration),
+      num(dasguptaComparison.amd-7700x.VMissingEnumeration),
+      num(dasguptaComparison.i9-13900-p.VMissingEnumeration),
+      // '0' here because of bug that has since been fixed
+      [#num(0)],
+      num(dasguptaComparison.intel-xeon-silver-4110.VMissingEnumeration),
 
-      table.cell(colspan: 6, box[Encodings found by #libLISA that$#sym.dots$]),
-          box[#h(1em)#sym.dots are not covered by Dasgupta et al.],
-          num(dasguptaComparison.amd-3900x.EMissing),
-          num(dasguptaComparison.amd-7700x.EMissing),
-          num(dasguptaComparison.i9-13900-p.EMissing),
-          num(dasguptaComparison.i9-13900-e.EMissing),
-          num(dasguptaComparison.intel-xeon-silver-4110.EMissing),
+    table.cell(colspan: 6, box[Encodings found by #libLISA that$#sym.dots$]),
+      box[#h(1em)#sym.dots are not covered by Dasgupta et al.],
+      num(dasguptaComparison.amd-3900x.EMissing),
+      num(dasguptaComparison.amd-7700x.EMissing),
+      num(dasguptaComparison.i9-13900-p.EMissing),
+      num(dasguptaComparison.i9-13900-e.EMissing),
+      num(dasguptaComparison.intel-xeon-silver-4110.EMissing),
   )
 ], caption: [
   Comparative results. We were unable to compare semantics from #num(dasguptaComparison.amd-3900x.VSkipped) variants of Dasgupta et al.'s semantics.
-], kind: "table", supplement: "Table") <encoding-analysis:tab:relative_compare>
+], label: <encoding-analysis:tab:relative_compare>)
 
 
 @encoding-analysis:tab:relative_compare provides the results.
@@ -377,55 +379,62 @@ We describe the differences between the semantics we found in @encoding-analysis
 
 
 #html-compatible-figure([
-    #set align(center)
+  #let ImplA = framed(rect(width: 2mm, height: 2mm, fill: liblisa-blue))
+  #let ImplB = framed(circle(radius: 1mm, stroke: 1mm + red, fill: red))
+  #let ImplC = framed(polygon(fill: green, (1mm, 0mm), (2mm, 2mm), (0em, 2mm)))
+  #let ImplD = framed(polygon(fill: orange, (1mm, 2mm), (2mm, 0mm), (0mm, 0mm)))
+  #let ImplE = framed(circle(radius: 1mm, stroke: 0.7mm + purple))
+  #let ImplX = []
 
-    #let ImplA = rect(width: 2mm, height: 2mm, fill: liblisa-blue)
-    #let ImplB = circle(radius: 1mm, stroke: 1mm + red, fill: red)
-    #let ImplC = polygon(fill: green, (1mm, 0mm), (2mm, 2mm), (0em, 2mm))
-    #let ImplD = polygon(fill: orange, (1mm, 2mm), (2mm, 0mm), (0mm, 0mm))
-    #let ImplE = circle(radius: 1mm, stroke: 0.7mm + purple)
-    #let ImplX = []
-    #set align(center)
-    #table(
-      columns: (auto, auto, 6mm, 6mm, 6mm, 6mm, 6mm),
-      inset: (bottom: 1mm, top: 1mm),
+  #table(
+    columns: (auto, auto, 6mm, 6mm, 6mm, 6mm, 6mm),
+    inset: (bottom: 1mm, top: 1mm),
+    table.header(
       table.cell(align: left, inset: (top: 2mm, bottom: 2mm), [ *Group* ]),
       table.cell([ *\# Encodings* ], align: left), [ $A_0$ ], [ $A_1$ ], [ $A_2$ ], [ $A_3$ ], [ $A_4$ ],
-      
-      align(left, [Group 0    ]), align(right, [ 95170 ]), [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplA ],
-      align(left, [Group 1    ]), align(right, [  4777 ]), [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplC ], [ #ImplB ],
-      align(left, [Group 2    ]), align(right, [  2571 ]), [ #ImplA ], [ #ImplA ], [ #ImplX ], [ #ImplX ], [ #ImplX ],
-      align(left, [Group 3    ]), align(right, [  1602 ]), [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplA ], [ #ImplB ],
-      align(left, [Group 4    ]), align(right, [   604 ]), [ #ImplA ], [ #ImplB ], [ #ImplC ], [ #ImplD ], [ #ImplE ],
-      align(left, [Group 5    ]), align(right, [   581 ]), [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplB ], [ #ImplB ],
-      align(left, [Group 6    ]), align(right, [   101 ]), [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplX ],
-      align(left, [Group 7    ]), align(right, [    40 ]), [ #ImplX ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplX ],
-      align(left, [Group 8    ]), align(right, [    29 ]), [ #ImplX ], [ #ImplX ], [ #ImplA ], [ #ImplA ], [ #ImplX ],
-      align(left, [Group 9    ]), align(right, [    24 ]), [ #ImplX ], [ #ImplX ], [ #ImplX ], [ #ImplX ], [ #ImplA ],
-      align(left, [Group 10   ]), align(right, [    16 ]), [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplB ],
-      align(left, [Group 11   ]), align(right, [    16 ]), [ #ImplA ], [ #ImplB ], [ #ImplB ], [ #ImplB ], [ #ImplB ],
-      align(left, [Group 12   ]), align(right, [    12 ]), [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplA ], [ #ImplA ],
-      align(left, [Group 13   ]), align(right, [     9 ]), [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplA ],
-      align(left, [Group 14   ]), align(right, [     7 ]), [ #ImplA ], [ #ImplB ], [ #ImplA ], [ #ImplA ], [ #ImplA ],
-      align(left, [Group 15   ]), align(right, [     5 ]), [ #ImplA ], [ #ImplB ], [ #ImplA ], [ #ImplB ], [ #ImplA ],
-      align(left, [Group 16   ]), align(right, [     5 ]), [ #ImplA ], [ #ImplB ], [ #ImplB ], [ #ImplA ], [ #ImplC ],
-      align(left, [Group 17   ]), align(right, [     4 ]), [ #ImplA ], [ #ImplB ], [ #ImplB ], [ #ImplA ], [ #ImplA ],
-      align(left, [Group 18   ]), align(right, [     3 ]), [ #ImplA ], [ #ImplA ], [ #ImplX ], [ #ImplX ], [ #ImplA ],
-      align(left, [Group 19   ]), align(right, [     2 ]), [ #ImplX ], [ #ImplX ], [ #ImplA ], [ #ImplA ], [ #ImplA ],
-      align(left, [Group 20   ]), align(right, [     2 ]), [ #ImplA ], [ #ImplB ], [ #ImplC ], [ #ImplD ], [ #ImplC ],
-      align(left, [Group 21   ]), align(right, [     1 ]), [ #ImplX ], [ #ImplA ], [ #ImplX ], [ #ImplX ], [ #ImplX ],
-      align(left, [Group 22   ]), align(right, [     1 ]), [ #ImplX ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplA ],
-      align(left, [Group 23   ]), align(right, [     1 ]), [ #ImplA ], [ #ImplX ], [ #ImplX ], [ #ImplX ], [ #ImplA ],
-      align(left, [Group 24   ]), align(right, [     1 ]), [ #ImplA ], [ #ImplX ], [ #ImplA ], [ #ImplA ], [ #ImplA ],
-      align(left, [Group 25   ]), align(right, [     1 ]), [ #ImplA ], [ #ImplA ], [ #ImplX ], [ #ImplA ], [ #ImplA ],
-      align(left, [Group 26   ]), align(right, [     1 ]), [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplB ], [ #ImplA ],
-      align(left, [Group 27   ]), align(right, [     1 ]), [ #ImplA ], [ #ImplB ], [ #ImplA ], [ #ImplC ], [ #ImplC ],
-      align(left, [Group 28   ]), align(right, [     1 ]), [ #ImplA ], [ #ImplB ], [ #ImplC ], [ #ImplC ], [ #ImplC ],
-      align(left, [Synthesis failed]), align(right, [ 14036 ]),
-    )
+    ),
+    align: (x, y) => if x == 0 {
+      left
+    } else if x == 1 {
+      right
+    } else {
+      center
+    } + horizon,
+    
+    [Group 0    ], [ 95170 ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplA ],
+    [Group 1    ], [  4777 ], [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplC ], [ #ImplB ],
+    [Group 2    ], [  2571 ], [ #ImplA ], [ #ImplA ], [ #ImplX ], [ #ImplX ], [ #ImplX ],
+    [Group 3    ], [  1602 ], [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplA ], [ #ImplB ],
+    [Group 4    ], [   604 ], [ #ImplA ], [ #ImplB ], [ #ImplC ], [ #ImplD ], [ #ImplE ],
+    [Group 5    ], [   581 ], [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplB ], [ #ImplB ],
+    [Group 6    ], [   101 ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplX ],
+    [Group 7    ], [    40 ], [ #ImplX ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplX ],
+    [Group 8    ], [    29 ], [ #ImplX ], [ #ImplX ], [ #ImplA ], [ #ImplA ], [ #ImplX ],
+    [Group 9    ], [    24 ], [ #ImplX ], [ #ImplX ], [ #ImplX ], [ #ImplX ], [ #ImplA ],
+    [Group 10   ], [    16 ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplB ],
+    [Group 11   ], [    16 ], [ #ImplA ], [ #ImplB ], [ #ImplB ], [ #ImplB ], [ #ImplB ],
+    [Group 12   ], [    12 ], [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplA ], [ #ImplA ],
+    [Group 13   ], [     9 ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplA ],
+    [Group 14   ], [     7 ], [ #ImplA ], [ #ImplB ], [ #ImplA ], [ #ImplA ], [ #ImplA ],
+    [Group 15   ], [     5 ], [ #ImplA ], [ #ImplB ], [ #ImplA ], [ #ImplB ], [ #ImplA ],
+    [Group 16   ], [     5 ], [ #ImplA ], [ #ImplB ], [ #ImplB ], [ #ImplA ], [ #ImplC ],
+    [Group 17   ], [     4 ], [ #ImplA ], [ #ImplB ], [ #ImplB ], [ #ImplA ], [ #ImplA ],
+    [Group 18   ], [     3 ], [ #ImplA ], [ #ImplA ], [ #ImplX ], [ #ImplX ], [ #ImplA ],
+    [Group 19   ], [     2 ], [ #ImplX ], [ #ImplX ], [ #ImplA ], [ #ImplA ], [ #ImplA ],
+    [Group 20   ], [     2 ], [ #ImplA ], [ #ImplB ], [ #ImplC ], [ #ImplD ], [ #ImplC ],
+    [Group 21   ], [     1 ], [ #ImplX ], [ #ImplA ], [ #ImplX ], [ #ImplX ], [ #ImplX ],
+    [Group 22   ], [     1 ], [ #ImplX ], [ #ImplA ], [ #ImplA ], [ #ImplA ], [ #ImplA ],
+    [Group 23   ], [     1 ], [ #ImplA ], [ #ImplX ], [ #ImplX ], [ #ImplX ], [ #ImplA ],
+    [Group 24   ], [     1 ], [ #ImplA ], [ #ImplX ], [ #ImplA ], [ #ImplA ], [ #ImplA ],
+    [Group 25   ], [     1 ], [ #ImplA ], [ #ImplA ], [ #ImplX ], [ #ImplA ], [ #ImplA ],
+    [Group 26   ], [     1 ], [ #ImplA ], [ #ImplA ], [ #ImplB ], [ #ImplB ], [ #ImplA ],
+    [Group 27   ], [     1 ], [ #ImplA ], [ #ImplB ], [ #ImplA ], [ #ImplC ], [ #ImplC ],
+    [Group 28   ], [     1 ], [ #ImplA ], [ #ImplB ], [ #ImplC ], [ #ImplC ], [ #ImplC ],
+    [Synthesis failed], [ 14036 ],
+  )
 ], caption: [
-    Architecture comparison. Each row describes a group of instructions that differ in a certain way between architectures. Each symbol represents a different implementation for that specific group of instructions. For example, there are two implementations for the instructions in group 5: $A_0$ and $A_1$ share the same implementation, and $A_2$, $A_3$ and $A_4$ share another implementation. We re-use the same symbols for each row. When a cell is left blank, this indicates a missing implementation. For example, the instructions in group 2 are only supported by $A_0$ and $A_1$.
-], kind: "table", supplement: "Table") <encoding-analysis:semantic-differences>
+  Architecture comparison. Each row describes a group of instructions that differ in a certain way between architectures. Each symbol represents a different implementation for that specific group of instructions. For example, there are two implementations for the instructions in group 5: $A_0$ and $A_1$ share the same implementation, and $A_2$, $A_3$ and $A_4$ share another implementation. We re-use the same symbols for each row. When a cell is left blank, this indicates a missing implementation. For example, the instructions in group 2 are only supported by $A_0$ and $A_1$.
+], label: <encoding-analysis:semantic-differences>)
 
 
 Most encodings are part of group~0, which have identical semantics across all 5 architectures.
@@ -503,7 +512,9 @@ In total, we have verified #num(1244385) instruction executions against the real
   #table(
     columns: (auto, auto),
     align: (x, y) => left,
-    [Binary], [Number of instructions],
+    table.header(
+      [Binary], [Number of instructions],
+    ),
     [Hello world], [#num(98813)],
     [#tt[/bin/true]], [#num(120969)],
     [#tt[/bin/ls /dev/null]], [#num(321084)],
@@ -513,7 +524,7 @@ In total, we have verified #num(1244385) instruction executions against the real
   )
 ], caption: [
   Binaries that we are able to emulate successfully on an AMD 3900X CPU.
-], kind: "table", supplement: "Table") <encoding-analysis:tbl:emulation>
+], label: <encoding-analysis:tbl:emulation>)
 
 
 We emulate the binary itself, the dynamic linker (#tt[/lib64/ld-linux-x86-64.so.2]), and all dynamically loaded binaries (e.g., #tt[libc.so]).

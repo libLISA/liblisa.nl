@@ -38,10 +38,35 @@ body {
   box-sizing: border-box;
 }
 
+table {
+  border: 1px solid #999;
+  text-align: left;
+  gap: none;
+  border-spacing: none;
+  border-collapse: collapse;
+  margin: auto;
+  background: #FFF;
+}
+
+thead {
+  background: var(--main-col);
+  color: #FFF;
+}
+
+td, th {
+  padding: 8px;
+}
+
 code {
   background: #eee;
   border: 1px solid #ccc;
   padding: 1px 4px;
+}
+
+thead code {
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 a[href]:hover code {

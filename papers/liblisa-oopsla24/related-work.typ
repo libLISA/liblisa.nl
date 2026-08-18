@@ -29,23 +29,23 @@ There have been many attempts to obtain formal semantics for x86-64.
 In this section we summarize related work and compare it to #libLISA (see @encoding-analysis:tbl:related-work-comparison).
 
 #html-compatible-figure([
-    #set align(center)
-    #table(
-        columns: (auto, auto, auto, auto, auto, auto),
-        align: (x, y) => if x == 0 { left } else { center },
+  #set align(center)
+  #table(
+      columns: (auto, auto, auto, auto, auto, auto),
+      align: (x, y) => if x == 0 { left } else { center },
+      table.header(
         [], [Goel], [CompCert], [Strata], [Dasgupta], [#libLISA], 
-        [Automatic], [#n], [#n], [#y], [#n], [#y], 
-        [Source of\ instructions], [Human], [Human], [Disassembler], [Disassembler],
-        [Enumeration], [Source of\ semantics], [Human], [Human], [Synthesis], [Human#super[#sym.dagger]],
-        [Synthesis], [CPU-specific], [#n], [#n], [#n#super[#sym.dagger.double]], [#n], [#y], 
-        [SMTLib export], [#n], [#n], [#y], [#n], [#y],
-        [Executable], [#y], [#y], [#y], [#y], [#y],
-    )
-
-
+      ),
+      [Automatic], [#n], [#n], [#y], [#n], [#y], 
+      [Source of\ instructions], [Human], [Human], [Disassembler], [Disassembler],
+      [Enumeration], [Source of\ semantics], [Human], [Human], [Synthesis], [Human#super[#sym.dagger]],
+      [Synthesis], [CPU-specific], [#n], [#n], [#n#super[#sym.dagger.double]], [#n], [#y], 
+      [SMTLib export], [#n], [#n], [#y], [#n], [#y],
+      [Executable], [#y], [#y], [#y], [#y], [#y],
+  )
 ], caption: [
     Comparison of related work. ($#sym.dagger$): Dasgupta et al. augment Strata's synthesized semantics with manually written semantics. ($#sym.dagger$): Strata overlays a manual specification of undefined behavior on the synthesized semantics to make them non-CPU-specific.
-], kind: "table", supplement: "Table") <encoding-analysis:tbl:related-work-comparison>
+], label: <encoding-analysis:tbl:related-work-comparison>)
 
 Goel et al. provide an x86-64 ACL2 model~@goel2014simulation which covers mainly one-byte and two-byte x86-64 instructions, consisting of roughly a third of all non-privileged instruction variants.
 Morrisett et al.~@morrisett2012rocksalt developed a Coq model for a subset of 32-bit x86, which was used to implement a static analysis tool for Google's Native Client (NaCl).
@@ -78,25 +78,24 @@ We discuss this in more detail in Section~@encoding-analysis:sec:dasgupta-compar
 For both Strata and Dasgupta et al., we present a comparative overview of the types of instructions for which they provide semantics in @encoding-analysis:tbl:related-work-scope-comparison.
 
 #html-compatible-figure([
-    #set align(center)
-    #table(
-        columns: (auto, auto, auto, auto),
-        stroke: none,
-        align: (x, y) => if x == 0 { left } else { center },
-        [], [STRATA], [Dasgupta], [#libLISA],
-        [Integer, bitwise, control flow], [#y], [#y], [#y],
-        [Privileged instructions], [#n], [#n], [#n],
-        [x87], [#n], [#n], [#n],
-        [MMX], [#n], [#n], [#y],
-        [String instructions], [#n], [#y], [#y#super[#sym.dagger]],
-        [SSE/AVX (floating point)], [#y], [#y], [#n],
-        [SSE/AVX (integer)], [#y], [#y], [#y],
-    )
-
-
+  #table(
+    columns: (auto, auto, auto, auto),
+    stroke: none,
+    align: (x, y) => if x == 0 { left } else { center },
+    table.header(
+      [], [STRATA], [Dasgupta], [#libLISA],
+    ),
+    [Integer, bitwise, control flow], [#y], [#y], [#y],
+    [Privileged instructions], [#n], [#n], [#n],
+    [x87], [#n], [#n], [#n],
+    [MMX], [#n], [#n], [#y],
+    [String instructions], [#n], [#y], [#y#super[#sym.dagger]],
+    [SSE/AVX (floating point)], [#y], [#y], [#n],
+    [SSE/AVX (integer)], [#y], [#y], [#y],
+  )
 ], caption: [
-     Comparison of types of instructions with semantics covered by STRATA, Dasgupta et al. and #libLISA. ($#sym.dagger$): The #tt[REP] prefix is out-of-scope, but non-repeating string instructions are synthesized.
-], kind: "table", supplement: "Table")  <encoding-analysis:tbl:related-work-scope-comparison>
+  Comparison of types of instructions with semantics covered by STRATA, Dasgupta et al. and #libLISA. ($#sym.dagger$): The #tt[REP] prefix is out-of-scope, but non-repeating string instructions are synthesized.
+], label: <encoding-analysis:tbl:related-work-scope-comparison>)
 
 
 For other architectures, such as ARM and RISC-V, complete formal models do exist.

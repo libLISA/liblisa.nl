@@ -31,7 +31,7 @@ Existing semantics will either be undefined, or incorrect~(see @encoding-analysi
   ```
 ], caption: [
   An example of a function in an x86-64 binary. For convenience, the output of the #tt("objdump") disassembler is listed next to the bytes. The function moves its first argument #tt("RDI") into #tt("RAX"), clears #tt("RDI") with an XOR, then performs a rotate-with-carry (#tt("rcl")) of 9 on #tt("RAX"), and finally conditionally jumps (#tt("jno")) to the end of the function if the overflow flag is unset, or executes a #tt("syscall") before returning otherwise.
-], supplement: "Figure") <encoding-analysis:fig:ub-assembly>
+], label: <encoding-analysis:fig:ub-assembly>)
 
 In this paper we introduce #libLISA: a tool that can fully automatically scan a large part of the instruction space of an x86-64 CPU, discover instructions, and synthesize their semantics.
 The result is _CPU-specific_ semantics, i.e., semantics that define what the current CPU actually does even in the case of instructions whose behavior is considered "undefined" by manually written specifications.

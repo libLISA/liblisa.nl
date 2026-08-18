@@ -14,12 +14,10 @@ There must be as few restrictions on the input CPU state as possible, so that we
 
 
 #html-compatible-figure([
-  #set align(center)
   #image("../imgs/cpu-observer.pdf")
 ], caption: [
-     The CPU observer uses QEMU with KVM hardware-acceleration to run an observation kernel, and execute observations in userspace inside the virtualized environment.
-], supplement: "Figure") <encoding-analysis:fig:cpu-observer>
-
+  The CPU observer uses QEMU with KVM hardware-acceleration to run an observation kernel, and execute observations in userspace inside the virtualized environment.
+], label: <encoding-analysis:fig:cpu-observer>)
 
 There are two common ways to observe instruction execution: _in-process observation_~@sandsifter @iscanu @uisfuzz @strata and _out-of-process observation_~@iscanu.
 Neither of these methods fulfill all requirements.
@@ -41,9 +39,8 @@ This observation process is then instrumented using a debugging interface like #
 CPU state can be modified through this interface, and memory can be mapped and unmapped by placing assembly for the correct system calls in the memory of the observation process and executing it via the debugging interface.
 While this approach provides some sandboxing, it shares many of the same restrictions on input CPU states as in-process observation, and is very slow because the debugging interface has a lot of overhead.
 
-
 We have developed a new observation approach based on hardware-accelerated virtualization and fast communication via shared memory.
-The approach is depicted in Figure~@encoding-analysis:fig:cpu-observer.
+The approach is depicted in @encoding-analysis:fig:cpu-observer.
 It consists of two components: a process running on the host machine, and a small bare-metal observer binary running in a virtual machine.
 Using a ring buffer~@ringbuffer, these components can communicate without the overhead of syscalls.
 The observer running in the virtual machine performs context switches to userspace to observe instructions.
@@ -63,12 +60,10 @@ We use the #tt[INT3] interrupt instruction by default, because it does not requi
 == Enumeration
 
 #html-compatible-figure([
-    #set align(center)
-    
-    #image("../imgs/enumeration.pdf")
+  #image("../imgs/enumeration.pdf")
 ], caption: [
-     A feedback loop from Encoding Analysis to enumeration makes it possible to fully enumerate large instruction spaces.
-], supplement: "Figure") <encoding-analysis:fig:enumeration>
+  A feedback loop from Encoding Analysis to enumeration makes it possible to fully enumerate large instruction spaces.
+], label: <encoding-analysis:fig:enumeration>)
 
 
 The goal of enumeration is discovering all in-scope instructions on a CPU.
@@ -82,54 +77,54 @@ We instead _skip over parts of the instruction space_ using 1.) bitpatterns from
 As described in Section~@sec:liblisa:overview, every encoding represents a group of instructions described by its bitpattern.
 During enumeration, we run encoding analysis on each valid instruction.
 We then use the bitpattern from the resulting encoding to skip all instructions it matches.
-This is depicted in Figure~@encoding-analysis:fig:enumeration.
+This is depicted in @encoding-analysis:fig:enumeration.
 For example, for #tt[MOVABS RAX, 0x152] encoding analysis will yield an encoding with a bitpattern containing two parts: a 64-bit part for the immediate value and a 4-bit part for the destination register.
 This allows us to skip the $2^68-1$ other instructions covered by this encoding.
 
 #algorithm(title: "Enumeration.", [
-    #set align(left)
-    #algorithmic(
-        indent: 0.5em, // indentation for the algorithm
-        vstroke: 0pt + luma(200), // vertical stroke for indentation guide
-        line-numbers: true, // show line numbers
-        line-numbers-format: x => [#x:], // change the line numbers format
-        {
-            import "@preview/algorithmic:1.0.7": *
+  #set align(left)
+  #algorithmic(
+    indent: 0.5em, // indentation for the algorithm
+    vstroke: 0pt + luma(200), // vertical stroke for indentation guide
+    line-numbers: true, // show line numbers
+    line-numbers-format: x => [#x:], // change the line numbers format
+    {
+      import "@preview/algorithmic:1.0.7": *
 
-            Comment([ *Result*: a set of enumerated encodings $E$ ])
-            Procedure("Enumerate", (), {
-                Assign[$E$][$emptyset$]
-                Assign[$S$][$emptyset$]
-                Assign[$I$][$"NextUncoveredInstruction"(S)$]
-                While($I eq.not "None"$, {
-                    IfElseChain(
-                        $"IsValidInstruction"(I)$,
-                        {
-                            Assign[$e$]["AnalyzeEncoding"(I)]
-                            IfElseChain(
-                                $e eq.not "Err"$,
-                                {
-                                    Assign[$E$][$E union { e }$]
-                                    Assign[$S$][$S union { i | i "matches bitpattern of" e }$]
-                                },
-                                {
-                                    Assign[S][S union "Tunnel"(I)]
-                                }
-                            )
-                        },
-                        {
-                            Assign[$S$][$S union "RandomizedSearch"(I)$]
-                        }
-                    )
+      Comment([ *Result*: a set of enumerated encodings $E$ ])
+      Procedure("Enumerate", (), {
+        Assign[$E$][$emptyset$]
+        Assign[$S$][$emptyset$]
+        Assign[$I$][$"NextUncoveredInstruction"(S)$]
+        While($I eq.not "None"$, {
+          IfElseChain(
+            $"IsValidInstruction"(I)$,
+            {
+              Assign[$e$]["AnalyzeEncoding"(I)]
+              IfElseChain(
+                $e eq.not "Err"$,
+                {
+                  Assign[$E$][$E union { e }$]
+                  Assign[$S$][$S union { i | i "matches bitpattern of" e }$]
+                },
+                {
+                  Assign[S][S union "Tunnel"(I)]
+                }
+              )
+            },
+            {
+              Assign[$S$][$S union "RandomizedSearch"(I)$]
+            }
+          )
 
-                    Assign[$I$]["NextUncoveredInstruction"(S)]
-                })
+          Assign[$I$]["NextUncoveredInstruction"(S)]
+        })
 
-                Return($[E]$)
-            })
-        }
-    )
-]) <encoding-analysis:alg:enumeration>
+        Return($[E]$)
+      })
+    }
+  )
+], label: <encoding-analysis:alg:enumeration>)
 
 The enumeration algorithm is depicted in @encoding-analysis:alg:enumeration.
 It takes no inputs, and produces a set of encodings $E$, covering all valid instructions in the instruction space.
@@ -204,12 +199,10 @@ Each of these three steps require the generation of random CPU states.
 In the rest of this subsection, we first describe how this is done, and then provide details on each of the three steps of the infer-generalize-specialize approach.
 
 #html-compatible-figure([
-    #set align(center)
-    
-    #image("../imgs/approach.pdf")
+  #image("../imgs/approach.pdf")
 ], caption: [
-     The infer-generalize-specialize approach. The green circles are correct dataflows, the red squares are incorrect dataflows, and the dashed boxes represent encodings. The infer step produces some (in this case, two) correct, concrete dataflows. The generalize step combines these concrete dataflows into an encoding, but might make incorrect generalizations. The specialize step removes these incorrect generalizations.
-], supplement: "Figure") <encoding-analysis:fig:approach-overview>
+    The infer-generalize-specialize approach. The green circles are correct dataflows, the red squares are incorrect dataflows, and the dashed boxes represent encodings. The infer step produces some (in this case, two) correct, concrete dataflows. The generalize step combines these concrete dataflows into an encoding, but might make incorrect generalizations. The specialize step removes these incorrect generalizations.
+], label: <encoding-analysis:fig:approach-overview>)
 
 
 === Random CPU State Generation
@@ -252,37 +245,37 @@ It generates a CPU state which places the new access $a$ exactly $n$ bytes away 
 It returns whether the execution of instruction $I$ caused a page fault at the first address of the next page.
 
 #algorithm(title: "Memory access identification.", [
-    #set align(left)
-    #algorithmic(
-        indent: 0.5em, // indentation for the algorithm
-        vstroke: 0pt + luma(200), // vertical stroke for indentation guide
-        line-numbers: true, // show line numbers
-        line-numbers-format: x => [#x:], // change the line numbers format
-        {
-            import "@preview/algorithmic:1.0.7": *
+  #set align(left)
+  #algorithmic(
+    indent: 0.5em, // indentation for the algorithm
+    vstroke: 0pt + luma(200), // vertical stroke for indentation guide
+    line-numbers: true, // show line numbers
+    line-numbers-format: x => [#x:], // change the line numbers format
+    {
+      import "@preview/algorithmic:1.0.7": *
 
-            Comment([ *Input*: an instruction $I$ ])
-            Comment([ *Result*: a set of memory accesses $M$ ])
-            Procedure("IdentifyMemoryAccesses", ("I",), {
-                Assign[$M$][$emptyset$]
-                Assign[$P$][$"FindPageFaults"(I, M)$]
-                While($P eq.not emptyset$, {
-                    Assign[$a$][$"FindAddressComputation"(I, M, P)$]
-                    Assign[$n$][$1$]
+      Comment([ *Input*: an instruction $I$ ])
+      Comment([ *Result*: a set of memory accesses $M$ ])
+      Procedure("IdentifyMemoryAccesses", ("I",), {
+        Assign[$M$][$emptyset$]
+        Assign[$P$][$"FindPageFaults"(I, M)$]
+        While($P eq.not emptyset$, {
+          Assign[$a$][$"FindAddressComputation"(I, M, P)$]
+          Assign[$n$][$1$]
 
-                    While($"AccessGeneratesPageFaultOnNextPage"(I, M, a, n)$, {
-                        Assign[$n$][$n + 1$]
-                    })
+          While($"AccessGeneratesPageFaultOnNextPage"(I, M, a, n)$, {
+              Assign[$n$][$n + 1$]
+          })
 
-                    Assign[$M$][$M union { (a, n) }$]
-                    Assign[$P$][$"FindPageFaults"(I, M)$]
-                })
+          Assign[$M$][$M union { (a, n) }$]
+          Assign[$P$][$"FindPageFaults"(I, M)$]
+        })
 
-                Return($[M]$)
-            })
-        }
-    )
-]) <encoding-analysis:alg:memory-access-analysis>
+        Return($[M]$)
+      })
+    }
+  )
+], label: <encoding-analysis:alg:memory-access-analysis>)
 
 @encoding-analysis:alg:memory-access-analysis infers memory accesses iteratively.
 Each iteration, we generate a set of page faults $P$ that occur with the current set of memory accesses $M$.
@@ -295,30 +288,30 @@ We then extend the set of memory accesses $M$ with the new computation $a$ and s
 After inferring all memory accesses, we can infer the dataflows.
 
 #algorithm(title: "Dataflow analysis.", [
-    #set align(left)
-    #algorithmic(
-        indent: 0.5em, // indentation for the algorithm
-        vstroke: 0pt + luma(200), // vertical stroke for indentation guide
-        line-numbers: true, // show line numbers
-        line-numbers-format: x => [#x:], // change the line numbers format
-        {
-            import "@preview/algorithmic:1.0.7": *
+  #set align(left)
+  #algorithmic(
+    indent: 0.5em, // indentation for the algorithm
+    vstroke: 0pt + luma(200), // vertical stroke for indentation guide
+    line-numbers: true, // show line numbers
+    line-numbers-format: x => [#x:], // change the line numbers format
+    {
+      import "@preview/algorithmic:1.0.7": *
 
-            Comment([ *Input*: an instruction $I$ and a set of memory accesses $M$ for $I$ ])
-            Comment([ *Result*: a set of dataflows $D$ ])
-            Procedure("DataflowAnalysis", ("I", "M"), {
-                Assign[$D_b$][$emptyset$]
-                Assign[$"[df]"$][$"FuzzForDataflow"(I, M, D_b)$]
-                While($"df" eq.not "None"$, {
-                    Assign[$D_b$][$D_b union { "[df]" }$]
-                    Assign[$"[df]"$][$"FuzzForDataflow"(I, M, D_b)$]
-                })
-                LineBreak
-                Return([$"Reduce"(D_b)$])
-            })
-        }
-    )
-]) <encoding-analysis:alg:dataflow-analysis>
+      Comment([ *Input*: an instruction $I$ and a set of memory accesses $M$ for $I$ ])
+      Comment([ *Result*: a set of dataflows $D$ ])
+      Procedure("DataflowAnalysis", ("I", "M"), {
+        Assign[$D_b$][$emptyset$]
+        Assign[$"[df]"$][$"FuzzForDataflow"(I, M, D_b)$]
+        While($"df" eq.not "None"$, {
+          Assign[$D_b$][$D_b union { "[df]" }$]
+          Assign[$"[df]"$][$"FuzzForDataflow"(I, M, D_b)$]
+        })
+        LineBreak
+        Return([$"Reduce"(D_b)$])
+      })
+    }
+  )
+], label: <encoding-analysis:alg:dataflow-analysis>)
 
 The algorithm for inferring dataflows is shown in @encoding-analysis:alg:dataflow-analysis.
 It takes as input an instruction $I$ and the set of memory accesses $M$ for this instruction, produced by @encoding-analysis:alg:memory-access-analysis.
@@ -385,81 +378,81 @@ This only requires identifying some subset of parts that is large enough to allo
 
 
 #example([
-    Consider instruction $I = #tt[0100]$.
-    Let us assume that we have inferred that it performs no memory accesses, and has the following dataflows:
+  Consider instruction $I = #tt[0100]$.
+  Let us assume that we have inferred that it performs no memory accesses, and has the following dataflows:
 
+  #grid(
+    columns: (auto, auto, auto),
+    inset: 2pt,
+    tt[RIP], $colon.eq$, $ballot_1(#tt[RIP])$,
+    tt[BX], $colon.eq$, $ballot_2(#tt[AX])$,
+  )
+
+  In order to generalize this dataflow into an encoding, we inspect the dataflows of the four flipped variants, determine the change compared to the original dataflow, and determine if the bit is a candidate for a part. This comparison is summarized as follows:
+  
+  #table(
+    columns: (auto, auto, auto, auto, auto),
+    align: (x, y) => if x == 1 { center } else { left },
+    table.header(
+      [Variant], [#tt[1100]], [#tt[0000]], [#tt[0110]], [#tt[0101]], 
+    ),
+    [Dataflows], [(Invalid)], 
+    grid(
+      columns: (auto, auto, auto),
+      inset: 2pt,
+      tt[RIP], $colon.eq$, $ballot_1(#tt[RIP])$,
+      tt[AX], $colon.eq$, $ballot_2(#tt[AX])$,
+    ), grid(
+      columns: (auto, auto, auto),
+      inset: 2pt,
+      tt[RIP], $colon.eq$, $ballot_1(#tt[RIP])$,
+      tt[BX], $colon.eq$, $ballot_2(#tt[CX])$,
+    ), grid(
+      columns: (auto, auto, auto),
+      inset: 2pt,
+      tt[RIP], $colon.eq$, $ballot_1(#tt[RIP])$,
+      tt[BX], $colon.eq$, $ballot_2(#tt[BX])$,
+    ),
+    [Change], [N/A], [$#tt[BX] mapsto #tt[AX]$], [$#tt[AX] mapsto #tt[CX]$], [$#tt[AX] mapsto #tt[BX]$],
+    [Location], [N/A], [Destination #tt[BX]], [Source #tt[AX]], [Source #tt[AX]], 
+    [Candidate], [N/A], [Register-bit], [Register-bit], [Register-bit],
+  )
+
+  There are candidate bits for two parts: a 1-bit register part that determines the destination register, and a 2-bit part that determines the source register.
+  These parts do not conflict.
+  We therefore do not need to remove any of the parts.
+
+  Finally, we also inspect the dataflows for #tt[0111] to fully cover the possible register mappings for the 2-bit part that determines the source register.
+  From this information, we can build the encoding:
+
+  #v(1em)
+  
+  #align(center, [
     #grid(
+      columns: (auto, auto),
+      inset: 3pt,
+      align: left,
+      grid.cell(rowspan: 3, [ *Bitpattern:* ]),
+      [#tt[0#underline[b]#underline[aa]]],
+      [#tt[#underline[aa]]: $[
+        #tt([00]) mapsto #tt[AX],
+        #tt([01]) mapsto #tt[BX],
+        #tt([10]) mapsto #tt[CX],
+        #tt([11]) mapsto #tt[DX]
+      ]$],
+      [#tt[#underline[b]]: $[
+        #tt([0]) mapsto #tt[AX],
+        #tt([1]) mapsto #tt[BX]
+      ]$],
+      [ *Dataflows:* ],
+      grid(
         columns: (auto, auto, auto),
         inset: 2pt,
         tt[RIP], $colon.eq$, $ballot_1(#tt[RIP])$,
-        tt[BX], $colon.eq$, $ballot_2(#tt[AX])$,
+        underline[#tt[b]], $colon.eq$, $ballot_2(#underline[#tt[aa]])$,
+      )
     )
-
-    In order to generalize this dataflow into an encoding, we inspect the dataflows of the four flipped variants, determine the change compared to the original dataflow, and determine if the bit is a candidate for a part. This comparison is summarized as follows:
-    
-    #table(
-        columns: (auto, auto, auto, auto, auto),
-        align: (x, y) => if x == 1 { center } else { left },
-        [Variant], [#tt[1100]], [#tt[0000]], [#tt[0110]], [#tt[0101]], 
-        [Dataflows],
-        [(Invalid)], 
-        grid(
-            columns: (auto, auto, auto),
-            inset: 2pt,
-            tt[RIP], $colon.eq$, $ballot_1(#tt[RIP])$,
-            tt[AX], $colon.eq$, $ballot_2(#tt[AX])$,
-        ), grid(
-            columns: (auto, auto, auto),
-            inset: 2pt,
-            tt[RIP], $colon.eq$, $ballot_1(#tt[RIP])$,
-            tt[BX], $colon.eq$, $ballot_2(#tt[CX])$,
-        ), grid(
-            columns: (auto, auto, auto),
-            inset: 2pt,
-            tt[RIP], $colon.eq$, $ballot_1(#tt[RIP])$,
-            tt[BX], $colon.eq$, $ballot_2(#tt[BX])$,
-        ),
-        [Change], [N/A], [$#tt[BX] mapsto #tt[AX]$], [$#tt[AX] mapsto #tt[CX]$], [$#tt[AX] mapsto #tt[BX]$],
-        [Location], [N/A], [Destination #tt[BX]], [Source #tt[AX]], [Source #tt[AX]], 
-        [Candidate], [N/A], [Register-bit], [Register-bit], [Register-bit],
-    )
-
-    There are candidate bits for two parts: a 1-bit register part that determines the destination register, and a 2-bit part that determines the source register.
-    These parts do not conflict.
-    We therefore do not need to remove any of the parts.
-
-    Finally, we also inspect the dataflows for #tt[0111] to fully cover the possible register mappings for the 2-bit part that determines the source register.
-    From this information, we can build the encoding:
-
-    #v(1em)
-    
-    #align(center, [
-        // TODO: Alignment
-        #grid(
-            columns: (auto, auto),
-            inset: 3pt,
-            align: left,
-            grid.cell(rowspan: 3, [ *Bitpattern:* ]),
-            [#tt[0#underline[b]#underline[aa]]],
-            [#tt[#underline[aa]]: $[
-                #tt([00]) mapsto #tt[AX],
-                #tt([01]) mapsto #tt[BX],
-                #tt([10]) mapsto #tt[CX],
-                #tt([11]) mapsto #tt[DX]
-            ]$],
-            [#tt[#underline[b]]: $[
-                #tt([0]) mapsto #tt[AX],
-                #tt([1]) mapsto #tt[BX]
-            ]$],
-            [ *Dataflows:* ],
-            grid(
-                columns: (auto, auto, auto),
-                inset: 2pt,
-                tt[RIP], $colon.eq$, $ballot_1(#tt[RIP])$,
-                underline[#tt[b]], $colon.eq$, $ballot_2(#underline[#tt[aa]])$,
-            )
-        )
-    ])
+  ])
 ]) <encoding-analysis:ex:generalization>
 
 
@@ -488,15 +481,15 @@ The fuzzing strategy consists of generating pairs of CPU input states that are i
   Consider the encoding from Example~@encoding-analysis:ex:generalization. Through fuzzing, we find the following two input-output examples:
 
   #align(center)[
-      #table(
-          columns: (auto, auto, auto),
-          align: left,
-          [
-          Instruction], [Input state], [Output state],
-          [
-          #tt[0110]], [$#tt[CX] = 5$], [$#tt[BX] = 10$],
-          [#tt[0010]], [$#tt[CX] = 5$], [$#tt[AX] = 37$],
-      )
+    #table(
+      columns: (auto, auto, auto),
+      align: left,
+      table.header(
+        [Instruction], [Input state], [Output state],
+      ),
+      [#tt[0110]], [$#tt[CX] = 5$], [$#tt[BX] = 10$],
+      [#tt[0010]], [$#tt[CX] = 5$], [$#tt[AX] = 37$],
+    )
   ]
 
   According to the encoding, the value of #tt[BX] after executing #tt[0110] should be equal to the value of #tt[AX] after executing #tt[0010].
