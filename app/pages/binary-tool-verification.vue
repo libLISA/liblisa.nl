@@ -38,7 +38,7 @@ const sortedData = computed(() => {
 <template>
   <p>
     The table below shows an overview of all {{ sortedData.length }} bugs we have found in other tools and semantics, during our work on libLISA.
-    It includes 6 distinct bugs first listed in <NuxtLink to="/publications#oopsla24">our 2024 paper</NuxtLink>, where we verified the correctness of Dasgupta et al.'s semantics implemented in the K framework.
+    It includes 6 distinct bugs first listed in <NuxtLink to="/publications#liblisa-oopsla24">our 2024 paper</NuxtLink>, where we verified the correctness of Dasgupta et al.'s semantics implemented in the K framework.
     It also includes one bug in Bochs we found during development of <NuxtLink to="/sem86">Sem86</NuxtLink>,
     and several others found during the development of libLISA.
   </p>

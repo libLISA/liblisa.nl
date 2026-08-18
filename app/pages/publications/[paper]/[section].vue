@@ -70,13 +70,21 @@ figure img {
   max-height: 400px;
 }
 
-li:target, li.is-target, figure:target, figure.is-target, h1:target, h1.is-target, h2:target, h2.is-target, h3:target, h3.is-target, h4:target, h4.is-target, h5:target, h5.is-target {
-  animation: highlight 1s ease-in-out;
-  background-color: rgb(255, 255, 235);
-  border: 1px solid #ccc;
+h3, h4, h5 {
+  width: 100%;
+  display: inline-block;
+  margin: 0;
 }
 
-@keyframes highlight {
+li:target, li.is-target, figure:target, figure.is-target, h3:target, h3.is-target, h4:target, h4.is-target, h5:target, h5.is-target {
+  animation: highlight-normal 1s ease-in-out;
+  background-color: rgb(255, 255, 235);
+  border: 1px solid #ccc;
+  padding: 0.25em;
+  box-sizing: border-box;
+}
+
+@keyframes highlight-normal {
   from {
     background-color: transparent;
   }

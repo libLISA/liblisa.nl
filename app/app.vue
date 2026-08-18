@@ -1,30 +1,40 @@
 <script setup lang="ts">
 const route = useRoute()
+const router = useRouter();
 let previousEl: Element | null = null
 
 // When Nuxt opens a different page, it doesn't necessarily trigger a page load.
 // If no page load is triggered, the :target doesn't get applied.
 // To fix this, we use some JS to apply an 'is-target' class to the target.
 // Everything should still work without JS, because in that case a full page load is always used.
-watch(
-  () => route.hash,
-  async (hash) => {
-    previousEl?.classList.remove('is-target')
-    previousEl = null
+const updateTarget = async () => {
+  document
+    .querySelectorAll('.is-target')
+    .forEach(el => el.classList.remove('is-target'))
 
-    if (!hash) return
+  previousEl?.classList.remove('is-target')
+  previousEl = null
 
-    await nextTick()
+  if (!route.hash) return
 
-    const el = document.querySelector(hash)
+  await nextTick()
 
-    if (el) {
-      el.classList.add('is-target')
-      previousEl = el
-    }
-  },
-  { immediate: true }
-)
+  const id = route.hash.slice(1)
+  const el = document.getElementById(id)
+
+  el?.classList.add('is-target');
+  previousEl = el;
+}
+
+router.afterEach(() => {
+  updateTarget()
+});
+
+onMounted(() => {
+  updateTarget()
+});
+
+watch(() => route.hash, updateTarget);
 </script>
 
 <template>
@@ -121,17 +131,6 @@ h2, .button {
     100% 100%,
     0 100%
   )
-}
-
-h3 {
-  font-weight: 900;
-  display: inline;
-  font-size: inherit;
-}
-
-h3::after {
-  display: inline;
-  content: ".";
 }
 
 .buttonrow {

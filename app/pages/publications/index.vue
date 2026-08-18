@@ -85,6 +85,18 @@ h3 {
   font-size: 17pt;
 }
 
+h3 {
+  font-weight: 900;
+  display: inline;
+  font-size: inherit;
+}
+
+h3::after {
+  display: inline;
+  content: ".";
+}
+
+
 .authors {
   font-size: 80%;
   margin-top: 0;
