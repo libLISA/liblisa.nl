@@ -8,7 +8,7 @@ const route = useRoute();
 </script>
 
 <template>
-  <nav v-if="isIndex">
+  <nav role="navigation" v-if="isIndex">
     <NuxtLink :to="`/publications/`" class="navbutton home prev">
       <Icon name="fa7-solid:caret-left" />
       Back to all publications
@@ -16,7 +16,7 @@ const route = useRoute();
     </NuxtLink>
     <NuxtLink :to="data.path" class="navbutton next">{{ data.title }}</NuxtLink>
   </nav>
-  <nav v-else>
+  <nav role="navigation" v-else>
     <NuxtLink v-if="data.previous" :to="data.previous.url" class="navbutton prev">{{ data.previous.title }}</NuxtLink>
     <NuxtLink v-else :to="`/publications/${route.params.paper}/`" class="navbutton prev">Abstract &amp; Table of Contents</NuxtLink>
     <NuxtLink v-if="data.next" :to="data.next.url" class="navbutton next">{{ data.next.title }}</NuxtLink>

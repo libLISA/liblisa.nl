@@ -62,6 +62,7 @@ figure {
   margin: 1em 0;
   padding: 0.5em;
   padding-top: 1.5em;
+  overflow: auto;
 }
 
 figure img {

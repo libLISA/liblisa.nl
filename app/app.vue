@@ -113,8 +113,7 @@ a[href]:hover code {
   color: #fff;
 }
 
-h2 {
-  position: relative;
+h1.styled, h2.styled, h3.styled, h4.styled, h5.styled {
   display: block;
   background: var(--main-col);
   color: white;
@@ -123,7 +122,11 @@ h2 {
   text-align: left;
 }
 
-h2, .button {
+h1.styled {
+  font-size: 1.5em;
+}
+
+h1.styled, h2.styled, h3.styled, h4.styled, h5.styled, .button {
   clip-path: polygon(
     0 10px,
     10px 0,

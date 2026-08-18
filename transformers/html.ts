@@ -16,7 +16,7 @@ export default defineTransformer({
 
     if (body) {
       const id = file.id.replace(/^papers\//, '');
-      rewriteLinks(body, id);
+      rewriteNodes(body, id);
     }
 
     const previous = extractNavigation(tree, 'previous-page');
@@ -171,21 +171,31 @@ function getTextContent(node: Element): string {
     .trim()
 }
 
-function rewriteLinks(node: Element, basePath: string) {
+function rewriteNodes(node: Element, basePath: string) {
   for (const child of node.children) {
-    if (
-      child.type === 'element' &&
-      child.tagName === 'a'
-    ) {
-      const href = child.properties.href
-
-      if (typeof href === 'string') {
-        child.properties.href = rewriteHref(href, basePath)
-      }
-    }
-
     if (child.type === 'element') {
-      rewriteLinks(child, basePath)
+      if (child.tagName === 'a') {
+        const href = child.properties.href
+
+        if (typeof href === 'string') {
+          child.properties.href = rewriteHref(href, basePath)
+        }
+      } else if (child.tagName === 'h2') {
+        child.tagName = 'h1';
+        const classes = child.properties.className;
+        child.properties.className = [
+          ...(Array.isArray(classes) ? classes : classes ? [classes] : []),
+          'styled',
+        ]
+      } else if (child.tagName === 'h3') {
+        child.tagName = 'h2';
+      } else if (child.tagName === 'h4') {
+        child.tagName = 'h3';
+      } else if (child.tagName === 'h5') {
+        child.tagName = 'h4';
+      }
+
+      rewriteNodes(child, basePath)
     }
   }
 }

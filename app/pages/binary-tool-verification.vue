@@ -1,4 +1,6 @@
 <script setup>
+import ProseH1ToH2 from '~/components/content/ProseH1ToH2.vue';
+
 useHead({
   title: 'Verifying Binary Analysis Tools with libLISA'
 });
@@ -36,6 +38,7 @@ const sortedData = computed(() => {
 </script>
 
 <template>
+  <h1>Binary Tool Verification</h1>
   <p>
     The table below shows an overview of all {{ sortedData.length }} bugs we have found in other tools and semantics, during our work on libLISA.
     It includes 6 distinct bugs first listed in <NuxtLink to="/publications#liblisa-oopsla24">our 2024 paper</NuxtLink>, where we verified the correctness of Dasgupta et al.'s semantics implemented in the K framework.
@@ -66,7 +69,7 @@ const sortedData = computed(() => {
           </button>
 
           <div :id="'popover-' + bug.stem" popover>
-            <ContentRenderer :value="bug" />
+            <ContentRenderer :value="bug" :components="{ h1: ProseH1ToH2 }" />
 
             <div class="buttonrow">
               <button class="button small" :popovertarget="'popover-' + bug.stem" popovertargetaction="hide">

@@ -14,6 +14,7 @@ useSeoMeta({
 </script>
 
 <template>
+  <h1>CPU Instruction Discovery and Analysis</h1>
   <p>
     libLISA is a tool that can <i>fully automatically</i> scan instruction space, discover instructions and synthesize their semantics.
     It produces machine-readable, CPU-specific x86-64 instruction semantics.
@@ -36,7 +37,7 @@ useSeoMeta({
     </a>
   </div>
 
-  <h2>Motivation</h2>
+  <h2 class="styled">Motivation</h2>
   <p>
     Even though heavily researched, a full formal model of the x86-64 instruction set is still not available.
     This is caused by the sheer complexity of the x86-64 architecture:
@@ -62,7 +63,7 @@ useSeoMeta({
     Our current focus is on using libLISA's automatically inferred semantics to <NuxtLink to="/binary-tool-verification">verify the correctness of disassemblers, emulators and other semantics</NuxtLink>.
   </p>
 
-  <h2>Generated x86-64 Instruction Semantics</h2>
+  <h2 class="styled">Generated x86-64 Instruction Semantics</h2>
   <p>
     We analyzed five different architectures: AMD 3900X, AMD 7700X, Intel i9-13900 (p), Intel i9-13900 (e) and Intel Xeon Silver 4110.
     For each architecture, we generated around 120k <i>encodings</i>.

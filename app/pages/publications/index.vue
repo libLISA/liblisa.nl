@@ -24,6 +24,7 @@ async function copyBibtex(bibtex) {
 </script>
 
 <template>
+  <h1>Publications</h1>
   <div class="publications">
     <div class="publication" v-for="publication in data">
       <a :id="publication.slug" />

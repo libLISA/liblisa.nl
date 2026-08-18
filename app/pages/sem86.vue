@@ -14,6 +14,8 @@ useSeoMeta({
 </script>
 
 <template>
+  <h1>Sem86 Full-System Emulator</h1>
+
   <div class="imagelist">
     <img src="~/assets/images/sem86/w98-small.png" />
     <img src="~/assets/images/sem86/wxp-small.png" />
@@ -45,7 +47,7 @@ useSeoMeta({
     </a>
   </div>
 
-  <h2>Integration with libLISA</h2>
+  <h2 class="styled">Integration with libLISA</h2>
   <p>
     Our long-term goal for Sem86 is to use automatically inferred semantics from libLISA.
     This would enable "CPU cloning": analyzing a CPU, extracting its semantics, and then starting an emulator that emulates that exact CPU accurately. 
@@ -56,7 +58,7 @@ useSeoMeta({
     However, the semantics format that we use is very similar to libLISA's, and switching to automatically inferred semantics would not require big changes.
   </p>
 
-  <h2>Malware Analysis</h2>
+  <h2 class="styled">Malware Analysis</h2>
   <p>
     Emulation can be used to analyze malware in a sandboxed environment.
     There is, however, not a single instruction semantics to be followed, as x86 allows undefined behavior.
@@ -70,7 +72,7 @@ useSeoMeta({
     Sem86 can bisect the execution of this malware, and identify the exact instruction that is used.
   </p>
 
-  <h2>Hardware Support &amp; Operating Systems</h2>
+  <h2 class="styled">Hardware Support &amp; Operating Systems</h2>
   <p>
     Sem86 implements all hardware necessary to boot Windows and Linux operating systems that support Pentium 5 era hardware.
     It runs Windows 3.1, Windows 98, Windows XP, Windows 7 and Debian 8.

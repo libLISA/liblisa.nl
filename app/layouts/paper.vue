@@ -6,13 +6,13 @@ const { data: publication } = await useAsyncData(`publications-${route.params.pa
 
 useHead({
   titleTemplate: (title) => {
-    return `${title} - ${publication.value.title} - ${publication.value.authors} - published at ${publication.value.venue}`
+    return `${title} - ${publication.value.title} - ${publication.value.authors}`
   }
 })
 </script>
 
 <template>
-  <div class="header">
+  <header role="contentinfo" class="header">
     <p>
       <strong>
         This is a web version of the paper
@@ -22,7 +22,7 @@ useHead({
         by {{ publication.authors }}, first published at {{ publication.venue }}</NuxtLink>.
       </strong>
     </p>
-    <div class="buttonrow">
+    <nav role="navigation" class="buttonrow">
       <a class="button small purple" :href="publication.pdf">
         <Icon name="fa7-regular:file-pdf" class="glyph" />
         Download PDF
@@ -31,11 +31,13 @@ useHead({
         <Icon name="fa7-regular:file-pdf" class="glyph" />
         Visit liblisa.nl
       </NuxtLink>
-    </div>
-  </div>
-  <article class="page">
-    <slot />
-  </article>
+    </nav>
+  </header>
+  <main role="main" class="page">
+    <article>
+      <slot />
+    </article>
+  </main>
 </template>
 
 <style scoped>
@@ -72,6 +74,11 @@ strong {
   padding: 1em;
   line-height: 1.4;
   text-align: justify;
+}
+
+article {
+  margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 600px) {

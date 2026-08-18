@@ -9,21 +9,21 @@ useHead({
 </script>
 
 <template>
-  <div class="header">
+  <header role="banner" class="header">
     <Logo class="logo" />
     <span class="subtext">
       Automated CPU Instruction Discovery and Analysis
     </span>
-    <ul class="menu">
-      <li><NuxtLink active-class="active" to="/">libLISA</NuxtLink></li>
-      <li><NuxtLink active-class="active" to="/binary-tool-verification">Verification</NuxtLink></li>
-      <li><NuxtLink active-class="active" to="/sem86">Sem86</NuxtLink></li>
-      <li><NuxtLink active-class="active" to="/publications">Publications</NuxtLink></li>
-    </ul>
-  </div>
-  <article class="page">
+    <nav role="navigation" class="menu">
+      <div class="tab"><NuxtLink active-class="active" to="/">libLISA</NuxtLink></div>
+      <div class="tab"><NuxtLink active-class="active" to="/binary-tool-verification">Verification</NuxtLink></div>
+      <div class="tab"><NuxtLink active-class="active" to="/sem86">Sem86</NuxtLink></div>
+      <div class="tab"><NuxtLink active-class="active" to="/publications">Publications</NuxtLink></div>
+    </nav>
+  </header>
+  <main role="main" class="page">
     <slot />
-  </article>
+  </main>
 </template>
 
 <style scoped>
@@ -54,14 +54,14 @@ useHead({
   margin-top: 1em;
 }
 
-.menu li {
-  list-style: none;
+.tab {
   color: #fff;
   margin: 0;
   padding: 0;
+  flex-basis: 0;
 }
 
-.menu li a {
+.tab a {
   display: block;
   color: #fff;
   text-decoration: none;
@@ -71,7 +71,7 @@ useHead({
   min-width: 100px;
 }
 
-.menu li a.active {
+.tab a.active {
   clip-path: polygon(
     0 10px,
     10px 0,
@@ -81,7 +81,7 @@ useHead({
   )
 }
 
-.menu li a.active {
+.tab a.active {
   background-color: #fff;
   color: #226;
 }
@@ -96,8 +96,23 @@ useHead({
 
 @media (max-width: 600px) {
   .menu {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
+    margin-top: 0.5em;
+  }
+
+  .tab {
+    flex: 1 1 50%;
+  }
+
+  .subtext {
+    display: none;
+  }
+
+  .logo {
+    padding: 8px;
+    height: 60px;
   }
 
   .page {
