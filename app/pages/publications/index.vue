@@ -21,19 +21,12 @@ const { data } = await useAsyncData('publications', () =>
 async function copyBibtex(bibtex) {
   await navigator.clipboard.writeText(bibtex)
 }
-
-// When Nuxt opens a different page, it doesn't necessarily trigger a page load.
-// If no page load is triggered, the :target doesn't get applied.
-// To fix this, we use some JS.
-// Everything should still work without JS, because in that case a full page load is always used.
-const route = useRoute()
-const isActive = (id) => route.hash === `#${id}`
 </script>
 
 <template>
   <div class="publications">
     <div class="publication" v-for="publication in data">
-      <a :id="publication.slug" :class="{ ['target']: isActive(publication.slug) }" />
+      <a :id="publication.slug" />
       <h3>
         <i>"{{ publication.title }}"</i> 
         at 
@@ -108,7 +101,7 @@ h3 {
   margin: -20px;
 }
 
-.publication:has(a:target), .publication:has(a.target) {
+.publication:has(a:target), .publication:has(a.is-target) {
   animation: highlight 1s ease-in-out;
   background-color: rgb(255, 255, 235);
   border: 1px solid #ccc;
