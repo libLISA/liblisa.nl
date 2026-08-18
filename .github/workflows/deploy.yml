@@ -14,8 +14,8 @@ jobs:
         with:
           node-version: "24"
       - uses: typst-community/setup-typst@v5
-      - run: cd papers/liblisa-oopsla24 && ./compile.sh
-      - run: cd papers/sem86-qrs26 && ./compile.sh
+      - run: cd papers && ./compile.sh liblisa-oopsla24
+      - run: cd papers && ./compile.sh sem86-qrs26
       - run: npm install
       - run: npm run generate
       - name: Upload artifact
