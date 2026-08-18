@@ -17,6 +17,10 @@ export default defineNuxtConfig({
       ]
     }
   },
+  routeRules: {
+    '/liblisa.pdf': { redirect: { to: '/files/liblisa2024.pdf', statusCode: 301 }},
+    '/publications/files/liblisa2024.pdf': { redirect: { to: '/files/liblisa2024.pdf', statusCode: 301 }},
+  },
   site: {
     url: 'liblisa.nl',
   },
