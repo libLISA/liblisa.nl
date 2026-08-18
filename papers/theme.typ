@@ -176,6 +176,8 @@
   })
 ]
 
+#let example = example.with(numbering: "1")
+
 #let liblisa-style(it) = {
   show math.equation: it => in-math.update(true) + it + in-math.update(false)
 
