@@ -12,8 +12,8 @@ useHead({
 </script>
 
 <template>
-  <header role="contentinfo" class="header">
-    <p>
+  <div class="header">
+    <p role="contentinfo">
       <strong>
         This is a web version of the paper
         <br />
@@ -32,7 +32,7 @@ useHead({
         Visit liblisa.nl
       </NuxtLink>
     </nav>
-  </header>
+  </div>
   <main role="main" class="page">
     <article>
       <slot />

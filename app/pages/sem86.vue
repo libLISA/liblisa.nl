@@ -17,9 +17,9 @@ useSeoMeta({
   <h1>Sem86 Full-System Emulator</h1>
 
   <div class="imagelist">
-    <img src="~/assets/images/sem86/w98-small.png" />
-    <img src="~/assets/images/sem86/wxp-small.png" />
-    <img src="~/assets/images/sem86/w7-small.png" />
+    <img src="~/assets/images/sem86/w98-small.png" alt="Screenshot of Windows 98 with a file explorer window open" />
+    <img src="~/assets/images/sem86/wxp-small.png" alt="Screenshot of Firefox running on Windows XP" />
+    <img src="~/assets/images/sem86/w7-small.png" alt="Screenshot of Windows 7, start menu open" />
   </div>
 
   <p>
@@ -80,14 +80,15 @@ useSeoMeta({
   </p>
   
   <div class="twocolumn">
-    <img src="~/assets/images/sem86/w7-small.png" />
+    <img src="~/assets/images/sem86/w7-small.png" alt="Screenshot of Windows 7, start menu open" />
     <p>
       Windows 7 runs, but the NE2k networking card has no Windows 7 driver. A newer networking card would need to be implemented to make this work.
       Additionally, as no GPU is implemented, Aero effects and transparency is not supported.
     </p>
   </div>
 
-  <div class="twocolumn">
+  <div class="twocolumn inverted">
+    <img src="~/assets/images/sem86/w7-phone.png" alt="Picture of Sem86 running on an Android phone, emulating Windows 7" />
     <p>
       Sem86 also runs on Android phones.
       Here, Windows 7 is shown.
@@ -95,11 +96,10 @@ useSeoMeta({
       This can cause the emulator to crash on phones with only 8&nbsp;GiB RAM.
       Older operating systems, such as Windows 98 and XP,  tend to run better.
     </p>
-    <img src="~/assets/images/sem86/w7-phone.png" />
   </div>
   
   <div class="twocolumn">
-    <img src="~/assets/images/sem86/w98-small.png" />
+    <img src="~/assets/images/sem86/w98-small.png" alt="Screenshot of Windows 98 with a file explorer window open" />
     <p>
       Windows 98 runs well on Sem86, as Sem86 is able to match the performance of early-2000s CPUs.
       Games that run on Windows 98 and do not require a dedicated GPU, such as Rollercoaster Tycoon, also tend to run well.
@@ -108,18 +108,19 @@ useSeoMeta({
     </p>
   </div>
   
-  <div class="twocolumn">
+  <div class="twocolumn inverted">
+    <img src="~/assets/images/sem86/wxp-small.png" alt="Screenshot of Firefox running on Windows XP" />
     <p>
       On Windows XP, the last supported version of Firefox runs and can open websites, including HTTPS websites.
       Unfortunately, in practice many modern sites tend to be too heavy for early-2000s CPUs.
     </p>
-    <img src="~/assets/images/sem86/wxp-small.png" />
   </div>
 </template>
 
 <style scoped>
 .twocolumn img {
   width: 300px;
+  max-width: 30vw;
   flex-shrink: 0;
   align-self: center;
 }
@@ -128,6 +129,24 @@ useSeoMeta({
   display: flex;
   margin: 2em 0;
   gap: 2em;
+}
+
+.twocolumn.inverted {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 600px) {
+  .twocolumn {
+    flex-direction: column;
+  }
+
+  .twocolumn.inverted {
+    flex-direction: column;
+  }
+
+  .twocolumn img {
+    max-width: 100vw;
+  }
 }
 
 .twocolumn p {
@@ -147,5 +166,6 @@ useSeoMeta({
   align-self: center;
   width: 100%;
   height: auto;
+  min-width: 0;
 }
 </style>

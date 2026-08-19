@@ -28,11 +28,11 @@ async function copyBibtex(bibtex) {
   <div class="publications">
     <div class="publication" v-for="publication in data">
       <a :id="publication.slug" />
-      <h3>
+      <h2>
         <i>"{{ publication.title }}"</i> 
         at 
         <a :href="publication.link" target="_blank">{{ publication.venue }}</a>
-      </h3>
+      </h2>
       <p class="authors">
         {{ publication.authors }}
       </p>
@@ -82,17 +82,13 @@ async function copyBibtex(bibtex) {
   background: rgb(0 0 0 / 50%);
 }
 
-h3 {
+h2 {
+  font-weight: 900;
+  display: inline;
   font-size: 17pt;
 }
 
-h3 {
-  font-weight: 900;
-  display: inline;
-  font-size: inherit;
-}
-
-h3::after {
+h2::after {
   display: inline;
   content: ".";
 }
@@ -143,6 +139,10 @@ h3::after {
   border-radius: 1em;
   color: #fff;
   text-decoration: none;
+}
+
+.award > * {
+  vertical-align: middle;
 }
 
 .award:visited {

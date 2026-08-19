@@ -71,7 +71,7 @@ figure > * {
 }
 
 figure pre {
-  align-self: start;
+  flex-shrink: 1;
 }
 
 figure img {

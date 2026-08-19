@@ -64,7 +64,7 @@ const sortedData = computed(() => {
         </div>
         <div class="title">
           {{ bug.title }}
-          <button class="nobutton" :popovertarget="'popover-' + bug.stem">
+          <button class="nobutton" aria-label="More info" :popovertarget="'popover-' + bug.stem">
             <Icon name="fa7-solid:info-circle" />
           </button>
 
@@ -79,7 +79,7 @@ const sortedData = computed(() => {
           </div>
         </div>
       </div>
-      <a class="bugtracker-link" :href="bug.tracker" v-if="bug.tracker" rel="noopener" target="_blank">
+      <a class="bugtracker-link" aria-label="Open bug tracker" :href="bug.tracker" v-if="bug.tracker" rel="noopener" target="_blank">
         <Icon name="fa7-brands:github" v-if="bug.tracker?.startsWith('https://github.com/')" />
         <Icon name="fa7-solid:bug" v-else />
       </a>

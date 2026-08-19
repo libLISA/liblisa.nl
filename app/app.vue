@@ -60,7 +60,7 @@ watch(() => route.hash, updateTarget);
   --purple: #991ef7;
   --purple-highlight: #be38ee;
 
-  --gray: #8a8a8a;
+  --gray: #707070;
   --gray-highlight: #afafaf;
 }
 
@@ -204,13 +204,13 @@ h1.styled, h2.styled, h3.styled, h4.styled, h5.styled, .button {
 }
 
 pre {
-  background: #eee;
+  background: #f4f4f4;
   border: 1px solid #bbb;
   padding: 0.5em;
 }
 
 code {
-  background: #eee;
+  background: #f4f4f4;
   padding: 0 6px;
   border: 1px solid #ccc;
 }
